@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="om">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans', -apple-system, sans-serif;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 55%, #2c5364 100%);
+  color: #fff;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+a { color: #ffd700; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+header {
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(255,215,0,0.2);
+  margin-bottom: 40px;
+}
+.logo {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 26px; font-weight: 700;
+  letter-spacing: 2px;
+}
+.logo-mark {
+  width: 48px; height: 48px;
+  border: 3px solid #ffd700;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #ffd700; font-weight: 700; font-size: 20px;
+}
+.logo .gold { color: #ffd700; }
+.logo-sub {
+  font-size: 12px; letter-spacing: 4px;
+  color: #ffd700; opacity: 0.8;
+  margin-top: 2px; font-weight: 400;
+}
+
+.hero { text-align: center; padding: 40px 0 50px; }
+.hero h1 {
+  font-size: 52px; font-weight: 700;
+  letter-spacing: 6px; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero h1 .gold { color: #ffd700; }
+.hero p {
+  font-size: 18px; opacity: 0.75;
+  letter-spacing: 3px; text-transform: uppercase;
+}
+.hero .divider {
+  width: 80px; height: 2px;
+  background: #ffd700; opacity: 0.5;
+  margin: 24px auto;
+}
+
+.search-wrap {
+  margin: 30px auto 50px; max-width: 600px;
+  position: relative;
+}
+.search-wrap input {
+  width: 100%;
+  padding: 18px 24px;
+  border: 2px solid rgba(255,215,0,0.3);
+  background: rgba(0,0,0,0.3);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: 0.2s;
+}
+.search-wrap input:focus {
+  border-color: #ffd700;
+  background: rgba(0,0,0,0.5);
+}
+.search-wrap input::placeholder { color: rgba(255,255,255,0.4); }
+
+.stats {
+  display: flex; justify-content: center;
+  gap: 60px; margin: 30px 0 60px;
+  flex-wrap: wrap;
+}
+.stat { text-align: center; }
+.stat .num {
+  font-size: 42px; font-weight: 700; color: #ffd700;
+  line-height: 1;
+}
+.stat .lbl {
+  font-size: 12px; letter-spacing: 4px;
+  text-transform: uppercase; opacity: 0.6;
+  margin-top: 8px;
+}
+
+.section-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 60px;
+}
+.section-tag {
+  padding: 16px 20px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,215,0,0.25);
+  border-radius: 12px;
+  display: flex; justify-content: space-between; align-items: center;
+  color: #fff; font-weight: 700;
+  font-size: 14px; letter-spacing: 1px;
+  transition: 0.2s;
+}
+.section-tag:hover {
+  border-color: #ffd700;
+  background: rgba(0,0,0,0.5);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.section-tag .count {
+  color: #ffd700; font-size: 13px;
+  opacity: 0.7;
+}
+
+.proverb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+  margin-bottom: 60px;
+}
+.proverb-card {
+  padding: 28px 26px;
+  background: rgba(0,0,0,0.3);
+  border: 2px solid rgba(255,215,0,0.3);
+  border-radius: 18px;
+  position: relative;
+  transition: 0.25s;
+  display: flex; flex-direction: column;
+}
+.proverb-card:hover {
+  border-color: rgba(255,215,0,0.7);
+  background: rgba(0,0,0,0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255,215,0,0.1);
+}
+.proverb-card .qm {
+  color: #ffd700; font-size: 40px;
+  line-height: 0.7; opacity: 0.8; margin-bottom: 10px;
+}
+.proverb-card .section {
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: #ffd700;
+  opacity: 0.85; margin-bottom: 14px;
+  font-weight: 700;
+}
+.proverb-card .text {
+  font-size: 17px; line-height: 1.5;
+  margin-bottom: 20px; flex: 1;
+}
+.proverb-card .meaning {
+  font-size: 14px;
+  line-height: 1.65;
+  margin: -4px 0 18px;
+  padding: 14px 16px;
+  background: rgba(255,215,0,0.06);
+  border-left: 3px solid rgba(255,215,0,0.55);
+  border-radius: 8px;
+  opacity: 0.92;
+}
+
+.proverb-card .meaning strong {
+  color: #ffd700;
+  letter-spacing: 1px;
+}
+
+.proverb-card .metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 18px;
+}
+
+.proverb-card .meta-chip {
+  display: inline-block;
+  padding: 5px 9px;
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: 0.4px;
+  opacity: 0.72;
+}
+
+.proverb-card .actions {
+  display: flex; gap: 12px;
+  border-top: 1px solid rgba(255,215,0,0.15);
+  padding-top: 14px; margin-top: auto;
+}
+.proverb-card .actions button, .proverb-card .actions a {
+  background: transparent; border: none;
+  color: #ffd700; cursor: pointer;
+  font-size: 12px; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 700;
+  opacity: 0.75; transition: 0.2s;
+  padding: 4px 0;
+}
+.proverb-card .actions button:hover, .proverb-card .actions a:hover {
+  opacity: 1; text-decoration: none;
+}
+
+.section-header {
+  text-align: center;
+  padding: 30px 0;
+  margin-bottom: 40px;
+}
+.section-header h2 {
+  font-size: 40px; letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.section-header h2 .gold { color: #ffd700; }
+.section-header .count {
+  margin-top: 12px; font-size: 14px;
+  letter-spacing: 4px; opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.back-link {
+  display: inline-block;
+  margin: 40px 0 20px;
+  font-size: 13px; letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ffd700; opacity: 0.75;
+}
+.back-link:hover { opacity: 1; text-decoration: none; }
+
+footer {
+  margin-top: 80px;
+  padding: 40px 0 30px;
+  border-top: 1px solid rgba(255,215,0,0.15);
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 2px;
+  opacity: 0.65;
+}
+footer .brand {
+  color: #ffd700; font-weight: 700;
+  margin-bottom: 8px; letter-spacing: 4px;
+}
+footer a { color: #ffd700; }
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  opacity: 0.5;
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 32px; letter-spacing: 3px; }
+  .hero p { font-size: 14px; }
+  .stat .num { font-size: 32px; }
+  .section-list { grid-template-columns: 1fr 1fr; }
+  .proverb-grid { grid-template-columns: 1fr; }
+}
+
+</style>
+<meta name="google-site-verification" content="vYh_JSIpGkX25gTzyNbBP0JZbfJvjOY0GVuYuBrNRAs" /><meta name="google-site-verification" content="vYh_JSIpGkX25gTzyNbBP0JZbfJvjOY0GVuYuBrNRAs" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PGH00H1YBN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PGH00H1YBN');
+</script>
+<title>Muuxannoo Jireenyaa fi Of-eeggannoo · Khoobaa Dubbii</title>
+</head>
+<body>
+
+<header>
+  <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">KD</div>
+      <div>
+        <div>KHOOBAA <span class="gold">DUBBII</span></div>
+        <div class="logo-sub">Mammaaksa Afaan Oromoo</div>
+      </div>
+    </a>
+    <nav style="display:flex; gap:24px; font-size:13px; letter-spacing:3px; text-transform:uppercase; font-weight:700;">
+      <a href="index.html" style="opacity:0.85;">Home</a>
+      <a href="about.html" style="color:#ffd700;">Welcome</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+<a href="index.html" class="back-link">← Back to Home</a>
+<div class="section-header">
+  <h2><span class="gold">Muuxannoo Jireenyaa fi Of-eeggannoo</span></h2>
+  <div class="count">11 proverbs</div>
+</div>
+<div class="search-wrap">
+  <input id="q" placeholder="Search in this section…" autocomplete="off">
+</div>
+<div class="proverb-grid" id="grid">
+
+<div class="proverb-card" data-text="maraataa hin tuttuqani, tuttuqanii ifitti hin kaasani. muuxannoo jireenyaa fi of-eeggannoo nama sammuun miidhame ykn madaqamuu dhabe tuttuquun rakkoo fi balaa ofitti fiduu dha; of-eeggannoon nagaa eeguu qaba. muuxannoo jireenyaa fi of-eeggannoo akeekkachiisaa fi qabatamaa of-eeggannoo fi volatility {&#x27;om&#x27;: &#x27;yeroo namni namoota madaqamuu dhaban tuttuquun rakkoo ofitti fidu irraa gorfamu itti fayyadama.&#x27;, &#x27;en&#x27;: &#x27;&#x27;}">
+  <div class="qm">&#10077;</div>
+  <div class="section">Muuxannoo Jireenyaa fi Of-eeggannoo</div>
+  <div class="text">Maraataa hin tuttuqani, tuttuqanii ifitti hin kaasani.</div>
+  <div class="meaning"><strong>Hiika:</strong> Nama sammuun miidhame ykn madaqamuu dhabe tuttuquun rakkoo fi balaa ofitti fiduu dha; of-eeggannoon nagaa eeguu qaba.</div>
+  <div class="metadata"><span class="meta-chip">🌿 Muuxannoo Jireenyaa fi Of-eeggannoo</span><span class="meta-chip">📍 Akeekkachiisaa fi Qabatamaa</span><span class="meta-chip">😊 Of-eeggannoo fi Volatility</span></div>
+  <div class="actions">
+    <button onclick="copyText(this, "Maraataa hin tuttuqani, tuttuqanii ifitti hin kaasani.")">COPY</button>
+    <button onclick="shareText(this, "Maraataa hin tuttuqani, tuttuqanii ifitti hin kaasani.")">SHARE</button>
+  </div>
+</div>
+<div class="proverb-card" data-text="maraataa biraa, dhagaa hin fuudhani. muuxannoo jireenyaa fi of-eeggannoo nama tasgabbii hin qabne biratti akka waan loluuf deemutti dhagaa fuudhuun ykn amala shakkisiisu agarsiisuun balaa kakaasa. muuxannoo jireenyaa fi of-eeggannoo akeekkachiisaa fi qabatamaa of-eeggannoo fi volatility {&#x27;om&#x27;: &#x27;yeroo namni namoota madaqamuu dhaban biratti tarkaanfii miidhaa fidu ykn gocha shakkisiisu irraa of qusatu gorfamu itti fayyadama.&#x27;, &#x27;en&#x27;: &#x27;&#x27;}">
+  <div class="qm">&#10077;</div>
+  <div class="section">Muuxannoo Jireenyaa fi Of-eeggannoo</div>
+  <div class="text">Maraataa biraa, dhagaa hin fuudhani.</div>
+  <div class="meaning"><strong>Hiika:</strong> Nama tasgabbii hin qabne biratti akka waan loluuf deemutti dhagaa fuudhuun ykn amala shakkisiisu agarsiisuun balaa kakaasa.</div>
+  <div class="metadata"><span class="meta-chip">🌿 Muuxannoo Jireenyaa fi Of-eeggannoo</span><span class="meta-chip">📍 Akeekkachiisaa fi Qabatamaa</span><span class="meta-chip">😊 Of-eeggannoo fi Volatility</span></div>
+  <div class="actions">
+    <button onclick="copyText(this, "Maraataa biraa, dhagaa hin fuudhani.")">COPY</button>
+    <button onclick="shareText(this, "Maraataa biraa, dhagaa hin fuudhani.")">SHARE</button>
+  </div>
+</div>
+<div class="proverb-card" data-text="jawwetti dhagaa hin darbatani, lola barti. muuxannoo jireenyaa fi of-eeggannoo diina calliseera ykn miidhaa hin qabne beekaa tuquun lola barsiisa; kunis rakkoo fi balaa ofitti fiduu dhabuu akeekkachiisa. muuxannoo jireenyaa fi of-eeggannoo akeekkachiisaa fi qabatamaa of-eeggannoo fi volatility {&#x27;om&#x27;: &#x27;yeroo namni diina calliseera jiru beekaa tuquun rakkoo ofitti fidu irraa gorfamu itti fayyadama.&#x27;, &#x27;en&#x27;: &#x27;&#x27;}">
+  <div class="qm">&#10077;</div>
+  <div class="section">Muuxannoo Jireenyaa fi Of-eeggannoo</div>
+  <div class="text">Jawwetti dhagaa hin darbatani, lola barti.</div>
+  <div class="meaning"><strong>Hiika:</strong> Diina calliseera ykn miidhaa hin qabne beekaa tuquun lola barsiisa; kunis rakkoo fi balaa ofitti fiduu dhabuu akeekkachiisa.</div>
+  <div class="metadata"><span class="meta-chip">🌿 Muuxannoo Jireenyaa fi Of-eeggannoo</span><span class="meta-chip">📍 Akeekkachiisaa fi Qabatamaa</span><span class="meta-chip">😊 Of-eeggannoo fi Volatility</span></div>
+  <div class="actions">
+    <button onclick="copyText(this, "Jawwetti dhagaa hin darbatani, lola barti.")">COPY</button>
+    <button onclick="shareText(this, "Jawwetti dhagaa hin darbatani, lola barti.")">SHARE</button>
+  </div>
+</div>
+<div class="proverb-card" data-text="tuujii, gobeensa kaayaniiti ifirraa laalan. muuxannoo jireenyaa fi of-eeggannoo haala ykn iddoo hin beekamne tokko keessa buufachuun ykn seenuun dura mallattoo ykn qorannoo xiqqoo gochuun of-eeggannoo taasisuu agarsiisa. muuxannoo jireenyaa fi of-eeggannoo qabatamaa fi gorsaa foresight fi testing the waters {&#x27;om&#x27;: &quot;yeroo haala hin beekamne keessa seenuun dura of-eeggannoodhaan qorachuun barbaachisaa ta&#x27;e ibsamutti itti fayyadama.&quot;, &#x27;en&#x27;: &#x27;&#x27;}">
+  <div class="qm">&#10077;</div>
+  <div class="section">Muuxannoo Jireenyaa fi Of-eeggannoo</div>
+  <div class="text">Tuujii, gobeensa kaayaniiti ifirraa laalan.</div>
+  <div class="meaning"><strong>Hiika:</strong> Haala ykn iddoo hin beekamne tokko keessa buufachuun ykn seenuun dura mallattoo ykn qorannoo xiqqoo gochuun of-eeggannoo taasisuu agarsiisa.</div>
+  <div class="metadata"><span class="meta-chip">🌿 Muuxannoo Jireenyaa fi Of-eeggannoo</span><span class="meta-chip">📍 Qabatamaa fi Gorsaa</span><span class="meta-chip">😊 Foresight fi Testing the Waters</span></div>
+  <div class="actions">
+    <button onclick="copyText(this, "Tuujii, gobeensa kaayaniiti ifirraa laalan.")">COPY</button>
+    <button onclick="shareText(this, "Tuujii, gobeensa kaayaniiti ifirraa laalan.")">SHARE</button>
+  </div>
+</div>
+<div class="proverb-card" data-text="loonuu, funfateeti ciisa. muuxannoo jireenyaa fi of-eeggannoo beellamni ykn loonuu bakka qubatan ykn ciisan funfachuun qoratu; kunis of-eeggannoon uumamaa jireenya keessatti barbaachisaa ta&#x27;uu isaa ibsa. muuxannoo jireenyaa fi of-eeggannoo qabatamaa fi gorsaa natural caution fi due diligence {&#x27;om&#x27;: &quot;yeroo waan baramaa tokko illee seenuun dura of-eeggannoo gochuun barbaachisaa ta&#x27;e ibsamutti itti fayyadama.&quot;, &#x27;en&#x27;: &#x27;&#x27;}">
+  <div class="qm">&#10077;</div>
+  <div class="section">Muuxannoo Jireenyaa fi Of-eeggannoo</div>
+  <div class="text">Loonuu, funfateeti ciisa.</div>
+  <div class="meaning"><strong>Hiika:</strong> Beellamni ykn loonuu bakka qubatan ykn ciisan funfachuun qoratu; kunis of-eeggannoon uumamaa jireenya keessatti barbaachisaa ta&#x27;uu isaa ibsa.</div>
+  <div class="metadata"><span class="meta-chip">🌿 Muuxannoo Jireenyaa fi Of-eeggannoo</span><span class="meta-chip">📍 Qabatamaa fi Gorsaa</span><span class="meta-chip">😊 Natural Caution fi Due Diligence</span></div>
+  <div class="actions">
+    <button onclick="copyText(this, "Loonuu, funfateeti ciisa.")">COPY</button>
+    <button onclick="shareText(this, "Loonuu, funfateeti ciisa.")">SHARE</button>
+  </div>
+</div>
+<div class="proverb-card" data-text="guyyaa, of maddii laalaniit dubbatan. muuxannoo jireenyaa fi of-eeggannoo haala ifaa ykn iddoo kamittuu dubbii dubbachuu ykn yaada kennuu dura haala naannoo fi dandeettii muuxannoo jireenyaa fi of-eeggannoo qabatamaa fi gorsaa prudence fi discretion {&#x27;om&#x27;: &quot;yeroo haala marroo ykn dubbii ulfaataa keessatti of-eeggannoo fi dhandhamoo ta&#x27;uun barbaachisaa ta&#x27;e ibsamutti itti fayyadama.&quot;, &#x27;en&#x27;: &#x27;&#x27;}">
+  <div class="qm">&#10077;</div>
+  <div class="section">Muuxannoo Jireenyaa fi Of-eeggannoo</div>
+  <div class="text">Guyyaa, of maddii laalaniit dubbatan.</div>
+  <div class="meaning"><strong>Hiika:</strong> Haala ifaa ykn iddoo kamittuu dubbii dubbachuu ykn yaada kennuu dura haala naannoo fi dandeettii</div>
+  <div class="metadata"><span class="meta-chip">🌿 Muuxannoo Jireenyaa fi Of-eeggannoo</span><span class="meta-chip">📍 Qabatamaa fi Gorsaa</span><span class="meta-chip">😊 Prudence fi Discretion</span></div>
+  <div class="actions">
+    <button onclick="copyText(this, "Guyyaa, of maddii laalaniit dubbatan.")">COPY</button>
+    <button onclick="shareText(this, "Guyyaa, of maddii laalaniit dubbatan.")">SHARE</button>
+  </div>
+</div>
+<div class="proverb-card" data-text="harkaan kennaniiti, miilaan barbaadan. muuxannoo jireenyaa fi of-eeggannoo liqii ykn qabeenya harkaan kennuun salphaa dha, deebisanii argachuuf garuu miilaan deddeebi&#x27;anii dhiphachuu gaafata; qabeenya kennuun of-eeggannoo barbaada. muuxannoo jireenyaa fi of-eeggannoo qabatamaa fi akeekkachiisaa regretful lending fi lending caution {&#x27;om&#x27;: &quot;yeroo namni qabeenya isaa ofumaan kenneefii booda deebisiif jecha deddeebi&#x27;ee dhiphatu gorfamutti itti fayyadama.&quot;, &#x27;en&#x27;: &#x27;&#x27;}">
+  <div class="qm">&#10077;</div>
+  <div class="section">Muuxannoo Jireenyaa fi Of-eeggannoo</div>
+  <div class="text">Harkaan kennaniiti, miilaan barbaadan.</div>
+  <div class="meaning"><strong>Hiika:</strong> Liqii ykn qabeenya harkaan kennuun salphaa dha, deebisanii argachuuf garuu miilaan deddeebi&#x27;anii dhiphachuu gaafata; qabeenya kennuun of-eeggannoo barbaada.</div>
+  <div class="metadata"><span class="meta-chip">🌿 Muuxannoo Jireenyaa fi Of-eeggannoo</span><span class="meta-chip">📍 Qabatamaa fi Akeekkachiisaa</span><span class="meta-chip">😊 Regretful Lending fi Lending Caution</span></div>
+  <div class="actions">
+    <button onclick="copyText(this, "Harkaan kennaniiti, miilaan barbaadan.")">COPY</button>
+    <button onclick="shareText(this, "Harkaan kennaniiti, miilaan barbaadan.")">SHARE</button>
+  </div>
+</div>
+<div class="proverb-card" data-text="didan durumaan didanii, hamtuu mataa ifii hin mudani. muuxannoo jireenyaa fi of-eeggannoo haala ykn dhimma miidhaa fiduu danda&#x27;u jalqabarratti mormuun ykn diduun rakkoo booda dhufu irraa nama oolcha; of-eeggannoon duraa gaariidha. muuxannoo jireenyaa fi of-eeggannoo qabatamaa fi akeekkachiisaa early refusal fi prevention {&#x27;om&#x27;: &quot;yeroo haala miidhaa fiduu danda&#x27;u jalqabarratti mormuun murteessaa ta&#x27;e ibsamutti itti fayyadama.&quot;, &#x27;en&#x27;: &#x27;&#x27;}">
+  <div class="qm">&#10077;</div>
+  <div class="section">Muuxannoo Jireenyaa fi Of-eeggannoo</div>
+  <div class="text">Didan durumaan didanii, hamtuu mataa ifii hin mudani.</div>
+  <div class="meaning"><strong>Hiika:</strong> Haala ykn dhimma miidhaa fiduu danda&#x27;u jalqabarratti mormuun ykn diduun rakkoo booda dhufu irraa nama oolcha; of-eeggannoon duraa gaariidha.</div>
+  <div class="metadata"><span class="meta-chip">🌿 Muuxannoo Jireenyaa fi Of-eeggannoo</span><span class="meta-chip">📍 Qabatamaa fi Akeekkachiisaa</span><span class="meta-chip">😊 Early Refusal fi Prevention</span></div>
+  <div class="actions">
+    <button onclick="copyText(this, "Didan durumaan didanii, hamtuu mataa ifii hin mudani.")">COPY</button>
+    <button onclick="shareText(this, "Didan durumaan didanii, hamtuu mataa ifii hin mudani.")">SHARE</button>
+  </div>
+</div>
+<div class="proverb-card" data-text="dayma, osoo mi&#x27;aawu maragani./plaster muuxannoo jireenyaa fi of-eeggannoo wanti gaariin ykn mi&#x27;aawaan yeroo qabamu hanga tokko of-qusachuun fi too&#x27;achuun akka barbaachisu kan ibsuu dha. muuxannoo jireenyaa fi of-eeggannoo qabatamaa fi gorsaa moderation fi self-restraint {&#x27;om&#x27;: &quot;yeroo dhimma mi&#x27;aa tokko keessatti hanga beekuun fi of qusachuun barbaachisaa ta&#x27;e ibsamutti itti fayyadama.&quot;, &#x27;en&#x27;: &#x27;&#x27;}">
+  <div class="qm">&#10077;</div>
+  <div class="section">Muuxannoo Jireenyaa fi Of-eeggannoo</div>
+  <div class="text">Dayma, osoo mi&#x27;aawu maragani./Plaster</div>
+  <div class="meaning"><strong>Hiika:</strong> Wanti gaariin ykn mi&#x27;aawaan yeroo qabamu hanga tokko of-qusachuun fi too&#x27;achuun akka barbaachisu kan ibsuu dha.</div>
+  <div class="metadata"><span class="meta-chip">🌿 Muuxannoo Jireenyaa fi Of-eeggannoo</span><span class="meta-chip">📍 Qabatamaa fi Gorsaa</span><span class="meta-chip">😊 Moderation fi Self-Restraint</span></div>
+  <div class="actions">
+    <button onclick="copyText(this, "Dayma, osoo mi'aawu maragani./Plaster")">COPY</button>
+    <button onclick="shareText(this, "Dayma, osoo mi'aawu maragani./Plaster")">SHARE</button>
+  </div>
+</div>
+<div class="proverb-card" data-text="waa arganiit, gaachana bitu. muuxannoo jireenyaa fi of-eeggannoo balaan erga dhufee booda qofa tarkaanfii of-eeggannoo fudhachuu; dursa of-qopheessuu dhabuu qeeqa. muuxannoo jireenyaa fi of-eeggannoo qabatamaa fi qeeqa reactive preparation fi delayed caution {&#x27;om&#x27;: &#x27;yeroo namni rakkoo duraan dursee of-eeggannoo godhuu dhiisee&#x27;, &#x27;en&#x27;: &#x27;&#x27;} {&#x27;om&#x27;: &#x27;yeroo rakkoon dhufe qofa tarkaanfii fudhatu ibsamutti itti fayyadama.&#x27;, &#x27;en&#x27;: &#x27;&#x27;}">
+  <div class="qm">&#10077;</div>
+  <div class="section">Muuxannoo Jireenyaa fi Of-eeggannoo</div>
+  <div class="text">Waa arganiit, gaachana bitu.</div>
+  <div class="meaning"><strong>Hiika:</strong> Balaan erga dhufee booda qofa tarkaanfii of-eeggannoo fudhachuu; dursa of-qopheessuu dhabuu qeeqa.</div>
+  <div class="metadata"><span class="meta-chip">🌿 Muuxannoo Jireenyaa fi Of-eeggannoo</span><span class="meta-chip">📍 Qabatamaa fi Qeeqa</span><span class="meta-chip">😊 Reactive Preparation fi Delayed Caution</span></div>
+  <div class="actions">
+    <button onclick="copyText(this, "Waa arganiit, gaachana bitu.")">COPY</button>
+    <button onclick="shareText(this, "Waa arganiit, gaachana bitu.")">SHARE</button>
+  </div>
+</div>
+<div class="proverb-card" data-text="tarkaanfachuu dura, bakka ajjatan ilaallachu. muuxannoo jireenyaa fi of-eeggannoo tarkaanfii kamiyyuu fudhachuu dura haala naannoo fi bu&#x27;aa isaa fageenyaan madaaluun of-eeggannoo barbaachisaa ta&#x27;uu agarsiisa. muuxannoo jireenyaa fi of-eeggannoo qabatamaa fi ogeessa careful deliberation fi caution {&#x27;om&#x27;: &#x27;yeroo namni tarkaanfii fudhachuu dura of-eeggannoon akka yaadu gorfamu itti fayyadama.&#x27;, &#x27;en&#x27;: &#x27;&#x27;}">
+  <div class="qm">&#10077;</div>
+  <div class="section">Muuxannoo Jireenyaa fi Of-eeggannoo</div>
+  <div class="text">Tarkaanfachuu dura, bakka ajjatan ilaallachu.</div>
+  <div class="meaning"><strong>Hiika:</strong> Tarkaanfii kamiyyuu fudhachuu dura haala naannoo fi bu&#x27;aa isaa fageenyaan madaaluun of-eeggannoo barbaachisaa ta&#x27;uu agarsiisa.</div>
+  <div class="metadata"><span class="meta-chip">🌿 Muuxannoo Jireenyaa fi Of-eeggannoo</span><span class="meta-chip">📍 Qabatamaa fi Ogeessa</span><span class="meta-chip">😊 Careful Deliberation fi Caution</span></div>
+  <div class="actions">
+    <button onclick="copyText(this, "Tarkaanfachuu dura, bakka ajjatan ilaallachu.")">COPY</button>
+    <button onclick="shareText(this, "Tarkaanfachuu dura, bakka ajjatan ilaallachu.")">SHARE</button>
+  </div>
+</div>
+</div>
+<script>
+const q = document.getElementById('q');
+const cards = document.querySelectorAll('#grid .proverb-card');
+q.addEventListener('input', () => {
+  const v = q.value.toLowerCase().trim();
+  cards.forEach(c => {
+    c.style.display = (!v || c.dataset.text.includes(v)) ? '' : 'none';
+  });
+});
+</script>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="brand">KHOOBAA DUBBII</div>
+    <div>Mammaaksa Afaan Oromoo · 2026</div>
+    <div style="margin-top:14px">
+      <a href="https://t.me/KhoobaaDubbii">Telegram</a>
+      ·
+      <a href="https://facebook.com/KhoobaaDubbii">Facebook</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function copyText(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    const old = btn.textContent;
+    btn.textContent = '✓ COPIED';
+    setTimeout(() => btn.textContent = old, 1500);
+  });
+}
+function shareText(btn, text) {
+  if (navigator.share) {
+    navigator.share({ text: text });
+  } else {
+    copyText(btn, text);
+  }
+}
+</script>
+</body>
+</html>

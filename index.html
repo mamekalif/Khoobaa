@@ -3,6 +3,268 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans', -apple-system, sans-serif;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 55%, #2c5364 100%);
+  color: #fff;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+a { color: #ffd700; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+header {
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(255,215,0,0.2);
+  margin-bottom: 40px;
+}
+.logo {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 26px; font-weight: 700;
+  letter-spacing: 2px;
+}
+.logo-mark {
+  width: 48px; height: 48px;
+  border: 3px solid #ffd700;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #ffd700; font-weight: 700; font-size: 20px;
+}
+.logo .gold { color: #ffd700; }
+.logo-sub {
+  font-size: 12px; letter-spacing: 4px;
+  color: #ffd700; opacity: 0.8;
+  margin-top: 2px; font-weight: 400;
+}
+
+.hero { text-align: center; padding: 40px 0 50px; }
+.hero h1 {
+  font-size: 52px; font-weight: 700;
+  letter-spacing: 6px; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero h1 .gold { color: #ffd700; }
+.hero p {
+  font-size: 18px; opacity: 0.75;
+  letter-spacing: 3px; text-transform: uppercase;
+}
+.hero .divider {
+  width: 80px; height: 2px;
+  background: #ffd700; opacity: 0.5;
+  margin: 24px auto;
+}
+
+.search-wrap {
+  margin: 30px auto 50px; max-width: 600px;
+  position: relative;
+}
+.search-wrap input {
+  width: 100%;
+  padding: 18px 24px;
+  border: 2px solid rgba(255,215,0,0.3);
+  background: rgba(0,0,0,0.3);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: 0.2s;
+}
+.search-wrap input:focus {
+  border-color: #ffd700;
+  background: rgba(0,0,0,0.5);
+}
+.search-wrap input::placeholder { color: rgba(255,255,255,0.4); }
+
+.stats {
+  display: flex; justify-content: center;
+  gap: 60px; margin: 30px 0 60px;
+  flex-wrap: wrap;
+}
+.stat { text-align: center; }
+.stat .num {
+  font-size: 42px; font-weight: 700; color: #ffd700;
+  line-height: 1;
+}
+.stat .lbl {
+  font-size: 12px; letter-spacing: 4px;
+  text-transform: uppercase; opacity: 0.6;
+  margin-top: 8px;
+}
+
+.section-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 60px;
+}
+.section-tag {
+  padding: 16px 20px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,215,0,0.25);
+  border-radius: 12px;
+  display: flex; justify-content: space-between; align-items: center;
+  color: #fff; font-weight: 700;
+  font-size: 14px; letter-spacing: 1px;
+  transition: 0.2s;
+}
+.section-tag:hover {
+  border-color: #ffd700;
+  background: rgba(0,0,0,0.5);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.section-tag .count {
+  color: #ffd700; font-size: 13px;
+  opacity: 0.7;
+}
+
+.proverb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+  margin-bottom: 60px;
+}
+.proverb-card {
+  padding: 28px 26px;
+  background: rgba(0,0,0,0.3);
+  border: 2px solid rgba(255,215,0,0.3);
+  border-radius: 18px;
+  position: relative;
+  transition: 0.25s;
+  display: flex; flex-direction: column;
+}
+.proverb-card:hover {
+  border-color: rgba(255,215,0,0.7);
+  background: rgba(0,0,0,0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255,215,0,0.1);
+}
+.proverb-card .qm {
+  color: #ffd700; font-size: 40px;
+  line-height: 0.7; opacity: 0.8; margin-bottom: 10px;
+}
+.proverb-card .section {
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: #ffd700;
+  opacity: 0.85; margin-bottom: 14px;
+  font-weight: 700;
+}
+.proverb-card .text {
+  font-size: 17px; line-height: 1.5;
+  margin-bottom: 20px; flex: 1;
+}
+.proverb-card .meaning {
+  font-size: 14px;
+  line-height: 1.65;
+  margin: -4px 0 18px;
+  padding: 14px 16px;
+  background: rgba(255,215,0,0.06);
+  border-left: 3px solid rgba(255,215,0,0.55);
+  border-radius: 8px;
+  opacity: 0.92;
+}
+
+.proverb-card .meaning strong {
+  color: #ffd700;
+  letter-spacing: 1px;
+}
+
+.proverb-card .metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 18px;
+}
+
+.proverb-card .meta-chip {
+  display: inline-block;
+  padding: 5px 9px;
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: 0.4px;
+  opacity: 0.72;
+}
+
+.proverb-card .actions {
+  display: flex; gap: 12px;
+  border-top: 1px solid rgba(255,215,0,0.15);
+  padding-top: 14px; margin-top: auto;
+}
+.proverb-card .actions button, .proverb-card .actions a {
+  background: transparent; border: none;
+  color: #ffd700; cursor: pointer;
+  font-size: 12px; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 700;
+  opacity: 0.75; transition: 0.2s;
+  padding: 4px 0;
+}
+.proverb-card .actions button:hover, .proverb-card .actions a:hover {
+  opacity: 1; text-decoration: none;
+}
+
+.section-header {
+  text-align: center;
+  padding: 30px 0;
+  margin-bottom: 40px;
+}
+.section-header h2 {
+  font-size: 40px; letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.section-header h2 .gold { color: #ffd700; }
+.section-header .count {
+  margin-top: 12px; font-size: 14px;
+  letter-spacing: 4px; opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.back-link {
+  display: inline-block;
+  margin: 40px 0 20px;
+  font-size: 13px; letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ffd700; opacity: 0.75;
+}
+.back-link:hover { opacity: 1; text-decoration: none; }
+
+footer {
+  margin-top: 80px;
+  padding: 40px 0 30px;
+  border-top: 1px solid rgba(255,215,0,0.15);
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 2px;
+  opacity: 0.65;
+}
+footer .brand {
+  color: #ffd700; font-weight: 700;
+  margin-bottom: 8px; letter-spacing: 4px;
+}
+footer a { color: #ffd700; }
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  opacity: 0.5;
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 32px; letter-spacing: 3px; }
+  .hero p { font-size: 14px; }
+  .stat .num { font-size: 32px; }
+  .section-list { grid-template-columns: 1fr 1fr; }
+  .proverb-grid { grid-template-columns: 1fr; }
+}
+
+</style>
 <meta name="google-site-verification" content="vYh_JSIpGkX25gTzyNbBP0JZbfJvjOY0GVuYuBrNRAs" /><meta name="google-site-verification" content="vYh_JSIpGkX25gTzyNbBP0JZbfJvjOY0GVuYuBrNRAs" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGH00H1YBN"></script>
@@ -42,8 +304,8 @@
 </section>
 
 <div class="stats">
-  <div class="stat"><div class="num">3,094</div><div class="lbl">Proverbs</div></div>
-  <div class="stat"><div class="num">126</div><div class="lbl">Sections</div></div>
+  <div class="stat"><div class="num">3,468</div><div class="lbl">Proverbs</div></div>
+  <div class="stat"><div class="num">300</div><div class="lbl">Sections</div></div>
   <div class="stat"><div class="num">∞</div><div class="lbl">Wisdom</div></div>
 </div>
 
@@ -52,276 +314,336 @@
 </div>
 
 <h2 style="text-align:center; font-size:14px; letter-spacing:5px; opacity:0.65; margin-bottom:24px; text-transform:uppercase;">Kutaalee · Sections</h2>
-<div class="section-list"><a class="section-tag" href="s-0.html"><span>AARA (MUFII)</span><span class="count">18</span></a><a class="section-tag" href="s-1.html"><span>ABAARSA</span><span class="count">9</span></a><a class="section-tag" href="s-2.html"><span>ABDII</span><span class="count">26</span></a><a class="section-tag" href="s-3.html"><span>ABDII KUTACHUU</span><span class="count">13</span></a><a class="section-tag" href="s-4.html"><span>AKEEKA</span><span class="count">18</span></a><a class="section-tag" href="s-5.html"><span>AKKEEYSAA</span><span class="count">14</span></a><a class="section-tag" href="s-6.html"><span>AMALA</span><span class="count">11</span></a><a class="section-tag" href="s-7.html"><span>ANA QOFAA BEEKA JECHUU</span><span class="count">21</span></a><a class="section-tag" href="s-8.html"><span>ARRABA</span><span class="count">14</span></a><a class="section-tag" href="s-9.html"><span>ASXAA (MALLATTOO)</span><span class="count">19</span></a><a class="section-tag" href="s-10.html"><span>BAREEDINA</span><span class="count">32</span></a><a class="section-tag" href="s-11.html"><span>BEEKKOMSA</span><span class="count">41</span></a><a class="section-tag" href="s-12.html"><span>BEELA</span><span class="count">28</span></a><a class="section-tag" href="s-13.html"><span>BOONA</span><span class="count">10</span></a><a class="section-tag" href="s-14.html"><span>BULTII (DHIIRSAA FI NIITII)</span><span class="count">37</span></a><a class="section-tag" href="s-15.html"><span>DANTAA DHABUU</span><span class="count">26</span></a><a class="section-tag" href="s-16.html"><span>DARAN GADI MUDACHUU</span><span class="count">19</span></a><a class="section-tag" href="s-17.html"><span>DIDDAA</span><span class="count">13</span></a><a class="section-tag" href="s-18.html"><span>DIINA (NYAAPHA)</span><span class="count">14</span></a><a class="section-tag" href="s-19.html"><span>DIRQAMA</span><span class="count">43</span></a><a class="section-tag" href="s-20.html"><span>DOGONGORA</span><span class="count">27</span></a><a class="section-tag" href="s-21.html"><span>DUBARTII</span><span class="count">33</span></a><a class="section-tag" href="s-22.html"><span>D U&#x27;A</span><span class="count">27</span></a><a class="section-tag" href="s-23.html"><span>DUBBII BARBAADUU</span><span class="count">18</span></a><a class="section-tag" href="s-24.html"><span>DUBBITTI GURRA GODHUU</span><span class="count">14</span></a><a class="section-tag" href="s-25.html"><span>DURA HUBACHUU</span><span class="count">31</span></a><a class="section-tag" href="s-26.html"><span>DURSANII QOPHAAWUU</span><span class="count">35</span></a><a class="section-tag" href="s-27.html"><span>EEYBA</span><span class="count">11</span></a><a class="section-tag" href="s-28.html"><span>FEDHII MATA MATAA</span><span class="count">29</span></a><a class="section-tag" href="s-29.html"><span>FIRUMMAA</span><span class="count">56</span></a><a class="section-tag" href="s-30.html"><span>FURMAATA</span><span class="count">36</span></a><a class="section-tag" href="s-31.html"><span>GADAA ARGACHUU</span><span class="count">9</span></a><a class="section-tag" href="s-32.html"><span>GALATA</span><span class="count">13</span></a><a class="section-tag" href="s-33.html"><span>GALATA DHABUU</span><span class="count">16</span></a><a class="section-tag" href="s-34.html"><span>GANUU</span><span class="count">11</span></a><a class="section-tag" href="s-35.html"><span>GARAA GARUMMAA</span><span class="count">44</span></a><a class="section-tag" href="s-36.html"><span>GARGAARSA (KENNAA)</span><span class="count">30</span></a><a class="section-tag" href="s-37.html"><span>GOOTUMMAA</span><span class="count">16</span></a><a class="section-tag" href="s-38.html"><span>GOWWUMMAA</span><span class="count">52</span></a><a class="section-tag" href="s-39.html"><span>HAADHAA FI ABBAA</span><span class="count">22</span></a><a class="section-tag" href="s-40.html"><span>HAMMEENYA</span><span class="count">39</span></a><a class="section-tag" href="s-41.html"><span>HAWWII (KAJEELLAA)</span><span class="count">49</span></a><a class="section-tag" href="s-42.html"><span>HEERA</span><span class="count">8</span></a><a class="section-tag" href="s-43.html"><span>ICITTII</span><span class="count">37</span></a><a class="section-tag" href="s-44.html"><span>HINAAFFAA</span><span class="count">10</span></a><a class="section-tag" href="s-45.html"><span>HIRIYAA</span><span class="count">29</span></a><a class="section-tag" href="s-46.html"><span>HIYYUMMAA</span><span class="count">27</span></a><a class="section-tag" href="s-47.html"><span>HOOGGANA</span><span class="count">15</span></a><a class="section-tag" href="s-48.html"><span>HUBACHIISA</span><span class="count">15</span></a><a class="section-tag" href="s-49.html"><span>HUJII</span><span class="count">18</span></a><a class="section-tag" href="s-50.html"><span>HUMNA</span><span class="count">29</span></a><a class="section-tag" href="s-51.html"><span>HUMNAA OL HIIXACHUU</span><span class="count">24</span></a><a class="section-tag" href="s-52.html"><span>IF QOLUMMAA (OF QOFA JAALACHUU)</span><span class="count">25</span></a><a class="section-tag" href="s-53.html"><span>IFA BAASUU</span><span class="count">23</span></a><a class="section-tag" href="s-54.html"><span>IJOOLLEE</span><span class="count">17</span></a><a class="section-tag" href="s-55.html"><span>IRKATTUU TAHUU</span><span class="count">15</span></a><a class="section-tag" href="s-56.html"><span>JAALALA</span><span class="count">37</span></a><a class="section-tag" href="s-57.html"><span>JALQABA</span><span class="count">15</span></a><a class="section-tag" href="s-58.html"><span>JARJARA</span><span class="count">23</span></a><a class="section-tag" href="s-59.html"><span>JIBBANSA</span><span class="count">22</span></a><a class="section-tag" href="s-60.html"><span>JIREENYA</span><span class="count">13</span></a><a class="section-tag" href="s-61.html"><span>KABAJAA</span><span class="count">30</span></a><a class="section-tag" href="s-62.html"><span>KARAA QAJEELAA HORDOFUU</span><span class="count">11</span></a><a class="section-tag" href="s-63.html"><span>KAN BIRAATTI SABABSACHUU</span><span class="count">11</span></a><a class="section-tag" href="s-64.html"><span>KIJIBA (DHARA)</span><span class="count">30</span></a><a class="section-tag" href="s-65.html"><span>KUTANNOO</span><span class="count">29</span></a><a class="section-tag" href="s-66.html"><span>KUTANNOO DHABUU</span><span class="count">12</span></a><a class="section-tag" href="s-67.html"><span>LAAFINA</span><span class="count">19</span></a><a class="section-tag" href="s-68.html"><span>MARI&#x27;ACHUU</span><span class="count">10</span></a><a class="section-tag" href="s-69.html"><span>MAQAA EEGGACHUU</span><span class="count">11</span></a><a class="section-tag" href="s-70.html"><span>MASLUUFUMMAA(TALISA TAHUU)</span><span class="count">13</span></a><a class="section-tag" href="s-71.html"><span>MIDHAA</span><span class="count">13</span></a><a class="section-tag" href="s-72.html"><span>MURTII WAAQAA</span><span class="count">27</span></a><a class="section-tag" href="s-73.html"><span>MUUXANNOO</span><span class="count">16</span></a><a class="section-tag" href="s-74.html"><span>NAAMUSA</span><span class="count">10</span></a><a class="section-tag" href="s-75.html"><span>ODUU</span><span class="count">19</span></a><a class="section-tag" href="s-76.html"><span>OF BAASUU</span><span class="count">8</span></a><a class="section-tag" href="s-77.html"><span>OF BEEKUU</span><span class="count">30</span></a><a class="section-tag" href="s-78.html"><span>OF DANDAYUU</span><span class="count">27</span></a><a class="section-tag" href="s-79.html"><span>OF EEGUU (EEGUMSA)</span><span class="count">16</span></a><a class="section-tag" href="s-80.html"><span>OF GARGAARUU</span><span class="count">43</span></a><a class="section-tag" href="s-81.html"><span>OF KABAJUU</span><span class="count">14</span></a><a class="section-tag" href="s-82.html"><span>OF MIIDHUU</span><span class="count">35</span></a><a class="section-tag" href="s-83.html"><span>OF DHAAMOCHUU</span><span class="count">10</span></a><a class="section-tag" href="s-84.html"><span>OF DHAADUU (OF JAJUU)</span><span class="count">20</span></a><a class="section-tag" href="s-85.html"><span>OLLAA</span><span class="count">9</span></a><a class="section-tag" href="s-86.html"><span>OBSA</span><span class="count">36</span></a><a class="section-tag" href="s-87.html"><span>QAANII</span><span class="count">16</span></a><a class="section-tag" href="s-88.html"><span>QALBII GODHUU</span><span class="count">26</span></a><a class="section-tag" href="s-89.html"><span>RAKKINA</span><span class="count">37</span></a><a class="section-tag" href="s-90.html"><span>IJA LAAFUU (ZIGAAL)</span><span class="count">5</span></a><a class="section-tag" href="s-91.html"><span>SABABA</span><span class="count">24</span></a><a class="section-tag" href="s-92.html"><span>SADARKAA</span><span class="count">30</span></a><a class="section-tag" href="s-93.html"><span>SALPHINA</span><span class="count">20</span></a><a class="section-tag" href="s-94.html"><span>SODAA</span><span class="count">21</span></a><a class="section-tag" href="s-95.html"><span>SODAACHUU DHABUU</span><span class="count">7</span></a><a class="section-tag" href="s-96.html"><span>SOSSOBA</span><span class="count">34</span></a><a class="section-tag" href="s-97.html"><span>TARKAANFII FUDHACHUU</span><span class="count">18</span></a><a class="section-tag" href="s-98.html"><span>TATTAAFATA.</span><span class="count">22</span></a><a class="section-tag" href="s-99.html"><span>TOLA HOJJACHUU</span><span class="count">8</span></a><a class="section-tag" href="s-100.html"><span>TOOFTAA</span><span class="count">27</span></a><a class="section-tag" href="s-101.html"><span>TOKKUMMAA</span><span class="count">30</span></a><a class="section-tag" href="s-102.html"><span>TUFFACHUU</span><span class="count">20</span></a><a class="section-tag" href="s-103.html"><span>TUFFACHUU DHABUU</span><span class="count">6</span></a><a class="section-tag" href="s-104.html"><span>UMRII (WAGGAA)</span><span class="count">15</span></a><a class="section-tag" href="s-105.html"><span>UUMAA</span><span class="count">14</span></a><a class="section-tag" href="s-106.html"><span>WAAN BU&#x27;AA HIN QABNE</span><span class="count">68</span></a><a class="section-tag" href="s-107.html"><span>WAAN BARAN</span><span class="count">16</span></a><a class="section-tag" href="s-108.html"><span>WAAN DURA AANU</span><span class="count">23</span></a><a class="section-tag" href="s-109.html"><span>WAAN HIN DANDA&#x27;AMNE</span><span class="count">27</span></a><a class="section-tag" href="s-110.html"><span>WAAN HIN YAADAMIN</span><span class="count">13</span></a><a class="section-tag" href="s-111.html"><span>WAAN HIN OOLLE</span><span class="count">19</span></a><a class="section-tag" href="s-112.html"><span>WAAN HUMAATTUU HIN JIRRE (YERTUU)</span><span class="count">27</span></a><a class="section-tag" href="s-113.html"><span>WAAN MALA HIN QABNE</span><span class="count">18</span></a><a class="section-tag" href="s-114.html"><span>WAAN NAMA DINQU</span><span class="count">9</span></a><a class="section-tag" href="s-115.html"><span>WAAN WAJJI HIN TAANE</span><span class="count">6</span></a><a class="section-tag" href="s-116.html"><span>WAAN OFII</span><span class="count">15</span></a><a class="section-tag" href="s-117.html"><span>WAL LOLUU</span><span class="count">18</span></a><a class="section-tag" href="s-118.html"><span>WALLAALUMMAA (p. 111)</span><span class="count">39</span></a><a class="section-tag" href="s-119.html"><span>WAL QIXXUMMAA</span><span class="count">26</span></a><a class="section-tag" href="s-120.html"><span>YEROOON WAJJIN TARKAANFACHUU</span><span class="count">17</span></a><a class="section-tag" href="s-121.html"><span>DHUGAA</span><span class="count">49</span></a><a class="section-tag" href="s-122.html"><span>NYAATA</span><span class="count">20</span></a><a class="section-tag" href="s-123.html"><span>SHANYII</span><span class="count">21</span></a><a class="section-tag" href="s-124.html"><span>SHAKKI (MAMII)</span><span class="count">20</span></a><a class="section-tag" href="s-125.html"><span>MAKAA</span><span class="count">308</span></a></div>
+<div class="section-list"><a class="section-tag" href="s-0.html"><span>AARA (MUFII)</span><span class="count">18</span></a><a class="section-tag" href="s-1.html"><span>ABAARSA</span><span class="count">9</span></a><a class="section-tag" href="s-2.html"><span>ABDII</span><span class="count">26</span></a><a class="section-tag" href="s-3.html"><span>ABDII KUTACHUU</span><span class="count">13</span></a><a class="section-tag" href="s-4.html"><span>AKEEKA</span><span class="count">18</span></a><a class="section-tag" href="s-5.html"><span>AKKEEYSAA</span><span class="count">14</span></a><a class="section-tag" href="s-6.html"><span>AMALA</span><span class="count">11</span></a><a class="section-tag" href="s-7.html"><span>ANA QOFAA BEEKA JECHUU</span><span class="count">21</span></a><a class="section-tag" href="s-8.html"><span>ARRABA</span><span class="count">14</span></a><a class="section-tag" href="s-9.html"><span>ASXAA (MALLATTOO)</span><span class="count">19</span></a><a class="section-tag" href="s-10.html"><span>BAREEDINA</span><span class="count">32</span></a><a class="section-tag" href="s-11.html"><span>BEEKKOMSA</span><span class="count">41</span></a><a class="section-tag" href="s-12.html"><span>BEELA</span><span class="count">28</span></a><a class="section-tag" href="s-13.html"><span>BOONA</span><span class="count">10</span></a><a class="section-tag" href="s-14.html"><span>BULTII (DHIIRSAA FI NIITII)</span><span class="count">37</span></a><a class="section-tag" href="s-15.html"><span>DANTAA DHABUU</span><span class="count">26</span></a><a class="section-tag" href="s-16.html"><span>DARAN GADI MUDACHUU</span><span class="count">19</span></a><a class="section-tag" href="s-17.html"><span>DIDDAA</span><span class="count">13</span></a><a class="section-tag" href="s-18.html"><span>DIINA (NYAAPHA)</span><span class="count">14</span></a><a class="section-tag" href="s-19.html"><span>DIRQAMA</span><span class="count">43</span></a><a class="section-tag" href="s-20.html"><span>DOGONGORA</span><span class="count">27</span></a><a class="section-tag" href="s-21.html"><span>DUBARTII</span><span class="count">33</span></a><a class="section-tag" href="s-22.html"><span>D U&#x27;A</span><span class="count">27</span></a><a class="section-tag" href="s-23.html"><span>DUBBII BARBAADUU</span><span class="count">18</span></a><a class="section-tag" href="s-24.html"><span>DUBBITTI GURRA GODHUU</span><span class="count">14</span></a><a class="section-tag" href="s-25.html"><span>DURA HUBACHUU</span><span class="count">31</span></a><a class="section-tag" href="s-26.html"><span>DURSANII QOPHAAWUU</span><span class="count">35</span></a><a class="section-tag" href="s-27.html"><span>EEYBA</span><span class="count">11</span></a><a class="section-tag" href="s-28.html"><span>FEDHII MATA MATAA</span><span class="count">29</span></a><a class="section-tag" href="s-29.html"><span>FIRUMMAA</span><span class="count">56</span></a><a class="section-tag" href="s-30.html"><span>FURMAATA</span><span class="count">35</span></a><a class="section-tag" href="s-31.html"><span>GADAA ARGACHUU</span><span class="count">9</span></a><a class="section-tag" href="s-32.html"><span>GALATA</span><span class="count">13</span></a><a class="section-tag" href="s-33.html"><span>GALATA DHABUU</span><span class="count">16</span></a><a class="section-tag" href="s-34.html"><span>GANUU</span><span class="count">11</span></a><a class="section-tag" href="s-35.html"><span>GARAA GARUMMAA</span><span class="count">44</span></a><a class="section-tag" href="s-36.html"><span>GARGAARSA (KENNAA)</span><span class="count">30</span></a><a class="section-tag" href="s-37.html"><span>GOOTUMMAA</span><span class="count">16</span></a><a class="section-tag" href="s-38.html"><span>GOWWUMMAA</span><span class="count">52</span></a><a class="section-tag" href="s-39.html"><span>HAADHAA FI ABBAA</span><span class="count">22</span></a><a class="section-tag" href="s-40.html"><span>HAMMEENYA</span><span class="count">39</span></a><a class="section-tag" href="s-41.html"><span>HAWWII (KAJEELLAA)</span><span class="count">49</span></a><a class="section-tag" href="s-42.html"><span>HEERA</span><span class="count">8</span></a><a class="section-tag" href="s-43.html"><span>ICITTII</span><span class="count">37</span></a><a class="section-tag" href="s-44.html"><span>HINAAFFAA</span><span class="count">10</span></a><a class="section-tag" href="s-45.html"><span>HIRIYAA</span><span class="count">28</span></a><a class="section-tag" href="s-46.html"><span>HIYYUMMAA</span><span class="count">27</span></a><a class="section-tag" href="s-47.html"><span>HOOGGANA</span><span class="count">15</span></a><a class="section-tag" href="s-48.html"><span>HUBACHIISA</span><span class="count">15</span></a><a class="section-tag" href="s-49.html"><span>HUJII</span><span class="count">18</span></a><a class="section-tag" href="s-50.html"><span>HUMNA</span><span class="count">29</span></a><a class="section-tag" href="s-51.html"><span>HUMNAA OL HIIXACHUU</span><span class="count">24</span></a><a class="section-tag" href="s-52.html"><span>IF QOLUMMAA (OF QOFA JAALACHUU)</span><span class="count">25</span></a><a class="section-tag" href="s-53.html"><span>IFA BAASUU</span><span class="count">23</span></a><a class="section-tag" href="s-54.html"><span>IJOOLLEE</span><span class="count">17</span></a><a class="section-tag" href="s-55.html"><span>IRKATTUU TAHUU</span><span class="count">15</span></a><a class="section-tag" href="s-56.html"><span>JAALALA</span><span class="count">37</span></a><a class="section-tag" href="s-57.html"><span>JALQABA</span><span class="count">15</span></a><a class="section-tag" href="s-58.html"><span>JARJARA</span><span class="count">23</span></a><a class="section-tag" href="s-59.html"><span>JIBBANSA</span><span class="count">22</span></a><a class="section-tag" href="s-60.html"><span>JIREENYA</span><span class="count">13</span></a><a class="section-tag" href="s-61.html"><span>KABAJAA</span><span class="count">29</span></a><a class="section-tag" href="s-62.html"><span>KARAA QAJEELAA HORDOFUU</span><span class="count">11</span></a><a class="section-tag" href="s-63.html"><span>KAN BIRAATTI SABABSACHUU</span><span class="count">11</span></a><a class="section-tag" href="s-64.html"><span>KIJIBA (DHARA)</span><span class="count">30</span></a><a class="section-tag" href="s-65.html"><span>KUTANNOO</span><span class="count">29</span></a><a class="section-tag" href="s-66.html"><span>KUTANNOO DHABUU</span><span class="count">12</span></a><a class="section-tag" href="s-67.html"><span>LAAFINA</span><span class="count">19</span></a><a class="section-tag" href="s-68.html"><span>MARI&#x27;ACHUU</span><span class="count">10</span></a><a class="section-tag" href="s-69.html"><span>MAQAA EEGGACHUU</span><span class="count">11</span></a><a class="section-tag" href="s-70.html"><span>MASLUUFUMMAA(TALISA TAHUU)</span><span class="count">13</span></a><a class="section-tag" href="s-71.html"><span>MIDHAA</span><span class="count">13</span></a><a class="section-tag" href="s-72.html"><span>MURTII WAAQAA</span><span class="count">27</span></a><a class="section-tag" href="s-73.html"><span>MUUXANNOO</span><span class="count">16</span></a><a class="section-tag" href="s-74.html"><span>NAAMUSA</span><span class="count">10</span></a><a class="section-tag" href="s-75.html"><span>ODUU</span><span class="count">19</span></a><a class="section-tag" href="s-76.html"><span>OF BAASUU</span><span class="count">8</span></a><a class="section-tag" href="s-77.html"><span>OF BEEKUU</span><span class="count">30</span></a><a class="section-tag" href="s-78.html"><span>OF DANDAYUU</span><span class="count">27</span></a><a class="section-tag" href="s-79.html"><span>OF EEGUU (EEGUMSA)</span><span class="count">16</span></a><a class="section-tag" href="s-80.html"><span>OF GARGAARUU</span><span class="count">43</span></a><a class="section-tag" href="s-81.html"><span>OF KABAJUU</span><span class="count">14</span></a><a class="section-tag" href="s-82.html"><span>OF MIIDHUU</span><span class="count">35</span></a><a class="section-tag" href="s-83.html"><span>OF DHAAMOCHUU</span><span class="count">10</span></a><a class="section-tag" href="s-84.html"><span>OF DHAADUU (OF JAJUU)</span><span class="count">20</span></a><a class="section-tag" href="s-85.html"><span>OLLAA</span><span class="count">9</span></a><a class="section-tag" href="s-86.html"><span>OBSA</span><span class="count">36</span></a><a class="section-tag" href="s-87.html"><span>QAANII</span><span class="count">16</span></a><a class="section-tag" href="s-88.html"><span>QALBII GODHUU</span><span class="count">25</span></a><a class="section-tag" href="s-89.html"><span>RAKKINA</span><span class="count">37</span></a><a class="section-tag" href="s-90.html"><span>IJA LAAFUU (ZIGAAL)</span><span class="count">5</span></a><a class="section-tag" href="s-91.html"><span>SABABA</span><span class="count">24</span></a><a class="section-tag" href="s-92.html"><span>SADARKAA</span><span class="count">30</span></a><a class="section-tag" href="s-93.html"><span>SALPHINA</span><span class="count">20</span></a><a class="section-tag" href="s-94.html"><span>SODAA</span><span class="count">20</span></a><a class="section-tag" href="s-95.html"><span>SODAACHUU DHABUU</span><span class="count">7</span></a><a class="section-tag" href="s-96.html"><span>SOSSOBA</span><span class="count">34</span></a><a class="section-tag" href="s-97.html"><span>TARKAANFII FUDHACHUU</span><span class="count">18</span></a><a class="section-tag" href="s-98.html"><span>TATTAAFATA.</span><span class="count">21</span></a><a class="section-tag" href="s-99.html"><span>TOLA HOJJACHUU</span><span class="count">8</span></a><a class="section-tag" href="s-100.html"><span>TOOFTAA</span><span class="count">27</span></a><a class="section-tag" href="s-101.html"><span>TOKKUMMAA</span><span class="count">30</span></a><a class="section-tag" href="s-102.html"><span>TUFFACHUU</span><span class="count">20</span></a><a class="section-tag" href="s-103.html"><span>TUFFACHUU DHABUU</span><span class="count">6</span></a><a class="section-tag" href="s-104.html"><span>UMRII (WAGGAA)</span><span class="count">15</span></a><a class="section-tag" href="s-105.html"><span>UUMAA</span><span class="count">14</span></a><a class="section-tag" href="s-106.html"><span>WAAN BU&#x27;AA HIN QABNE</span><span class="count">68</span></a><a class="section-tag" href="s-107.html"><span>WAAN BARAN</span><span class="count">16</span></a><a class="section-tag" href="s-108.html"><span>WAAN DURA AANU</span><span class="count">23</span></a><a class="section-tag" href="s-109.html"><span>WAAN HIN DANDA&#x27;AMNE</span><span class="count">27</span></a><a class="section-tag" href="s-110.html"><span>WAAN HIN YAADAMIN</span><span class="count">13</span></a><a class="section-tag" href="s-111.html"><span>WAAN HIN OOLLE</span><span class="count">19</span></a><a class="section-tag" href="s-112.html"><span>WAAN HUMAATTUU HIN JIRRE (YERTUU)</span><span class="count">27</span></a><a class="section-tag" href="s-113.html"><span>WAAN MALA HIN QABNE</span><span class="count">18</span></a><a class="section-tag" href="s-114.html"><span>WAAN NAMA DINQU</span><span class="count">9</span></a><a class="section-tag" href="s-115.html"><span>WAAN WAJJI HIN TAANE</span><span class="count">6</span></a><a class="section-tag" href="s-116.html"><span>WAAN OFII</span><span class="count">15</span></a><a class="section-tag" href="s-117.html"><span>WAL LOLUU</span><span class="count">18</span></a><a class="section-tag" href="s-118.html"><span>WALLAALUMMAA (p. 111)</span><span class="count">39</span></a><a class="section-tag" href="s-119.html"><span>WAL QIXXUMMAA</span><span class="count">26</span></a><a class="section-tag" href="s-120.html"><span>YEROOON WAJJIN TARKAANFACHUU</span><span class="count">17</span></a><a class="section-tag" href="s-121.html"><span>DHUGAA</span><span class="count">49</span></a><a class="section-tag" href="s-122.html"><span>NYAATA</span><span class="count">20</span></a><a class="section-tag" href="s-123.html"><span>SHANYII</span><span class="count">21</span></a><a class="section-tag" href="s-124.html"><span>SHAKKI (MAMII)</span><span class="count">20</span></a><a class="section-tag" href="s-125.html"><span>MAKAA</span><span class="count">301</span></a><a class="section-tag" href="s-126.html"><span>Miidhaa Aarii fi Dullooma Saffisaa</span><span class="count">1</span></a><a class="section-tag" href="s-127.html"><span>Rakkoo Baqachuu fi Kufaatii</span><span class="count">1</span></a><a class="section-tag" href="s-128.html"><span>Aarii fi Dullooma Rifeensa Adii</span><span class="count">1</span></a><a class="section-tag" href="s-129.html"><span>Oduu Waraabuu fi Garmalee Guddisuu</span><span class="count">1</span></a><a class="section-tag" href="s-130.html"><span>Walxiyyoo Jireenyaa</span><span class="count">1</span></a><a class="section-tag" href="s-131.html"><span>Abaarsa fi Jireenya</span><span class="count">1</span></a><a class="section-tag" href="s-132.html"><span>Gocha Gowwummaa fi Faallaa</span><span class="count">1</span></a><a class="section-tag" href="s-133.html"><span>Qabeenya fi Jireenya</span><span class="count">1</span></a><a class="section-tag" href="s-134.html"><span>Amala fi Carraa</span><span class="count">1</span></a><a class="section-tag" href="s-135.html"><span>Gorsa fi Hubannoo</span><span class="count">1</span></a><a class="section-tag" href="s-136.html"><span>Amala fi Qeeqa Qoosaa</span><span class="count">1</span></a><a class="section-tag" href="s-137.html"><span>Amala fi Jireenya</span><span class="count">1</span></a><a class="section-tag" href="s-138.html"><span>Abdii fi Qabatama</span><span class="count">1</span></a><a class="section-tag" href="s-139.html"><span>Maatii fi Jireenya</span><span class="count">1</span></a><a class="section-tag" href="s-140.html"><span>Jireenya fi Jijjiirama</span><span class="count">1</span></a><a class="section-tag" href="s-141.html"><span>Qabeenya fi Qoodinsa</span><span class="count">1</span></a><a class="section-tag" href="s-142.html"><span>Dubbii Bayyisuu</span><span class="count">1</span></a><a class="section-tag" href="s-143.html"><span>Amala fi Safuu</span><span class="count">3</span></a><a class="section-tag" href="s-144.html"><span>Jireenya fi Qabatama</span><span class="count">1</span></a><a class="section-tag" href="s-145.html"><span>Abdii Sobaa fi Ulfaatina Maatii</span><span class="count">1</span></a><a class="section-tag" href="s-146.html"><span>Jabina fi Miidhama</span><span class="count">1</span></a><a class="section-tag" href="s-147.html"><span>Mala fi Bu&#x27;aa</span><span class="count">1</span></a><a class="section-tag" href="s-148.html"><span>Waliigaltee fi Wal-Obsa</span><span class="count">1</span></a><a class="section-tag" href="s-149.html"><span>Obsaa fi Bu&#x27;aa</span><span class="count">1</span></a><a class="section-tag" href="s-150.html"><span>Hojii fi Raawwii</span><span class="count">1</span></a><a class="section-tag" href="s-151.html"><span>Rakkoo Furuu fi Tooftaa</span><span class="count">1</span></a><a class="section-tag" href="s-152.html"><span>Hiriyummaa fi Dhiibbaa Hawaasaa</span><span class="count">1</span></a><a class="section-tag" href="s-153.html"><span>Amala fi Of-Fakkeessuu</span><span class="count">1</span></a><a class="section-tag" href="s-154.html"><span>Amala fi Humna Ofii Beekuu</span><span class="count">1</span></a><a class="section-tag" href="s-155.html"><span>Amala fi Of-Guddisuu</span><span class="count">1</span></a><a class="section-tag" href="s-156.html"><span>Haala Jireenyaafi Dhiibbaa Naannoo</span><span class="count">1</span></a><a class="section-tag" href="s-157.html"><span>Amala fi Hariiroo Hawaasummaa</span><span class="count">1</span></a><a class="section-tag" href="s-158.html"><span>Amala fi Hubannoo Dhabuu</span><span class="count">1</span></a><a class="section-tag" href="s-159.html"><span>Amala fi Of-beekuu Dhabuu</span><span class="count">1</span></a><a class="section-tag" href="s-160.html"><span>Amala fi Hanqina Namummaa</span><span class="count">1</span></a><a class="section-tag" href="s-161.html"><span>Amala fi Fakkeessummaa</span><span class="count">2</span></a><a class="section-tag" href="s-162.html"><span>Hayyicha, Ogummaa fi Hanqina Ofii</span><span class="count">1</span></a><a class="section-tag" href="s-163.html"><span>Amala fi Of-Eeggannoo</span><span class="count">1</span></a><a class="section-tag" href="s-164.html"><span>Aadaa fi Keessummaa</span><span class="count">1</span></a><a class="section-tag" href="s-165.html"><span>Balaa fi Qormaata</span><span class="count">1</span></a><a class="section-tag" href="s-166.html"><span>Amala fi Sammuu</span><span class="count">1</span></a><a class="section-tag" href="s-167.html"><span>Hubannoo fi Ilaalcha</span><span class="count">1</span></a><a class="section-tag" href="s-168.html"><span>Kufaatii fi Tortoriinii</span><span class="count">1</span></a><a class="section-tag" href="s-169.html"><span>Maatii fi Dhaloota</span><span class="count">1</span></a><a class="section-tag" href="s-170.html"><span>Aadaa fi Ilaalcha</span><span class="count">1</span></a><a class="section-tag" href="s-171.html"><span>Amala fi Naamusaa</span><span class="count">1</span></a><a class="section-tag" href="s-172.html"><span>Qophii fi Qulqullina</span><span class="count">1</span></a><a class="section-tag" href="s-173.html"><span>Aadaa fi Maatii</span><span class="count">4</span></a><a class="section-tag" href="s-174.html"><span>Fayyaa Beeyladaa fi Qabatamaa</span><span class="count">1</span></a><a class="section-tag" href="s-175.html"><span>Aadaa fi Keessumummaa</span><span class="count">1</span></a><a class="section-tag" href="s-176.html"><span>Hinaaffaa fi Alagaa</span><span class="count">1</span></a><a class="section-tag" href="s-177.html"><span>Aadaa fi Meeshaa Aadaa</span><span class="count">1</span></a><a class="section-tag" href="s-178.html"><span>Balaa fi Qabatamaa</span><span class="count">1</span></a><a class="section-tag" href="s-179.html"><span>Beekumsaa fi Ogummaa</span><span class="count">1</span></a><a class="section-tag" href="s-180.html"><span>Beekumsaa fi Uumama</span><span class="count">1</span></a><a class="section-tag" href="s-181.html"><span>Beekumsaa fi Safuu</span><span class="count">2</span></a><a class="section-tag" href="s-182.html"><span>Beekumsaa fi Falaasama</span><span class="count">1</span></a><a class="section-tag" href="s-183.html"><span>Aadaa fi Hawaasummaa</span><span class="count">1</span></a><a class="section-tag" href="s-184.html"><span>Aadaa fi Qormaata</span><span class="count">1</span></a><a class="section-tag" href="s-185.html"><span>Hawaasummaa fi Safuu</span><span class="count">1</span></a><a class="section-tag" href="s-186.html"><span>Hawaasummaa fi Gaggeessummaa</span><span class="count">1</span></a><a class="section-tag" href="s-187.html"><span>Beekumsaa fi Amala</span><span class="count">1</span></a><a class="section-tag" href="s-188.html"><span>Amala fi Hubannoo</span><span class="count">2</span></a><a class="section-tag" href="s-189.html"><span>Muuxannoo fi Hiyyummaa</span><span class="count">1</span></a><a class="section-tag" href="s-190.html"><span>Muuxannoo fi Mala Furuu</span><span class="count">1</span></a><a class="section-tag" href="s-191.html"><span>Muuxannoo fi Hubannoo</span><span class="count">3</span></a><a class="section-tag" href="s-192.html"><span>Muuxannoo fi Qonnaa</span><span class="count">1</span></a><a class="section-tag" href="s-193.html"><span>Muuxannoo fi Hawaasummaa</span><span class="count">1</span></a><a class="section-tag" href="s-194.html"><span>Safuu fi Gorsaa</span><span class="count">1</span></a><a class="section-tag" href="s-195.html"><span>Muuxannoo fi Maatii</span><span class="count">6</span></a><a class="section-tag" href="s-196.html"><span>Hariiroo Maatii fi Gaa&#x27;ela</span><span class="count">1</span></a><a class="section-tag" href="s-197.html"><span>Muuxannoo fi Safuu</span><span class="count">1</span></a><a class="section-tag" href="s-198.html"><span>Muuxannoo fi Satira</span><span class="count">1</span></a><a class="section-tag" href="s-199.html"><span>Muuxannoo fi Falsafaa</span><span class="count">1</span></a><a class="section-tag" href="s-200.html"><span>Muuxannoo fi Eegumsa Maatii</span><span class="count">1</span></a><a class="section-tag" href="s-201.html"><span>Muuxannoo Hawaasaa fi Karoora</span><span class="count">2</span></a><a class="section-tag" href="s-202.html"><span>Muuxannoo Hawaasaa fi Hoggansa</span><span class="count">1</span></a><a class="section-tag" href="s-203.html"><span>Muuxannoo Hawaasaa fi Of-eeggannoo</span><span class="count">1</span></a><a class="section-tag" href="s-204.html"><span>Muuxannoo Hawaasaa fi Falsafaa</span><span class="count">1</span></a><a class="section-tag" href="s-205.html"><span>Muuxannoo Hawaasaa</span><span class="count">8</span></a><a class="section-tag" href="s-206.html"><span>Muuxannoo Hawaasaa fi Maatii</span><span class="count">2</span></a><a class="section-tag" href="s-207.html"><span>Muuxannoo Hawaasaa fi Balaa</span><span class="count">3</span></a><a class="section-tag" href="s-208.html"><span>Muuxannoo Hawaasaa fi Fayyaa</span><span class="count">1</span></a><a class="section-tag" href="s-209.html"><span>Muuxannoo Hawaasaa fi Hiyyummaa</span><span class="count">1</span></a><a class="section-tag" href="s-210.html"><span>Muuxannoo Hawaasaa fi Hojii</span><span class="count">2</span></a><a class="section-tag" href="s-211.html"><span>Muuxannoo Jireenyaa fi Ilaalcha Jireenyaa</span><span class="count">3</span></a><a class="section-tag" href="s-212.html"><span>Muuxannoo Hawaasaa fi Fira-Dhaaba</span><span class="count">3</span></a><a class="section-tag" href="s-213.html"><span>Muuxannoo Hawaasaa fi Gara-jabeenya</span><span class="count">1</span></a><a class="section-tag" href="s-214.html"><span>Muuxannoo Jireenyaa fi Aakhiraa</span><span class="count">1</span></a><a class="section-tag" href="s-215.html"><span>Muuxannoo Hawaasaa fi Mararfannaa</span><span class="count">1</span></a><a class="section-tag" href="s-216.html"><span>Muuxannoo Hawaasaa fi Dogoggora</span><span class="count">1</span></a><a class="section-tag" href="s-217.html"><span>Muuxannoo Hawaasaa fi Qoosaa</span><span class="count">3</span></a><a class="section-tag" href="s-218.html"><span>Muuxannoo Jireenyaa fi Ilaalcha</span><span class="count">5</span></a><a class="section-tag" href="s-219.html"><span>Muuxannoo Hawaasaa fi Daldala</span><span class="count">1</span></a><a class="section-tag" href="s-220.html"><span>Muuxannoo Jireenyaa fi Iroonii</span><span class="count">1</span></a><a class="section-tag" href="s-221.html"><span>Hariiroo Hawaasaa fi Iroonii</span><span class="count">1</span></a><a class="section-tag" href="s-222.html"><span>Amala Namootaa fi Gorsa</span><span class="count">1</span></a><a class="section-tag" href="s-223.html"><span>Hariiroo Hawaasaa fi Amala</span><span class="count">3</span></a><a class="section-tag" href="s-224.html"><span>Hawaasummaa fi Gahee Hojii</span><span class="count">1</span></a><a class="section-tag" href="s-225.html"><span>Amala Namootaa fi Iroonii</span><span class="count">6</span></a><a class="section-tag" href="s-226.html"><span>Hawaasummaa fi Bulchiinsa</span><span class="count">1</span></a><a class="section-tag" href="s-227.html"><span>Amala Namootaa fi Hawaasummaa</span><span class="count">1</span></a><a class="section-tag" href="s-228.html"><span>Hariiroo Hawaasaa fi Wal-dhabdee</span><span class="count">1</span></a><a class="section-tag" href="s-229.html"><span>Amala Namootaa fi Muuxannoo Jireenyaa</span><span class="count">1</span></a><a class="section-tag" href="s-230.html"><span>Hawaasummaa, Hariiroo fi Muuxannoo Jireenyaa</span><span class="count">1</span></a><a class="section-tag" href="s-231.html"><span>Muuxannoo Jireenyaa fi Falasama</span><span class="count">3</span></a><a class="section-tag" href="s-232.html"><span>Muuxannoo Jireenyaa fi Ijajabina</span><span class="count">1</span></a><a class="section-tag" href="s-233.html"><span>Muuxannoo Jireenyaa fi Jajjabina</span><span class="count">1</span></a><a class="section-tag" href="s-234.html"><span>Muuxannoo Jireenyaa fi Du&#x27;a</span><span class="count">1</span></a><a class="section-tag" href="s-235.html"><span>Muuxannoo Jireenyaa fi Hawaasa</span><span class="count">5</span></a><a class="section-tag" href="s-236.html"><span>Muuxannoo Jireenyaa fi Ulfina</span><span class="count">1</span></a><a class="section-tag" href="s-237.html"><span>Muuxannoo Jireenyaa fi Of-eeggannoo</span><span class="count">11</span></a><a class="section-tag" href="s-238.html"><span>Muuxannoo Jireenyaa fi Maatii</span><span class="count">2</span></a><a class="section-tag" href="s-239.html"><span>Muuxannoo Jireenyaa fi Tasgabbii</span><span class="count">1</span></a><a class="section-tag" href="s-240.html"><span>Muuxannoo Jireenyaa fi Sassata</span><span class="count">1</span></a><a class="section-tag" href="s-241.html"><span>Muuxannoo Jireenyaa fi Of-tuulummaa</span><span class="count">1</span></a><a class="section-tag" href="s-242.html"><span>Muuxannoo Jireenyaa fi Fakkeessummaa</span><span class="count">1</span></a><a class="section-tag" href="s-243.html"><span>Muuxannoo Jireenyaa fi Qabatamaa</span><span class="count">1</span></a><a class="section-tag" href="s-244.html"><span>Muuxannoo Jireenyaa fi Satiraa Bineeldotaa</span><span class="count">1</span></a><a class="section-tag" href="s-245.html"><span>Muuxannoo Jireenyaa fi Fagootti Ilaaluu</span><span class="count">1</span></a><a class="section-tag" href="s-246.html"><span>Muuxannoo Jireenyaa fi Tooftaa</span><span class="count">2</span></a><a class="section-tag" href="s-247.html"><span>Muuxannoo Jireenyaa fi Karoora</span><span class="count">3</span></a><a class="section-tag" href="s-248.html"><span>Muuxannoo Jireenyaa fi Dhugaa</span><span class="count">1</span></a><a class="section-tag" href="s-249.html"><span>Muuxannoo Jireenyaa fi Safuu</span><span class="count">1</span></a><a class="section-tag" href="s-250.html"><span>Muuxannoo Jireenyaa fi Qophii</span><span class="count">5</span></a><a class="section-tag" href="s-251.html"><span>Muuxannoo Jireenyaa fi Dalagaa</span><span class="count">1</span></a><a class="section-tag" href="s-252.html"><span>Muuxannoo Jireenyaa fi Qabeenya</span><span class="count">1</span></a><a class="section-tag" href="s-253.html"><span>Muuxannoo Jireenyaa fi Qusannoo</span><span class="count">1</span></a><a class="section-tag" href="s-254.html"><span>Muuxannoo Jireenyaa fi Dirqama</span><span class="count">1</span></a><a class="section-tag" href="s-255.html"><span>Muuxannoo Jireenyaa fi Hubannoo</span><span class="count">1</span></a><a class="section-tag" href="s-256.html"><span>Muuxannoo Jireenyaa fi Of-danda&#x27;uu</span><span class="count">1</span></a><a class="section-tag" href="s-257.html"><span>Muuxannoo Jireenyaa fi Jaalala</span><span class="count">2</span></a><a class="section-tag" href="s-258.html"><span>Eebba Aadaa fi Deeggarsa</span><span class="count">1</span></a><a class="section-tag" href="s-259.html"><span>Muuxannoo Jireenyaa fi Qabeenya Bu&#x27;uuraa</span><span class="count">1</span></a><a class="section-tag" href="s-260.html"><span>Eebba Aadaa fi Gaarummaa</span><span class="count">1</span></a><a class="section-tag" href="s-261.html"><span>Muuxannoo Jireenyaa fi Birmadummaa</span><span class="count">1</span></a><a class="section-tag" href="s-262.html"><span>Muuxannoo Jireenyaa fi Kaayyoo</span><span class="count">1</span></a><a class="section-tag" href="s-263.html"><span>Muuxannoo Jireenyaa fi Tarsiimoo</span><span class="count">1</span></a><a class="section-tag" href="s-264.html"><span>Muuxannoo Jireenyaa fi Ogummaa</span><span class="count">1</span></a><a class="section-tag" href="s-265.html"><span>Muuxannoo Jireenyaa fi Amala</span><span class="count">3</span></a><a class="section-tag" href="s-266.html"><span>Muuxannoo Jireenyaa fi Hariiroo</span><span class="count">3</span></a><a class="section-tag" href="s-267.html"><span>Muuxannoo Jireenyaa fi Hawwii</span><span class="count">2</span></a><a class="section-tag" href="s-268.html"><span>Muuxannoo Jireenyaa fi Carraa</span><span class="count">1</span></a><a class="section-tag" href="s-269.html"><span>Muuxannoo Jireenyaa fi Obsaa</span><span class="count">1</span></a><a class="section-tag" href="s-270.html"><span>Kabajaa Firaa fi Dirqama</span><span class="count">1</span></a><a class="section-tag" href="s-271.html"><span>Hundee fi Aadaa</span><span class="count">1</span></a><a class="section-tag" href="s-272.html"><span>Walitti Dhufeenya Hawaasaa</span><span class="count">1</span></a><a class="section-tag" href="s-273.html"><span>Hariiroo Firaa fi Amala</span><span class="count">1</span></a><a class="section-tag" href="s-274.html"><span>Hariiroo Maatii fi Gahee Adeerraa</span><span class="count">1</span></a><a class="section-tag" href="s-275.html"><span>Muuxannoo Jireenyaa fi Gadda</span><span class="count">2</span></a><a class="section-tag" href="s-276.html"><span>Hariiroo Maatii fi Obbolummaa</span><span class="count">1</span></a><a class="section-tag" href="s-277.html"><span>Hariiroo Hawaasaa</span><span class="count">2</span></a><a class="section-tag" href="s-278.html"><span>Hariiroo Hawaasaa fi Fira</span><span class="count">1</span></a><a class="section-tag" href="s-279.html"><span>Amala Namootaa fi Hariiroo</span><span class="count">1</span></a><a class="section-tag" href="s-280.html"><span>Amala Namootaa fi Satira Hawaasaa</span><span class="count">1</span></a><a class="section-tag" href="s-281.html"><span>Muuxannoo Jireenyaa fi Rakkoo Murteessaa</span><span class="count">1</span></a><a class="section-tag" href="s-282.html"><span>Hariiroo Maatii fi Hawaasaa</span><span class="count">2</span></a><a class="section-tag" href="s-283.html"><span>Aadaa fi Gadda Hawaasaa</span><span class="count">1</span></a><a class="section-tag" href="s-284.html"><span>Gorsa Jireenyaa fi Aadaa Horsiisee Bulaa</span><span class="count">1</span></a><a class="section-tag" href="s-285.html"><span>Gorsa Jireenyaa fi Jajjabeeffama</span><span class="count">1</span></a><a class="section-tag" href="s-286.html"><span>Gorsa Jireenyaa fi Tooftaa Rakkoo Furuu</span><span class="count">2</span></a><a class="section-tag" href="s-287.html"><span>Gorsa Jireenyaa fi Falsafaa Qabatamaa</span><span class="count">1</span></a><a class="section-tag" href="s-288.html"><span>Gorsa Jireenyaa, Amantaa fi Falsafaa</span><span class="count">1</span></a><a class="section-tag" href="s-289.html"><span>Gorsa Jireenyaa, Aadaa fi Falsafaa</span><span class="count">1</span></a><a class="section-tag" href="s-290.html"><span>Hariiroo Hawaasaa fi Falsafaa Jireenyaa</span><span class="count">1</span></a><a class="section-tag" href="s-291.html"><span>Gorsa Jireenyaa fi Tooftaa Qabbanaa</span><span class="count">1</span></a><a class="section-tag" href="s-292.html"><span>Gorsa Jireenyaa fi Falsafaa</span><span class="count">4</span></a><a class="section-tag" href="s-293.html"><span>Gorsa Jireenyaa fi Kunuunsa Maatii</span><span class="count">1</span></a><a class="section-tag" href="s-294.html"><span>Gorsa Jireenyaa fi Falsafaa Hawaasaa</span><span class="count">133</span></a><a class="section-tag" href="s-295.html"><span>Gorsa Jireenyaa fi Falsafaa Nagaa</span><span class="count">1</span></a><a class="section-tag" href="s-296.html"><span>Gorsa Jireenyaa fi Falsafaa Amanamummaa</span><span class="count">1</span></a><a class="section-tag" href="s-297.html"><span>Amantii fi Falsafaa Jireenyaa</span><span class="count">1</span></a><a class="section-tag" href="s-298.html"><span>Safuu fi Amala</span><span class="count">1</span></a><a class="section-tag" href="s-299.html"><span>Muuxannoo Jireenyaa fi Aadaa</span><span class="count">1</span></a></div>
 
 <h2 style="text-align:center; font-size:14px; letter-spacing:5px; opacity:0.65; margin-bottom:24px; text-transform:uppercase;">Filannoo · Featured</h2>
 <div class="proverb-grid" id="grid">
 
-<div class="proverb-card" data-text="aarri garaa seene, arrii dha.">
+<div class="proverb-card" data-text="aarri garaa seene, arrii dha. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Aarri garaa seene, arrii dha.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Aarri garaa seene, arrii dha.")">COPY</button>
     <button onclick="shareText(this, "Aarri garaa seene, arrii dha.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni aaru, hin gabbatu.">
+<div class="proverb-card" data-text="namni aaru, hin gabbatu. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Namni aaru, hin gabbatu.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni aaru, hin gabbatu.")">COPY</button>
     <button onclick="shareText(this, "Namni aaru, hin gabbatu.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni aaru,dafee dullooma">
+<div class="proverb-card" data-text="namni aaru,dafee dullooma aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Namni aaru,dafee dullooma</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni aaru,dafee dullooma")">COPY</button>
     <button onclick="shareText(this, "Namni aaru,dafee dullooma")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ibiddi garaa, foon hin waadu">
+<div class="proverb-card" data-text="ibiddi garaa, foon hin waadu aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Ibiddi garaa, foon hin waadu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ibiddi garaa, foon hin waadu")">COPY</button>
     <button onclick="shareText(this, "Ibiddi garaa, foon hin waadu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="aarri garaa, foon hin waadu.">
+<div class="proverb-card" data-text="aarri garaa, foon hin waadu. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Aarri garaa, foon hin waadu.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Aarri garaa, foon hin waadu.")">COPY</button>
     <button onclick="shareText(this, "Aarri garaa, foon hin waadu.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nama hin dhaalletti, hin aarani">
+<div class="proverb-card" data-text="nama hin dhaalletti, hin aarani aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Nama hin dhaalletti, hin aarani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Nama hin dhaalletti, hin aarani")">COPY</button>
     <button onclick="shareText(this, "Nama hin dhaalletti, hin aarani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hunda yaamnaan, hundi hafe.">
+<div class="proverb-card" data-text="hunda yaamnaan, hundi hafe. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Hunda yaamnaan, hundi hafe.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hunda yaamnaan, hundi hafe.")">COPY</button>
     <button onclick="shareText(this, "Hunda yaamnaan, hundi hafe.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="takka loluun dhiirummaa dha, keeysa ooluun gadhummaa dha.">
+<div class="proverb-card" data-text="takka loluun dhiirummaa dha, keeysa ooluun gadhummaa dha. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Takka loluun dhiirummaa dha, keeysa ooluun gadhummaa dha.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Takka loluun dhiirummaa dha, keeysa ooluun gadhummaa dha.")">COPY</button>
     <button onclick="shareText(this, "Takka loluun dhiirummaa dha, keeysa ooluun gadhummaa dha.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="aarri ijoollee namaa, hidhii jala nama guba.">
+<div class="proverb-card" data-text="aarri ijoollee namaa, hidhii jala nama guba. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Aarri ijoollee namaa, hidhii jala nama guba.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Aarri ijoollee namaa, hidhii jala nama guba.")">COPY</button>
     <button onclick="shareText(this, "Aarri ijoollee namaa, hidhii jala nama guba.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="bakakkaan qara sodaate, jinfutti bu&#x27;a.">
+<div class="proverb-card" data-text="bakakkaan qara sodaate, jinfutti bu&#x27;a. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Bakakkaan qara sodaate, jinfutti bu&#x27;a.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Bakakkaan qara sodaate, jinfutti bu'a.")">COPY</button>
     <button onclick="shareText(this, "Bakakkaan qara sodaate, jinfutti bu'a.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="onneellee dhaban sonbaatu nama duta.">
+<div class="proverb-card" data-text="onneellee dhaban sonbaatu nama duta. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">onneellee dhaban sonbaatu nama duta.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "onneellee dhaban sonbaatu nama duta.")">COPY</button>
     <button onclick="shareText(this, "onneellee dhaban sonbaatu nama duta.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="aarri arrii dha, nama baasisa.">
+<div class="proverb-card" data-text="aarri arrii dha, nama baasisa. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Aarri arrii dha, nama baasisa.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Aarri arrii dha, nama baasisa.")">COPY</button>
     <button onclick="shareText(this, "Aarri arrii dha, nama baasisa.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="tole je&#x27;ee sii laannaan, na keeysa laallattaa jette intalti.">
+<div class="proverb-card" data-text="tole je&#x27;ee sii laannaan, na keeysa laallattaa jette intalti. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Tole je&#x27;ee sii laannaan, na keeysa laallattaa jette intalti.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Tole je'ee sii laannaan, na keeysa laallattaa jette intalti.")">COPY</button>
     <button onclick="shareText(this, "Tole je'ee sii laannaan, na keeysa laallattaa jette intalti.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;niitiin ani biraa harree salu, ormi haroo arbi dhiite godha&quot; je&#x27;e kan niitiirratti nama qabe.">
+<div class="proverb-card" data-text="&quot;niitiin ani biraa harree salu, ormi haroo arbi dhiite godha&quot; je&#x27;e kan niitiirratti nama qabe. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">&quot;Niitiin ani biraa harree salu, ormi haroo arbi dhiite godha&quot; je&#x27;e kan niitiirratti nama qabe.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Niitiin ani biraa harree salu, ormi haroo arbi dhiite godha\" je'e kan niitiirratti nama qabe.")">COPY</button>
     <button onclick="shareText(this, "\"Niitiin ani biraa harree salu, ormi haroo arbi dhiite godha\" je'e kan niitiirratti nama qabe.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="buli, buli jedhanii, kophaa nama bulchani.">
+<div class="proverb-card" data-text="buli, buli jedhanii, kophaa nama bulchani. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Buli, buli jedhanii, kophaa nama bulchani.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Buli, buli jedhanii, kophaa nama bulchani.")">COPY</button>
     <button onclick="shareText(this, "Buli, buli jedhanii, kophaa nama bulchani.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="bishaaniif maraatee, danfa dhuga.">
+<div class="proverb-card" data-text="bishaaniif maraatee, danfa dhuga. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Bishaaniif maraatee, danfa dhuga.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Bishaaniif maraatee, danfa dhuga.")">COPY</button>
     <button onclick="shareText(this, "Bishaaniif maraatee, danfa dhuga.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;maaliif kofalta&quot; jennaan, &quot;ilkeetu na adii dha, rifeensaatu na gurraacha&quot; jette jaartiin.">
+<div class="proverb-card" data-text="&quot;maaliif kofalta&quot; jennaan, &quot;ilkeetu na adii dha, rifeensaatu na gurraacha&quot; jette jaartiin. aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">&quot;Maaliif kofalta&quot; jennaan, &quot;ilkeetu na adii dha, rifeensaatu na gurraacha&quot; jette jaartiin.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Maaliif kofalta\" jennaan, \"ilkeetu na adii dha, rifeensaatu na gurraacha\" jette jaartiin.")">COPY</button>
     <button onclick="shareText(this, "\"Maaliif kofalta\" jennaan, \"ilkeetu na adii dha, rifeensaatu na gurraacha\" jette jaartiin.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan du&#x27;e awwaallee kan jiru afaan wallaalle">
+<div class="proverb-card" data-text="kan du&#x27;e awwaallee kan jiru afaan wallaalle aara (mufii)">
   <div class="qm">&#10077;</div>
   <div class="section">AARA (MUFII)</div>
   <div class="text">Kan du&#x27;e awwaallee kan jiru afaan wallaalle</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan du'e awwaallee kan jiru afaan wallaalle")">COPY</button>
     <button onclick="shareText(this, "Kan du'e awwaallee kan jiru afaan wallaalle")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ilmi abbaan abaare, gufuu teeysu dheeysa">
+<div class="proverb-card" data-text="ilmi abbaan abaare, gufuu teeysu dheeysa abaarsa">
   <div class="qm">&#10077;</div>
   <div class="section">ABAARSA</div>
   <div class="text">Ilmi abbaan abaare, gufuu teeysu dheeysa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ilmi abbaan abaare, gufuu teeysu dheeysa")">COPY</button>
     <button onclick="shareText(this, "Ilmi abbaan abaare, gufuu teeysu dheeysa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="abaarsa qabaatan, gaangee abaaramte fe&#x27;atan">
+<div class="proverb-card" data-text="abaarsa qabaatan, gaangee abaaramte fe&#x27;atan abaarsa">
   <div class="qm">&#10077;</div>
   <div class="section">ABAARSA</div>
   <div class="text">Abaarsa qabaatan, gaangee abaaramte fe&#x27;atan</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Abaarsa qabaatan, gaangee abaaramte fe'atan")">COPY</button>
     <button onclick="shareText(this, "Abaarsa qabaatan, gaangee abaaramte fe'atan")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="sa&#x27;a abaarsa qabu, kalloon isaa dibbe taati">
+<div class="proverb-card" data-text="sa&#x27;a abaarsa qabu, kalloon isaa dibbe taati abaarsa">
   <div class="qm">&#10077;</div>
   <div class="section">ABAARSA</div>
   <div class="text">sa&#x27;a abaarsa qabu, kalloon isaa dibbe taati</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "sa'a abaarsa qabu, kalloon isaa dibbe taati")">COPY</button>
     <button onclick="shareText(this, "sa'a abaarsa qabu, kalloon isaa dibbe taati")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dhadhaa ibidda bu&#x27;e, rabbi si haa godhu">
+<div class="proverb-card" data-text="dhadhaa ibidda bu&#x27;e, rabbi si haa godhu abaarsa">
   <div class="qm">&#10077;</div>
   <div class="section">ABAARSA</div>
   <div class="text">Dhadhaa ibidda bu&#x27;e, rabbi si haa godhu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dhadhaa ibidda bu'e, rabbi si haa godhu")">COPY</button>
     <button onclick="shareText(this, "Dhadhaa ibidda bu'e, rabbi si haa godhu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="cilee bishaan buute, rabbi si haa godhu">
+<div class="proverb-card" data-text="cilee bishaan buute, rabbi si haa godhu abaarsa">
   <div class="qm">&#10077;</div>
   <div class="section">ABAARSA</div>
   <div class="text">Cilee bishaan buute, rabbi si haa godhu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Cilee bishaan buute, rabbi si haa godhu")">COPY</button>
     <button onclick="shareText(this, "Cilee bishaan buute, rabbi si haa godhu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ilmi abboomii abbaa dide, abaarsa hin didu">
+<div class="proverb-card" data-text="ilmi abboomii abbaa dide, abaarsa hin didu abaarsa">
   <div class="qm">&#10077;</div>
   <div class="section">ABAARSA</div>
   <div class="text">Ilmi abboomii abbaa dide, abaarsa hin didu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ilmi abboomii abbaa dide, abaarsa hin didu")">COPY</button>
     <button onclick="shareText(this, "Ilmi abboomii abbaa dide, abaarsa hin didu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="rabbi, buqqee caphxeen si haa waraabsisu">
+<div class="proverb-card" data-text="rabbi, buqqee caphxeen si haa waraabsisu abaarsa">
   <div class="qm">&#10077;</div>
   <div class="section">ABAARSA</div>
   <div class="text">Rabbi, buqqee caphxeen si haa waraabsisu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Rabbi, buqqee caphxeen si haa waraabsisu")">COPY</button>
     <button onclick="shareText(this, "Rabbi, buqqee caphxeen si haa waraabsisu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="rabbi ilillii dikee irra biqilte si haa godhu">
+<div class="proverb-card" data-text="rabbi ilillii dikee irra biqilte si haa godhu abaarsa">
   <div class="qm">&#10077;</div>
   <div class="section">ABAARSA</div>
   <div class="text">Rabbi ilillii dikee irra biqilte si haa godhu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Rabbi ilillii dikee irra biqilte si haa godhu")">COPY</button>
     <button onclick="shareText(this, "Rabbi ilillii dikee irra biqilte si haa godhu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ilmi abaarsa haadhaa qabu, rooba keessaan-dhukkee kaasa jedhee fiiga.">
+<div class="proverb-card" data-text="ilmi abaarsa haadhaa qabu, rooba keessaan-dhukkee kaasa jedhee fiiga. abaarsa">
   <div class="qm">&#10077;</div>
   <div class="section">ABAARSA</div>
   <div class="text">Ilmi abaarsa haadhaa qabu, rooba keessaan-dhukkee kaasa jedhee fiiga.</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ilmi abaarsa haadhaa qabu, rooba keessaan-dhukkee kaasa jedhee fiiga.")">COPY</button>
     <button onclick="shareText(this, "Ilmi abaarsa haadhaa qabu, rooba keessaan-dhukkee kaasa jedhee fiiga.")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;ani kaniin ureen cuqqaalaa inni kan ure haa cuqqaalu&quot; jettee jaartiin midhaan dhiiftee, lootii gurraa bitatte">
+<div class="proverb-card" data-text="&quot;ani kaniin ureen cuqqaalaa inni kan ure haa cuqqaalu&quot; jettee jaartiin midhaan dhiiftee, lootii gurraa bitatte abdii">
   <div class="qm">&#10077;</div>
   <div class="section">ABDII</div>
   <div class="text">&quot;Ani kaniin ureen cuqqaalaa inni kan ure haa cuqqaalu&quot; jettee jaartiin midhaan dhiiftee, lootii gurraa bitatte</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Ani kaniin ureen cuqqaalaa inni kan ure haa cuqqaalu\" jettee jaartiin midhaan dhiiftee, lootii gurraa bitatte")">COPY</button>
     <button onclick="shareText(this, "\"Ani kaniin ureen cuqqaalaa inni kan ure haa cuqqaalu\" jettee jaartiin midhaan dhiiftee, lootii gurraa bitatte")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="rabbi biraan shiira">
+<div class="proverb-card" data-text="rabbi biraan shiira abdii">
   <div class="qm">&#10077;</div>
   <div class="section">ABDII</div>
   <div class="text">Rabbi biraan shiira</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Rabbi biraan shiira")">COPY</button>
     <button onclick="shareText(this, "Rabbi biraan shiira")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hamilee fi dhuufuun, garaa namaatii hin dhumani">
+<div class="proverb-card" data-text="hamilee fi dhuufuun, garaa namaatii hin dhumani abdii">
   <div class="qm">&#10077;</div>
   <div class="section">ABDII</div>
   <div class="text">Hamilee fi dhuufuun, garaa namaatii hin dhumani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hamilee fi dhuufuun, garaa namaatii hin dhumani")">COPY</button>
     <button onclick="shareText(this, "Hamilee fi dhuufuun, garaa namaatii hin dhumani")">SHARE</button>

@@ -3,6 +3,268 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Noto Sans', -apple-system, sans-serif;
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 55%, #2c5364 100%);
+  color: #fff;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+a { color: #ffd700; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+header {
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(255,215,0,0.2);
+  margin-bottom: 40px;
+}
+.logo {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 26px; font-weight: 700;
+  letter-spacing: 2px;
+}
+.logo-mark {
+  width: 48px; height: 48px;
+  border: 3px solid #ffd700;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #ffd700; font-weight: 700; font-size: 20px;
+}
+.logo .gold { color: #ffd700; }
+.logo-sub {
+  font-size: 12px; letter-spacing: 4px;
+  color: #ffd700; opacity: 0.8;
+  margin-top: 2px; font-weight: 400;
+}
+
+.hero { text-align: center; padding: 40px 0 50px; }
+.hero h1 {
+  font-size: 52px; font-weight: 700;
+  letter-spacing: 6px; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero h1 .gold { color: #ffd700; }
+.hero p {
+  font-size: 18px; opacity: 0.75;
+  letter-spacing: 3px; text-transform: uppercase;
+}
+.hero .divider {
+  width: 80px; height: 2px;
+  background: #ffd700; opacity: 0.5;
+  margin: 24px auto;
+}
+
+.search-wrap {
+  margin: 30px auto 50px; max-width: 600px;
+  position: relative;
+}
+.search-wrap input {
+  width: 100%;
+  padding: 18px 24px;
+  border: 2px solid rgba(255,215,0,0.3);
+  background: rgba(0,0,0,0.3);
+  border-radius: 50px;
+  color: #fff;
+  font-size: 16px;
+  outline: none;
+  transition: 0.2s;
+}
+.search-wrap input:focus {
+  border-color: #ffd700;
+  background: rgba(0,0,0,0.5);
+}
+.search-wrap input::placeholder { color: rgba(255,255,255,0.4); }
+
+.stats {
+  display: flex; justify-content: center;
+  gap: 60px; margin: 30px 0 60px;
+  flex-wrap: wrap;
+}
+.stat { text-align: center; }
+.stat .num {
+  font-size: 42px; font-weight: 700; color: #ffd700;
+  line-height: 1;
+}
+.stat .lbl {
+  font-size: 12px; letter-spacing: 4px;
+  text-transform: uppercase; opacity: 0.6;
+  margin-top: 8px;
+}
+
+.section-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 60px;
+}
+.section-tag {
+  padding: 16px 20px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,215,0,0.25);
+  border-radius: 12px;
+  display: flex; justify-content: space-between; align-items: center;
+  color: #fff; font-weight: 700;
+  font-size: 14px; letter-spacing: 1px;
+  transition: 0.2s;
+}
+.section-tag:hover {
+  border-color: #ffd700;
+  background: rgba(0,0,0,0.5);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.section-tag .count {
+  color: #ffd700; font-size: 13px;
+  opacity: 0.7;
+}
+
+.proverb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 22px;
+  margin-bottom: 60px;
+}
+.proverb-card {
+  padding: 28px 26px;
+  background: rgba(0,0,0,0.3);
+  border: 2px solid rgba(255,215,0,0.3);
+  border-radius: 18px;
+  position: relative;
+  transition: 0.25s;
+  display: flex; flex-direction: column;
+}
+.proverb-card:hover {
+  border-color: rgba(255,215,0,0.7);
+  background: rgba(0,0,0,0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255,215,0,0.1);
+}
+.proverb-card .qm {
+  color: #ffd700; font-size: 40px;
+  line-height: 0.7; opacity: 0.8; margin-bottom: 10px;
+}
+.proverb-card .section {
+  font-size: 11px; letter-spacing: 3px;
+  text-transform: uppercase; color: #ffd700;
+  opacity: 0.85; margin-bottom: 14px;
+  font-weight: 700;
+}
+.proverb-card .text {
+  font-size: 17px; line-height: 1.5;
+  margin-bottom: 20px; flex: 1;
+}
+.proverb-card .meaning {
+  font-size: 14px;
+  line-height: 1.65;
+  margin: -4px 0 18px;
+  padding: 14px 16px;
+  background: rgba(255,215,0,0.06);
+  border-left: 3px solid rgba(255,215,0,0.55);
+  border-radius: 8px;
+  opacity: 0.92;
+}
+
+.proverb-card .meaning strong {
+  color: #ffd700;
+  letter-spacing: 1px;
+}
+
+.proverb-card .metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 18px;
+}
+
+.proverb-card .meta-chip {
+  display: inline-block;
+  padding: 5px 9px;
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: 0.4px;
+  opacity: 0.72;
+}
+
+.proverb-card .actions {
+  display: flex; gap: 12px;
+  border-top: 1px solid rgba(255,215,0,0.15);
+  padding-top: 14px; margin-top: auto;
+}
+.proverb-card .actions button, .proverb-card .actions a {
+  background: transparent; border: none;
+  color: #ffd700; cursor: pointer;
+  font-size: 12px; letter-spacing: 2px;
+  text-transform: uppercase; font-weight: 700;
+  opacity: 0.75; transition: 0.2s;
+  padding: 4px 0;
+}
+.proverb-card .actions button:hover, .proverb-card .actions a:hover {
+  opacity: 1; text-decoration: none;
+}
+
+.section-header {
+  text-align: center;
+  padding: 30px 0;
+  margin-bottom: 40px;
+}
+.section-header h2 {
+  font-size: 40px; letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.section-header h2 .gold { color: #ffd700; }
+.section-header .count {
+  margin-top: 12px; font-size: 14px;
+  letter-spacing: 4px; opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.back-link {
+  display: inline-block;
+  margin: 40px 0 20px;
+  font-size: 13px; letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ffd700; opacity: 0.75;
+}
+.back-link:hover { opacity: 1; text-decoration: none; }
+
+footer {
+  margin-top: 80px;
+  padding: 40px 0 30px;
+  border-top: 1px solid rgba(255,215,0,0.15);
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 2px;
+  opacity: 0.65;
+}
+footer .brand {
+  color: #ffd700; font-weight: 700;
+  margin-bottom: 8px; letter-spacing: 4px;
+}
+footer a { color: #ffd700; }
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+  opacity: 0.5;
+  font-size: 18px;
+}
+
+@media (max-width: 600px) {
+  .hero h1 { font-size: 32px; letter-spacing: 3px; }
+  .hero p { font-size: 14px; }
+  .stat .num { font-size: 32px; }
+  .section-list { grid-template-columns: 1fr 1fr; }
+  .proverb-grid { grid-template-columns: 1fr; }
+}
+
+</style>
 <meta name="google-site-verification" content="vYh_JSIpGkX25gTzyNbBP0JZbfJvjOY0GVuYuBrNRAs" /><meta name="google-site-verification" content="vYh_JSIpGkX25gTzyNbBP0JZbfJvjOY0GVuYuBrNRAs" />
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PGH00H1YBN"></script>
@@ -38,2780 +300,3319 @@
 <a href="index.html" class="back-link">← Back to Home</a>
 <div class="section-header">
   <h2><span class="gold">MAKAA</span></h2>
-  <div class="count">308 proverbs</div>
+  <div class="count">301 proverbs</div>
 </div>
 <div class="search-wrap">
   <input id="q" placeholder="Search in this section…" autocomplete="off">
 </div>
 <div class="proverb-grid" id="grid">
 
-<div class="proverb-card" data-text="makmaaksa akka hikkaa kennanitti osoo adda hin ba&#x27;in makamanii wal duraa duubaan barreeffaman">
+<div class="proverb-card" data-text="makmaaksa akka hikkaa kennanitti osoo adda hin ba&#x27;in makamanii wal duraa duubaan barreeffaman makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Makmaaksa akka hikkaa kennanitti osoo adda hin ba&#x27;in makamanii wal duraa duubaan barreeffaman</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Makmaaksa akka hikkaa kennanitti osoo adda hin ba'in makamanii wal duraa duubaan barreeffaman")">COPY</button>
     <button onclick="shareText(this, "Makmaaksa akka hikkaa kennanitti osoo adda hin ba'in makamanii wal duraa duubaan barreeffaman")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="abbaa fi ilma hangafaatu, haadhaa wajji deema">
+<div class="proverb-card" data-text="abbaa fi ilma hangafaatu, haadhaa wajji deema makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Abbaa fi ilma hangafaatu, haadhaa wajji deema</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Abbaa fi ilma hangafaatu, haadhaa wajji deema")">COPY</button>
     <button onclick="shareText(this, "Abbaa fi ilma hangafaatu, haadhaa wajji deema")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;abbaan kee eenyu&quot; jennaan, &quot;aayyoon farda&quot; jette gaangeen">
+<div class="proverb-card" data-text="&quot;abbaan kee eenyu&quot; jennaan, &quot;aayyoon farda&quot; jette gaangeen makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">&quot;Abbaan kee eenyu&quot; jennaan, &quot;aayyoon farda&quot; jette gaangeen</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Abbaan kee eenyu\" jennaan, \"aayyoon farda\" jette gaangeen")">COPY</button>
     <button onclick="shareText(this, "\"Abbaan kee eenyu\" jennaan, \"aayyoon farda\" jette gaangeen")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;abbaan kee maal dalaga&quot; jennaan, &quot;dachii baqayxe hodha&quot; jette">
+<div class="proverb-card" data-text="&quot;abbaan kee maal dalaga&quot; jennaan, &quot;dachii baqayxe hodha&quot; jette makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">&quot;Abbaan kee maal dalaga&quot; jennaan, &quot;dachii baqayxe hodha&quot; jette</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Abbaan kee maal dalaga\" jennaan, \"dachii baqayxe hodha\" jette")">COPY</button>
     <button onclick="shareText(this, "\"Abbaan kee maal dalaga\" jennaan, \"dachii baqayxe hodha\" jette")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="aduunyaan sagalii, waa kudhanii miti">
+<div class="proverb-card" data-text="aduunyaan sagalii, waa kudhanii miti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Aduunyaan sagalii, waa kudhanii miti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Aduunyaan sagalii, waa kudhanii miti")">COPY</button>
     <button onclick="shareText(this, "Aduunyaan sagalii, waa kudhanii miti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="afaan baalagee, hanga qarbataa bal&#x27;ata">
+<div class="proverb-card" data-text="afaan baalagee, hanga qarbataa bal&#x27;ata makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Afaan baalagee, hanga qarbataa bal&#x27;ata</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Afaan baalagee, hanga qarbataa bal'ata")">COPY</button>
     <button onclick="shareText(this, "Afaan baalagee, hanga qarbataa bal'ata")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="afaan dubbii bare bulluqa alanfata">
+<div class="proverb-card" data-text="afaan dubbii bare bulluqa alanfata makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Afaan dubbii bare bulluqa alanfata</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Afaan dubbii bare bulluqa alanfata")">COPY</button>
     <button onclick="shareText(this, "Afaan dubbii bare bulluqa alanfata")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="alaa ni boonaa, manaa ni booya">
+<div class="proverb-card" data-text="alaa ni boonaa, manaa ni booya makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Alaa ni boonaa, manaa ni booya</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Alaa ni boonaa, manaa ni booya")">COPY</button>
     <button onclick="shareText(this, "Alaa ni boonaa, manaa ni booya")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="alaa rarraa, manaa mancaa">
+<div class="proverb-card" data-text="alaa rarraa, manaa mancaa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Alaa rarraa, manaa mancaa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Alaa rarraa, manaa mancaa")">COPY</button>
     <button onclick="shareText(this, "Alaa rarraa, manaa mancaa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="alaa kopheen ciiq ciiq, manaa garaan cir cir">
+<div class="proverb-card" data-text="alaa kopheen ciiq ciiq, manaa garaan cir cir makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Alaa kopheen ciiq ciiq, manaa garaan cir cir</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Alaa kopheen ciiq ciiq, manaa garaan cir cir")">COPY</button>
     <button onclick="shareText(this, "Alaa kopheen ciiq ciiq, manaa garaan cir cir")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ala silaa dubbii ni beekaa, irra deddeebi&#x27;uuni balleessa">
+<div class="proverb-card" data-text="ala silaa dubbii ni beekaa, irra deddeebi&#x27;uuni balleessa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ala silaa dubbii ni beekaa, irra deddeebi&#x27;uuni balleessa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ala silaa dubbii ni beekaa, irra deddeebi'uuni balleessa")">COPY</button>
     <button onclick="shareText(this, "Ala silaa dubbii ni beekaa, irra deddeebi'uuni balleessa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="allaattii laga buute ta raachaa raaw&#x27;ate">
+<div class="proverb-card" data-text="allaattii laga buute ta raachaa raaw&#x27;ate makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Allaattii laga buute ta raachaa raaw&#x27;ate</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Allaattii laga buute ta raachaa raaw'ate")">COPY</button>
     <button onclick="shareText(this, "Allaattii laga buute ta raachaa raaw'ate")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="anaa magani, farda kee albaatii laali">
+<div class="proverb-card" data-text="anaa magani, farda kee albaatii laali makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Anaa magani, farda kee albaatii laali</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Anaa magani, farda kee albaatii laali")">COPY</button>
     <button onclick="shareText(this, "Anaa magani, farda kee albaatii laali")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ayliin adurree funyaan irra">
+<div class="proverb-card" data-text="ayliin adurree funyaan irra makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ayliin adurree funyaan irra</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ayliin adurree funyaan irra")">COPY</button>
     <button onclick="shareText(this, "Ayliin adurree funyaan irra")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ayliin ganda keessan amma dhufte, ganda keenya sagal bulte">
+<div class="proverb-card" data-text="ayliin ganda keessan amma dhufte, ganda keenya sagal bulte makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ayliin ganda keessan amma dhufte, ganda keenya sagal bulte</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ayliin ganda keessan amma dhufte, ganda keenya sagal bulte")">COPY</button>
     <button onclick="shareText(this, "Ayliin ganda keessan amma dhufte, ganda keenya sagal bulte")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="baalagummaan dhukkuba gaaffii hin qabne">
+<div class="proverb-card" data-text="baalagummaan dhukkuba gaaffii hin qabne makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Baalagummaan dhukkuba gaaffii hin qabne</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Baalagummaan dhukkuba gaaffii hin qabne")">COPY</button>
     <button onclick="shareText(this, "Baalagummaan dhukkuba gaaffii hin qabne")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;bada tan gabbaartii harree&quot; jennaan, &quot;gabbaartii sanuu warra keenyaa itti wal tahe&quot; jette intalti">
+<div class="proverb-card" data-text="&quot;bada tan gabbaartii harree&quot; jennaan, &quot;gabbaartii sanuu warra keenyaa itti wal tahe&quot; jette intalti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">&quot;Bada tan gabbaartii harree&quot; jennaan, &quot;gabbaartii sanuu warra keenyaa itti wal tahe&quot; jette intalti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Bada tan gabbaartii harree\" jennaan, \"gabbaartii sanuu warra keenyaa itti wal tahe\" jette intalti")">COPY</button>
     <button onclick="shareText(this, "\"Bada tan gabbaartii harree\" jennaan, \"gabbaartii sanuu warra keenyaa itti wal tahe\" jette intalti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="bakka dubri lafa guutetti, dullumti na qabde jedhe jaarsi">
+<div class="proverb-card" data-text="bakka dubri lafa guutetti, dullumti na qabde jedhe jaarsi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Bakka dubri lafa guutetti, dullumti na qabde jedhe jaarsi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Bakka dubri lafa guutetti, dullumti na qabde jedhe jaarsi")">COPY</button>
     <button onclick="shareText(this, "Bakka dubri lafa guutetti, dullumti na qabde jedhe jaarsi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="bakka dhiirri hin jirretti, darasaa ragaa tahi jette dubri">
+<div class="proverb-card" data-text="bakka dhiirri hin jirretti, darasaa ragaa tahi jette dubri makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Bakka dhiirri hin jirretti, darasaa ragaa tahi jette dubri</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Bakka dhiirri hin jirretti, darasaa ragaa tahi jette dubri")">COPY</button>
     <button onclick="shareText(this, "Bakka dhiirri hin jirretti, darasaa ragaa tahi jette dubri")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ballaan mana gubeeti, ifee illaali jedhe">
+<div class="proverb-card" data-text="ballaan mana gubeeti, ifee illaali jedhe makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ballaan mana gubeeti, ifee illaali jedhe</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ballaan mana gubeeti, ifee illaali jedhe")">COPY</button>
     <button onclick="shareText(this, "Ballaan mana gubeeti, ifee illaali jedhe")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ballaan walitti boo&#x27;u, ija wal hin argu">
+<div class="proverb-card" data-text="ballaan walitti boo&#x27;u, ija wal hin argu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ballaan walitti boo&#x27;u, ija wal hin argu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ballaan walitti boo'u, ija wal hin argu")">COPY</button>
     <button onclick="shareText(this, "Ballaan walitti boo'u, ija wal hin argu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="baraatu badee sangaa na hachisiise jedhe namichi">
+<div class="proverb-card" data-text="baraatu badee sangaa na hachisiise jedhe namichi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Baraatu badee sangaa na hachisiise jedhe namichi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Baraatu badee sangaa na hachisiise jedhe namichi")">COPY</button>
     <button onclick="shareText(this, "Baraatu badee sangaa na hachisiise jedhe namichi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="baraatu beeka jedhee, gurmuu masqalee lafa gurgure">
+<div class="proverb-card" data-text="baraatu beeka jedhee, gurmuu masqalee lafa gurgure makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Baraatu beeka jedhee, Gurmuu Masqalee lafa gurgure</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Baraatu beeka jedhee, Gurmuu Masqalee lafa gurgure")">COPY</button>
     <button onclick="shareText(this, "Baraatu beeka jedhee, Gurmuu Masqalee lafa gurgure")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="beekaan galgala dhufa">
+<div class="proverb-card" data-text="beekaan galgala dhufa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Beekaan galgala dhufa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Beekaan galgala dhufa")">COPY</button>
     <button onclick="shareText(this, "Beekaan galgala dhufa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="bishaan ni maraate jedhee bulluqa dhuge">
+<div class="proverb-card" data-text="bishaan ni maraate jedhee bulluqa dhuge makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Bishaan ni maraate jedhee bulluqa dhuge</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Bishaan ni maraate jedhee bulluqa dhuge")">COPY</button>
     <button onclick="shareText(this, "Bishaan ni maraate jedhee bulluqa dhuge")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="bishaan gadi deemuun hin dhibu, of deebi&#x27;uu malee">
+<div class="proverb-card" data-text="bishaan gadi deemuun hin dhibu, of deebi&#x27;uu malee makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Bishaan gadi deemuun hin dhibu, of deebi&#x27;uu malee</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Bishaan gadi deemuun hin dhibu, of deebi'uu malee")">COPY</button>
     <button onclick="shareText(this, "Bishaan gadi deemuun hin dhibu, of deebi'uu malee")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="boolla ija leenca du&#x27;ee, gogorriin bara tokko keessaa dhugdi">
+<div class="proverb-card" data-text="boolla ija leenca du&#x27;ee, gogorriin bara tokko keessaa dhugdi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Boolla ija leenca du&#x27;ee, gogorriin bara tokko keessaa dhugdi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Boolla ija leenca du'ee, gogorriin bara tokko keessaa dhugdi")">COPY</button>
     <button onclick="shareText(this, "Boolla ija leenca du'ee, gogorriin bara tokko keessaa dhugdi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="boona malee ijji takkuma">
+<div class="proverb-card" data-text="boona malee ijji takkuma makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Boona malee ijji takkuma</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Boona malee ijji takkuma")">COPY</button>
     <button onclick="shareText(this, "Boona malee ijji takkuma")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="caaccuun warratti galtee, qaraaruu diradhu">
+<div class="proverb-card" data-text="caaccuun warratti galtee, qaraaruu diradhu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Caaccuun warratti galtee, qaraaruu diradhu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Caaccuun warratti galtee, qaraaruu diradhu")">COPY</button>
     <button onclick="shareText(this, "Caaccuun warratti galtee, qaraaruu diradhu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="coqorsaa na qabe jettee hin dubbatin, teephaan si qabaa">
+<div class="proverb-card" data-text="coqorsaa na qabe jettee hin dubbatin, teephaan si qabaa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Coqorsaa na qabe jettee hin dubbatin, teephaan si qabaa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Coqorsaa na qabe jettee hin dubbatin, teephaan si qabaa")">COPY</button>
     <button onclick="shareText(this, "Coqorsaa na qabe jettee hin dubbatin, teephaan si qabaa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="diddiga garaa dhufe, ilkeen hin deebisu">
+<div class="proverb-card" data-text="diddiga garaa dhufe, ilkeen hin deebisu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Diddiga garaa dhufe, ilkeen hin deebisu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Diddiga garaa dhufe, ilkeen hin deebisu")">COPY</button>
     <button onclick="shareText(this, "Diddiga garaa dhufe, ilkeen hin deebisu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="diinni dinniina argate hin a&#x27;amu">
+<div class="proverb-card" data-text="diinni dinniina argate hin a&#x27;amu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Diinni dinniina argate hin a&#x27;amu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Diinni dinniina argate hin a'amu")">COPY</button>
     <button onclick="shareText(this, "Diinni dinniina argate hin a'amu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;du&#x27;aan dhufaa&quot; jennaan, &quot;bokoku maa didaa&quot; jedhe">
+<div class="proverb-card" data-text="&quot;du&#x27;aan dhufaa&quot; jennaan, &quot;bokoku maa didaa&quot; jedhe makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">&quot;Du&#x27;aan dhufaa&quot; jennaan, &quot;bokoku maa didaa&quot; jedhe</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Du'aan dhufaa\" jennaan, \"bokoku maa didaa\" jedhe")">COPY</button>
     <button onclick="shareText(this, "\"Du'aan dhufaa\" jennaan, \"bokoku maa didaa\" jedhe")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="du&#x27;aan nama hin dhabu jiraan nama hin qabu">
+<div class="proverb-card" data-text="du&#x27;aan nama hin dhabu jiraan nama hin qabu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Du&#x27;aan nama hin dhabu jiraan nama hin qabu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Du'aan nama hin dhabu jiraan nama hin qabu")">COPY</button>
     <button onclick="shareText(this, "Du'aan nama hin dhabu jiraan nama hin qabu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dubbii abbaa biraa dhaban, ilma biraa hin argani">
-  <div class="qm">&#10077;</div>
-  <div class="section">MAKAA</div>
-  <div class="text">Dubbii abbaa biraa dhaban, ilma biraa hin argani</div>
-  <div class="actions">
-    <button onclick="copyText(this, "Dubbii abbaa biraa dhaban, ilma biraa hin argani")">COPY</button>
-    <button onclick="shareText(this, "Dubbii abbaa biraa dhaban, ilma biraa hin argani")">SHARE</button>
-  </div>
-</div>
-<div class="proverb-card" data-text="dubbii ala karaarratti fixu, anniyya kora itti qabata">
+<div class="proverb-card" data-text="dubbii ala karaarratti fixu, anniyya kora itti qabata makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dubbii Ala karaarratti fixu, Anniyya kora itti qabata</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dubbii Ala karaarratti fixu, Anniyya kora itti qabata")">COPY</button>
     <button onclick="shareText(this, "Dubbii Ala karaarratti fixu, Anniyya kora itti qabata")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dubbii dubbii, yaa dhuufuu qullubbii">
+<div class="proverb-card" data-text="dubbii dubbii, yaa dhuufuu qullubbii makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dubbii dubbii, yaa dhuufuu qullubbii</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dubbii dubbii, yaa dhuufuu qullubbii")">COPY</button>
     <button onclick="shareText(this, "Dubbii dubbii, yaa dhuufuu qullubbii")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dubbii fi murtiin, kan waaqaa caala">
+<div class="proverb-card" data-text="dubbii fi murtiin, kan waaqaa caala makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dubbii fi murtiin, kan waaqaa caala</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dubbii fi murtiin, kan waaqaa caala")">COPY</button>
     <button onclick="shareText(this, "Dubbii fi murtiin, kan waaqaa caala")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dubbii dubbii fakkaataa, namaa nama fakkaata">
+<div class="proverb-card" data-text="dubbii dubbii fakkaataa, namaa nama fakkaata makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dubbii dubbii fakkaataa, namaa nama fakkaata</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dubbii dubbii fakkaataa, namaa nama fakkaata")">COPY</button>
     <button onclick="shareText(this, "Dubbii dubbii fakkaataa, namaa nama fakkaata")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dubbiin, hanga abbaan gahe geessi">
+<div class="proverb-card" data-text="dubbiin, hanga abbaan gahe geessi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dubbiin, hanga abbaan gahe geessi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dubbiin, hanga abbaan gahe geessi")">COPY</button>
     <button onclick="shareText(this, "Dubbiin, hanga abbaan gahe geessi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dubbiin wallaalaaf na bira kutte jetti malee, beekaati na bira kutte hin jettu">
+<div class="proverb-card" data-text="dubbiin wallaalaaf na bira kutte jetti malee, beekaati na bira kutte hin jettu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dubbiin wallaalaaf na bira kutte jetti malee, beekaati na bira kutte hin jettu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dubbiin wallaalaaf na bira kutte jetti malee, beekaati na bira kutte hin jettu")">COPY</button>
     <button onclick="shareText(this, "Dubbiin wallaalaaf na bira kutte jetti malee, beekaati na bira kutte hin jettu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dubbiin tan joollee fakkaatuu fi tan manguddoo fakkaatuu jira">
+<div class="proverb-card" data-text="dubbiin tan joollee fakkaatuu fi tan manguddoo fakkaatuu jira makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dubbiin tan joollee fakkaatuu fi tan manguddoo fakkaatuu jira</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dubbiin tan joollee fakkaatuu fi tan manguddoo fakkaatuu jira")">COPY</button>
     <button onclick="shareText(this, "Dubbiin tan joollee fakkaatuu fi tan manguddoo fakkaatuu jira")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dubbatan dubbii lamaa, dhiisan ergarama">
+<div class="proverb-card" data-text="dubbatan dubbii lamaa, dhiisan ergarama makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dubbatan dubbii lamaa, dhiisan ergarama</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dubbatan dubbii lamaa, dhiisan ergarama")">COPY</button>
     <button onclick="shareText(this, "Dubbatan dubbii lamaa, dhiisan ergarama")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="duudaan gaafa gurra qabu waan dhagaye odeessa">
+<div class="proverb-card" data-text="duudaan gaafa gurra qabu waan dhagaye odeessa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Duudaan gaafa gurra qabu waan dhagaye odeessa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Duudaan gaafa gurra qabu waan dhagaye odeessa")">COPY</button>
     <button onclick="shareText(this, "Duudaan gaafa gurra qabu waan dhagaye odeessa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="duuti sheenaa dhabde hin jirtu">
+<div class="proverb-card" data-text="duuti sheenaa dhabde hin jirtu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Duuti sheenaa dhabde hin jirtu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Duuti sheenaa dhabde hin jirtu")">COPY</button>
     <button onclick="shareText(this, "Duuti sheenaa dhabde hin jirtu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dura deeman malee, duubaan hin deemani, yoo du&#x27;anii dabran malee">
+<div class="proverb-card" data-text="dura deeman malee, duubaan hin deemani, yoo du&#x27;anii dabran malee makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dura deeman malee, duubaan hin deemani, yoo du&#x27;anii dabran malee</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dura deeman malee, duubaan hin deemani, yoo du'anii dabran malee")">COPY</button>
     <button onclick="shareText(this, "Dura deeman malee, duubaan hin deemani, yoo du'anii dabran malee")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="durillee erbe jette tan takkaa jibrii hin qotatin">
+<div class="proverb-card" data-text="durillee erbe jette tan takkaa jibrii hin qotatin makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">durillee erbe jette tan takkaa jibrii hin qotatin</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "durillee erbe jette tan takkaa jibrii hin qotatin")">COPY</button>
     <button onclick="shareText(this, "durillee erbe jette tan takkaa jibrii hin qotatin")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dhaamonnaan harkifnee, nuun lollaan lakkifne">
-  <div class="qm">&#10077;</div>
-  <div class="section">MAKAA</div>
-  <div class="text">Dhaamonnaan harkifnee, nuun lollaan lakkifne</div>
-  <div class="actions">
-    <button onclick="copyText(this, "Dhaamonnaan harkifnee, nuun lollaan lakkifne")">COPY</button>
-    <button onclick="shareText(this, "Dhaamonnaan harkifnee, nuun lollaan lakkifne")">SHARE</button>
-  </div>
-</div>
-<div class="proverb-card" data-text="dhaba&#x27;rra jirtii, dhabaneey mana jirti">
+<div class="proverb-card" data-text="dhaba&#x27;rra jirtii, dhabaneey mana jirti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dhaba&#x27;rra jirtii, dhabaneey mana jirti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dhaba'rra jirtii, dhabaneey mana jirti")">COPY</button>
     <button onclick="shareText(this, "Dhaba'rra jirtii, dhabaneey mana jirti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dhabduun, diddu of fakkeessiti">
+<div class="proverb-card" data-text="dhabduun, diddu of fakkeessiti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dhabduun, diddu of fakkeessiti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dhabduun, diddu of fakkeessiti")">COPY</button>
     <button onclick="shareText(this, "Dhabduun, diddu of fakkeessiti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dhabaarraa hin liqeeffatani, kan qaburraa qabsiifatan malee">
+<div class="proverb-card" data-text="dhabaarraa hin liqeeffatani, kan qaburraa qabsiifatan malee makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dhabaarraa hin liqeeffatani, kan qaburraa qabsiifatan malee</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dhabaarraa hin liqeeffatani, kan qaburraa qabsiifatan malee")">COPY</button>
     <button onclick="shareText(this, "Dhabaarraa hin liqeeffatani, kan qaburraa qabsiifatan malee")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dhiirri dhiirsa hin qabu, kan liqeesseef malee">
+<div class="proverb-card" data-text="dhiirri dhiirsa hin qabu, kan liqeesseef malee makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dhiirri dhiirsa hin qabu, kan liqeesseef malee</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dhiirri dhiirsa hin qabu, kan liqeesseef malee")">COPY</button>
     <button onclick="shareText(this, "Dhiirri dhiirsa hin qabu, kan liqeesseef malee")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dhukkuba lukkuuti gaala hin qalani">
+<div class="proverb-card" data-text="dhukkuba lukkuuti gaala hin qalani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dhukkuba lukkuuti gaala hin qalani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dhukkuba lukkuuti gaala hin qalani")">COPY</button>
     <button onclick="shareText(this, "Dhukkuba lukkuuti gaala hin qalani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dhukkuba karaa deemu, hashare goromsaan bitatte">
+<div class="proverb-card" data-text="dhukkuba karaa deemu, hashare goromsaan bitatte makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dhukkuba karaa deemu, hashare goromsaan bitatte</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dhukkuba karaa deemu, hashare goromsaan bitatte")">COPY</button>
     <button onclick="shareText(this, "Dhukkuba karaa deemu, hashare goromsaan bitatte")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="dhungoo goggoyduun, ilmoo namaa hin guddifne">
+<div class="proverb-card" data-text="dhungoo goggoyduun, ilmoo namaa hin guddifne makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Dhungoo goggoyduun, ilmoo namaa hin guddifne</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Dhungoo goggoyduun, ilmoo namaa hin guddifne")">COPY</button>
     <button onclick="shareText(this, "Dhungoo goggoyduun, ilmoo namaa hin guddifne")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="eenyurra dhaabbattee, eenyu hamatta jette dachiin">
+<div class="proverb-card" data-text="eenyurra dhaabbattee, eenyu hamatta jette dachiin makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Eenyurra dhaabbattee, eenyu hamatta jette dachiin</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Eenyurra dhaabbattee, eenyu hamatta jette dachiin")">COPY</button>
     <button onclick="shareText(this, "Eenyurra dhaabbattee, eenyu hamatta jette dachiin")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ergaa hamtuun lola fiddi">
+<div class="proverb-card" data-text="ergaa hamtuun lola fiddi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ergaa hamtuun lola fiddi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ergaa hamtuun lola fiddi")">COPY</button>
     <button onclick="shareText(this, "Ergaa hamtuun lola fiddi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ergaan ergaramaa dha barbaaddi">
+<div class="proverb-card" data-text="ergaan ergaramaa dha barbaaddi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ergaan ergaramaa dha barbaaddi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ergaan ergaramaa dha barbaaddi")">COPY</button>
     <button onclick="shareText(this, "Ergaan ergaramaa dha barbaaddi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="fageenyaa hin hafani, yoo wal quufan malee">
+<div class="proverb-card" data-text="fageenyaa hin hafani, yoo wal quufan malee makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Fageenyaa hin hafani, yoo wal quufan malee</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Fageenyaa hin hafani, yoo wal quufan malee")">COPY</button>
     <button onclick="shareText(this, "Fageenyaa hin hafani, yoo wal quufan malee")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="parda bade, farda jiruun barbaadani">
+<div class="proverb-card" data-text="parda bade, farda jiruun barbaadani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Parda bade, farda jiruun barbaadani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Parda bade, farda jiruun barbaadani")">COPY</button>
     <button onclick="shareText(this, "Parda bade, farda jiruun barbaadani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="fira jettee wal yaamti, qullaa wal dhokfatti">
+<div class="proverb-card" data-text="fira jettee wal yaamti, qullaa wal dhokfatti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Fira jettee wal yaamti, qullaa wal dhokfatti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Fira jettee wal yaamti, qullaa wal dhokfatti")">COPY</button>
     <button onclick="shareText(this, "Fira jettee wal yaamti, qullaa wal dhokfatti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="foon ifii hin nyaanne, allaattiif dhiisani">
+<div class="proverb-card" data-text="foon ifii hin nyaanne, allaattiif dhiisani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Foon ifii hin nyaanne, allaattiif dhiisani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Foon ifii hin nyaanne, allaattiif dhiisani")">COPY</button>
     <button onclick="shareText(this, "Foon ifii hin nyaanne, allaattiif dhiisani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="fuudhuun qaanii hin qabu">
+<div class="proverb-card" data-text="fuudhuun qaanii hin qabu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Fuudhuun qaanii hin qabu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Fuudhuun qaanii hin qabu")">COPY</button>
     <button onclick="shareText(this, "Fuudhuun qaanii hin qabu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="gaafa tolu, ni tottola">
+<div class="proverb-card" data-text="gaafa tolu, ni tottola makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Gaafa tolu, ni tottola</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Gaafa tolu, ni tottola")">COPY</button>
     <button onclick="shareText(this, "Gaafa tolu, ni tottola")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="gaafa na kaaseen, aayyoo gurguraa karra baase">
+<div class="proverb-card" data-text="gaafa na kaaseen, aayyoo gurguraa karra baase makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Gaafa na kaaseen, aayyoo gurguraa karra baase</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Gaafa na kaaseen, aayyoo gurguraa karra baase")">COPY</button>
     <button onclick="shareText(this, "Gaafa na kaaseen, aayyoo gurguraa karra baase")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="gabiiba roobee? &quot;jennaan,&quot; kan dur roobeefuu harka lafaatti rigata&quot; jedhe">
+<div class="proverb-card" data-text="gabiiba roobee? &quot;jennaan,&quot; kan dur roobeefuu harka lafaatti rigata&quot; jedhe makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Gabiiba roobee? &quot;jennaan,&quot; kan dur roobeefuu harka lafaatti rigata&quot; jedhe</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Gabiiba roobee? \"jennaan,\" kan dur roobeefuu harka lafaatti rigata\" jedhe")">COPY</button>
     <button onclick="shareText(this, "Gabiiba roobee? \"jennaan,\" kan dur roobeefuu harka lafaatti rigata\" jedhe")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="gabrichi quufe, gonbisaa goftaa dhiita">
+<div class="proverb-card" data-text="gabrichi quufe, gonbisaa goftaa dhiita makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Gabrichi quufe, gonbisaa goftaa dhiita</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Gabrichi quufe, gonbisaa goftaa dhiita")">COPY</button>
     <button onclick="shareText(this, "Gabrichi quufe, gonbisaa goftaa dhiita")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="gaararraan waan agarte fakkaatti">
+<div class="proverb-card" data-text="gaararraan waan agarte fakkaatti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Gaararraan waan agarte fakkaatti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Gaararraan waan agarte fakkaatti")">COPY</button>
     <button onclick="shareText(this, "Gaararraan waan agarte fakkaatti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="gadhee fi baarreen afaan bal&#x27;atti">
+<div class="proverb-card" data-text="gadhee fi baarreen afaan bal&#x27;atti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Gadhee fi baarreen afaan bal&#x27;atti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Gadhee fi baarreen afaan bal'atti")">COPY</button>
     <button onclick="shareText(this, "Gadhee fi baarreen afaan bal'atti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="gadheen ofuma ishii dhiira seeti">
+<div class="proverb-card" data-text="gadheen ofuma ishii dhiira seeti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Gadheen ofuma ishii dhiira seeti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Gadheen ofuma ishii dhiira seeti")">COPY</button>
     <button onclick="shareText(this, "Gadheen ofuma ishii dhiira seeti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="galaana laga guute, ta cirrachaa raaw&#x27;atte">
+<div class="proverb-card" data-text="galaana laga guute, ta cirrachaa raaw&#x27;atte makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Galaana laga guute, ta cirrachaa raaw&#x27;atte</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Galaana laga guute, ta cirrachaa raaw'atte")">COPY</button>
     <button onclick="shareText(this, "Galaana laga guute, ta cirrachaa raaw'atte")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="galaanaa fi waraanni gaafa nama hanqisa">
+<div class="proverb-card" data-text="galaanaa fi waraanni gaafa nama hanqisa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Galaanaa fi waraanni gaafa nama hanqisa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Galaanaa fi waraanni gaafa nama hanqisa")">COPY</button>
     <button onclick="shareText(this, "Galaanaa fi waraanni gaafa nama hanqisa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="galaanni waan ofii kaa&#x27;e, ofumaaf fuudha">
+<div class="proverb-card" data-text="galaanni waan ofii kaa&#x27;e, ofumaaf fuudha makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Galaanni waan ofii kaa&#x27;e, ofumaaf fuudha</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Galaanni waan ofii kaa'e, ofumaaf fuudha")">COPY</button>
     <button onclick="shareText(this, "Galaanni waan ofii kaa'e, ofumaaf fuudha")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ganama ganama aannoleen, waatii isaaniitti mar&#x27;atani">
+<div class="proverb-card" data-text="ganama ganama aannoleen, waatii isaaniitti mar&#x27;atani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ganama ganama aannoleen, waatii isaaniitti mar&#x27;atani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ganama ganama aannoleen, waatii isaaniitti mar'atani")">COPY</button>
     <button onclick="shareText(this, "Ganama ganama aannoleen, waatii isaaniitti mar'atani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ganamaan bahaniif, waaqa jalaa hin bahani">
+<div class="proverb-card" data-text="ganamaan bahaniif, waaqa jalaa hin bahani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ganamaan bahaniif, waaqa jalaa hin bahani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ganamaan bahaniif, waaqa jalaa hin bahani")">COPY</button>
     <button onclick="shareText(this, "Ganamaan bahaniif, waaqa jalaa hin bahani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="garatti heexoo dhugii, ilkee dhadhaa dibadhu">
+<div class="proverb-card" data-text="garatti heexoo dhugii, ilkee dhadhaa dibadhu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Garatti heexoo dhugii, ilkee dhadhaa dibadhu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Garatti heexoo dhugii, ilkee dhadhaa dibadhu")">COPY</button>
     <button onclick="shareText(this, "Garatti heexoo dhugii, ilkee dhadhaa dibadhu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="garaan haadhaa, bofaa fi buuti dhala">
-  <div class="qm">&#10077;</div>
-  <div class="section">MAKAA</div>
-  <div class="text">Garaan haadhaa, bofaa fi buuti dhala</div>
-  <div class="actions">
-    <button onclick="copyText(this, "Garaan haadhaa, bofaa fi buuti dhala")">COPY</button>
-    <button onclick="shareText(this, "Garaan haadhaa, bofaa fi buuti dhala")">SHARE</button>
-  </div>
-</div>
-<div class="proverb-card" data-text="geeyriin afurtama bulti">
+<div class="proverb-card" data-text="geeyriin afurtama bulti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Geeyriin afurtama bulti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Geeyriin afurtama bulti")">COPY</button>
     <button onclick="shareText(this, "Geeyriin afurtama bulti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="geeyriin karaarratti baatu malee, hin dhumtu">
+<div class="proverb-card" data-text="geeyriin karaarratti baatu malee, hin dhumtu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Geeyriin karaarratti baatu malee, hin dhumtu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Geeyriin karaarratti baatu malee, hin dhumtu")">COPY</button>
     <button onclick="shareText(this, "Geeyriin karaarratti baatu malee, hin dhumtu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="gorsi abbaa dura, faaruun abbaa duuba">
+<div class="proverb-card" data-text="gorsi abbaa dura, faaruun abbaa duuba makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Gorsi abbaa dura, faaruun abbaa duuba</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Gorsi abbaa dura, faaruun abbaa duuba")">COPY</button>
     <button onclick="shareText(this, "Gorsi abbaa dura, faaruun abbaa duuba")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="gowwaatu kan maraatetti kofla">
+<div class="proverb-card" data-text="gowwaatu kan maraatetti kofla makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Gowwaatu kan maraatetti kofla</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Gowwaatu kan maraatetti kofla")">COPY</button>
     <button onclick="shareText(this, "Gowwaatu kan maraatetti kofla")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="gowwaa fi xalaayaan, waan qaban gad hin dhiisani">
+<div class="proverb-card" data-text="gowwaa fi xalaayaan, waan qaban gad hin dhiisani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Gowwaa fi xalaayaan, waan qaban gad hin dhiisani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Gowwaa fi xalaayaan, waan qaban gad hin dhiisani")">COPY</button>
     <button onclick="shareText(this, "Gowwaa fi xalaayaan, waan qaban gad hin dhiisani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="guddinni nama garii guddina harreeti">
+<div class="proverb-card" data-text="guddinni nama garii guddina harreeti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Guddinni nama garii guddina harreeti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Guddinni nama garii guddina harreeti")">COPY</button>
     <button onclick="shareText(this, "Guddinni nama garii guddina harreeti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="guutu malee hin balaqu">
+<div class="proverb-card" data-text="guutu malee hin balaqu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Guutu malee hin balaqu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Guutu malee hin balaqu")">COPY</button>
     <button onclick="shareText(this, "Guutu malee hin balaqu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="gurra dura, gurraattii wayya">
+<div class="proverb-card" data-text="gurra dura, gurraattii wayya makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Gurra dura, gurraattii wayya</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Gurra dura, gurraattii wayya")">COPY</button>
     <button onclick="shareText(this, "Gurra dura, gurraattii wayya")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="guyyaa jallate, baraatu diriirsa">
+<div class="proverb-card" data-text="guyyaa jallate, baraatu diriirsa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Guyyaa jallate, baraatu diriirsa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Guyyaa jallate, baraatu diriirsa")">COPY</button>
     <button onclick="shareText(this, "Guyyaa jallate, baraatu diriirsa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="haa ta&#x27;u malee haa ta&#x27;uu, xuuriin dhala keef haa ga&#x27;u">
+<div class="proverb-card" data-text="haa ta&#x27;u malee haa ta&#x27;uu, xuuriin dhala keef haa ga&#x27;u makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Haa ta&#x27;u malee haa ta&#x27;uu, xuuriin dhala keef haa ga&#x27;u</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Haa ta'u malee haa ta'uu, xuuriin dhala keef haa ga'u")">COPY</button>
     <button onclick="shareText(this, "Haa ta'u malee haa ta'uu, xuuriin dhala keef haa ga'u")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;haadha wadaay waddeessaa, dila kana dandeessa&quot; jennaan &quot;hin dandayu dirqii, hin dadhabu risqii&quot; jette">
+<div class="proverb-card" data-text="&quot;haadha wadaay waddeessaa, dila kana dandeessa&quot; jennaan &quot;hin dandayu dirqii, hin dadhabu risqii&quot; jette makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">&quot;Haadha wadaay waddeessaa, dila kana dandeessa&quot; jennaan &quot;hin dandayu dirqii, hin dadhabu risqii&quot; jette</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Haadha wadaay waddeessaa, dila kana dandeessa\" jennaan \"hin dandayu dirqii, hin dadhabu risqii\" jette")">COPY</button>
     <button onclick="shareText(this, "\"Haadha wadaay waddeessaa, dila kana dandeessa\" jennaan \"hin dandayu dirqii, hin dadhabu risqii\" jette")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hangayoon lagaa jiigdee, mukni maa jala bade">
+<div class="proverb-card" data-text="hangayoon lagaa jiigdee, mukni maa jala bade makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Hangayoon lagaa jiigdee, mukni maa jala bade</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hangayoon lagaa jiigdee, mukni maa jala bade")">COPY</button>
     <button onclick="shareText(this, "Hangayoon lagaa jiigdee, mukni maa jala bade")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;hantuuta naan jettu goblaan qaba, shinbirroo naan jettu ilkeen qaba&quot; jette shinbirroon halkanii">
+<div class="proverb-card" data-text="&quot;hantuuta naan jettu goblaan qaba, shinbirroo naan jettu ilkeen qaba&quot; jette shinbirroon halkanii makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">&quot;Hantuuta naan jettu goblaan qaba, shinbirroo naan jettu ilkeen qaba&quot; jette shinbirroon halkanii</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Hantuuta naan jettu goblaan qaba, shinbirroo naan jettu ilkeen qaba\" jette shinbirroon halkanii")">COPY</button>
     <button onclick="shareText(this, "\"Hantuuta naan jettu goblaan qaba, shinbirroo naan jettu ilkeen qaba\" jette shinbirroon halkanii")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hantuuta baareerra taa&#x27;u, baarreef jecha dhiisani">
+<div class="proverb-card" data-text="hantuuta baareerra taa&#x27;u, baarreef jecha dhiisani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Hantuuta baareerra taa&#x27;u, baarreef jecha dhiisani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hantuuta baareerra taa'u, baarreef jecha dhiisani")">COPY</button>
     <button onclick="shareText(this, "Hantuuta baareerra taa'u, baarreef jecha dhiisani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hatticha lammichaaf dhabani">
+<div class="proverb-card" data-text="hatticha lammichaaf dhabani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Hatticha lammichaaf dhabani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hatticha lammichaaf dhabani")">COPY</button>
     <button onclick="shareText(this, "Hatticha lammichaaf dhabani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hamma feete dulloomtu, habaleen kuchoo hin hanqattu">
+<div class="proverb-card" data-text="hamma feete dulloomtu, habaleen kuchoo hin hanqattu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Hamma feete dulloomtu, habaleen kuchoo hin hanqattu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hamma feete dulloomtu, habaleen kuchoo hin hanqattu")">COPY</button>
     <button onclick="shareText(this, "Hamma feete dulloomtu, habaleen kuchoo hin hanqattu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hangafa doofe, quxisuu karra dhaala">
+<div class="proverb-card" data-text="hangafa doofe, quxisuu karra dhaala makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Hangafa doofe, quxisuu karra dhaala</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hangafa doofe, quxisuu karra dhaala")">COPY</button>
     <button onclick="shareText(this, "Hangafa doofe, quxisuu karra dhaala")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="handaaqqoo ija diddiiminni, hanga risaan gaaraa bu&#x27;uti">
+<div class="proverb-card" data-text="handaaqqoo ija diddiiminni, hanga risaan gaaraa bu&#x27;uti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Handaaqqoo ija diddiiminni, hanga risaan gaaraa bu&#x27;uti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Handaaqqoo ija diddiiminni, hanga risaan gaaraa bu'uti")">COPY</button>
     <button onclick="shareText(this, "Handaaqqoo ija diddiiminni, hanga risaan gaaraa bu'uti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hantuutni qalbii qabdu, warra manaa wajjiin nyaatti">
+<div class="proverb-card" data-text="hantuutni qalbii qabdu, warra manaa wajjiin nyaatti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Hantuutni qalbii qabdu, warra manaa wajjiin nyaatti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hantuutni qalbii qabdu, warra manaa wajjiin nyaatti")">COPY</button>
     <button onclick="shareText(this, "Hantuutni qalbii qabdu, warra manaa wajjiin nyaatti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="harreen fincaanuu hin oolle, fincaannaan illee eegee hin tolle">
+<div class="proverb-card" data-text="harreen fincaanuu hin oolle, fincaannaan illee eegee hin tolle makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Harreen fincaanuu hin oolle, fincaannaan illee eegee hin tolle</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Harreen fincaanuu hin oolle, fincaannaan illee eegee hin tolle")">COPY</button>
     <button onclick="shareText(this, "Harreen fincaanuu hin oolle, fincaannaan illee eegee hin tolle")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;harreen baddee waan gaari himtanii, habalee fi waraanaan dirmadhaa, waan hamtu himtani&quot; je&#x27;e waraabessi">
+<div class="proverb-card" data-text="&quot;harreen baddee waan gaari himtanii, habalee fi waraanaan dirmadhaa, waan hamtu himtani&quot; je&#x27;e waraabessi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">&quot;Harreen baddee waan gaari himtanii, habalee fi waraanaan dirmadhaa, waan hamtu himtani&quot; je&#x27;e waraabessi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Harreen baddee waan gaari himtanii, habalee fi waraanaan dirmadhaa, waan hamtu himtani\" je'e waraabessi")">COPY</button>
     <button onclick="shareText(this, "\"Harreen baddee waan gaari himtanii, habalee fi waraanaan dirmadhaa, waan hamtu himtani\" je'e waraabessi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;har&quot; jennaan harreen gurra dhaabde">
+<div class="proverb-card" data-text="&quot;har&quot; jennaan harreen gurra dhaabde makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">&quot;Har&quot; jennaan harreen gurra dhaabde</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Har\" jennaan harreen gurra dhaabde")">COPY</button>
     <button onclick="shareText(this, "\"Har\" jennaan harreen gurra dhaabde")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="harka dhiqatan, garaan jaalata">
+<div class="proverb-card" data-text="harka dhiqatan, garaan jaalata makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Harka dhiqatan, garaan jaalata</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Harka dhiqatan, garaan jaalata")">COPY</button>
     <button onclick="shareText(this, "Harka dhiqatan, garaan jaalata")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="harraagessa lama hin darbatani">
+<div class="proverb-card" data-text="harraagessa lama hin darbatani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Harraagessa lama hin darbatani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Harraagessa lama hin darbatani")">COPY</button>
     <button onclick="shareText(this, "Harraagessa lama hin darbatani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;harreen badde&quot; jennaan, bakka itti hin feene dhaqxi jedhe">
+<div class="proverb-card" data-text="&quot;harreen badde&quot; jennaan, bakka itti hin feene dhaqxi jedhe makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">&quot;Harreen badde&quot; jennaan, bakka itti hin feene dhaqxi jedhe</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Harreen badde\" jennaan, bakka itti hin feene dhaqxi jedhe")">COPY</button>
     <button onclick="shareText(this, "\"Harreen badde\" jennaan, bakka itti hin feene dhaqxi jedhe")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="heelleen beeratti burraaqa">
+<div class="proverb-card" data-text="heelleen beeratti burraaqa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Heelleen beeratti burraaqa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Heelleen beeratti burraaqa")">COPY</button>
     <button onclick="shareText(this, "Heelleen beeratti burraaqa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="heera badaa, mataa ofiitiif dhabani">
+<div class="proverb-card" data-text="heera badaa, mataa ofiitiif dhabani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Heera badaa, mataa ofiitiif dhabani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Heera badaa, mataa ofiitiif dhabani")">COPY</button>
     <button onclick="shareText(this, "Heera badaa, mataa ofiitiif dhabani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="heera badaa, abba mursiisani">
+<div class="proverb-card" data-text="heera badaa, abba mursiisani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Heera badaa, abba mursiisani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Heera badaa, abba mursiisani")">COPY</button>
     <button onclick="shareText(this, "Heera badaa, abba mursiisani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="heera qomaaf kaaye, adurreen hin fuune">
+<div class="proverb-card" data-text="heera qomaaf kaaye, adurreen hin fuune makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Heera qomaaf kaaye, adurreen hin fuune</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Heera qomaaf kaaye, adurreen hin fuune")">COPY</button>
     <button onclick="shareText(this, "Heera qomaaf kaaye, adurreen hin fuune")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hijaan (haluun) qoree dhoqqee keessaati">
+<div class="proverb-card" data-text="hijaan (haluun) qoree dhoqqee keessaati makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Hijaan (haluun) qoree dhoqqee keessaati</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hijaan (haluun) qoree dhoqqee keessaati")">COPY</button>
     <button onclick="shareText(this, "Hijaan (haluun) qoree dhoqqee keessaati")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="himachuu wallaaltee, daanyaa komatte">
+<div class="proverb-card" data-text="himachuu wallaaltee, daanyaa komatte makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Himachuu wallaaltee, daanyaa komatte</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Himachuu wallaaltee, daanyaa komatte")">COPY</button>
     <button onclick="shareText(this, "Himachuu wallaaltee, daanyaa komatte")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hin barihu jetteeti manatti udaante, bariinaan waliin rakkatte">
+<div class="proverb-card" data-text="hin barihu jetteeti manatti udaante, bariinaan waliin rakkatte makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Hin barihu jetteeti manatti udaante, bariinaan waliin rakkatte</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hin barihu jetteeti manatti udaante, bariinaan waliin rakkatte")">COPY</button>
     <button onclick="shareText(this, "Hin barihu jetteeti manatti udaante, bariinaan waliin rakkatte")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hirriibni obboleessa du&#x27;aati">
+<div class="proverb-card" data-text="hirriibni obboleessa du&#x27;aati makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Hirriibni obboleessa du&#x27;aati</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hirriibni obboleessa du'aati")">COPY</button>
     <button onclick="shareText(this, "Hirriibni obboleessa du'aati")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hoojjaan ganaana jimaati">
+<div class="proverb-card" data-text="hoojjaan ganaana jimaati makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Hoojjaan ganaana jimaati</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hoojjaan ganaana jimaati")">COPY</button>
     <button onclick="shareText(this, "Hoojjaan ganaana jimaati")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="horiin abbaa hedduu, alaa hin galle">
+<div class="proverb-card" data-text="horiin abbaa hedduu, alaa hin galle makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Horiin abbaa hedduu, alaa hin galle</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Horiin abbaa hedduu, alaa hin galle")">COPY</button>
     <button onclick="shareText(this, "Horiin abbaa hedduu, alaa hin galle")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="horiin abbaa hedduu, baqa hin bahu">
+<div class="proverb-card" data-text="horiin abbaa hedduu, baqa hin bahu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Horiin abbaa hedduu, baqa hin bahu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Horiin abbaa hedduu, baqa hin bahu")">COPY</button>
     <button onclick="shareText(this, "Horiin abbaa hedduu, baqa hin bahu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="horru horarratti, deegnu magaalatti wali dhufna">
+<div class="proverb-card" data-text="horru horarratti, deegnu magaalatti wali dhufna makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Horru horarratti, deegnu magaalatti wali dhufna</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Horru horarratti, deegnu magaalatti wali dhufna")">COPY</button>
     <button onclick="shareText(this, "Horru horarratti, deegnu magaalatti wali dhufna")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="hudduu abbaan kenne, alagaan solloysee mura">
+<div class="proverb-card" data-text="hudduu abbaan kenne, alagaan solloysee mura makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Hudduu abbaan kenne, alagaan solloysee mura</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Hudduu abbaan kenne, alagaan solloysee mura")">COPY</button>
     <button onclick="shareText(this, "Hudduu abbaan kenne, alagaan solloysee mura")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ibidda jibrii seene, dhaamsuun nama dhiba">
+<div class="proverb-card" data-text="ibidda jibrii seene, dhaamsuun nama dhiba makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ibidda jibrii seene, dhaamsuun nama dhiba</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ibidda jibrii seene, dhaamsuun nama dhiba")">COPY</button>
     <button onclick="shareText(this, "Ibidda jibrii seene, dhaamsuun nama dhiba")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ifirra dhaabii laali jette oborraan">
+<div class="proverb-card" data-text="ifirra dhaabii laali jette oborraan makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ifirra dhaabii laali jette oborraan</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ifirra dhaabii laali jette oborraan")">COPY</button>
     <button onclick="shareText(this, "Ifirra dhaabii laali jette oborraan")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ihi, ihii tokko dubbiin tolfataa, tokko duubbii dha">
+<div class="proverb-card" data-text="ihi, ihii tokko dubbiin tolfataa, tokko duubbii dha makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ihi, ihii tokko dubbiin tolfataa, tokko duubbii dha</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ihi, ihii tokko dubbiin tolfataa, tokko duubbii dha")">COPY</button>
     <button onclick="shareText(this, "Ihi, ihii tokko dubbiin tolfataa, tokko duubbii dha")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ijaa fi firummaa, waan xiqqootu balleessa">
+<div class="proverb-card" data-text="ijaa fi firummaa, waan xiqqootu balleessa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ijaa fi firummaa, waan xiqqootu balleessa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ijaa fi firummaa, waan xiqqootu balleessa")">COPY</button>
     <button onclick="shareText(this, "Ijaa fi firummaa, waan xiqqootu balleessa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ijaan qalaan, gogaa hin muru">
+<div class="proverb-card" data-text="ijaan qalaan, gogaa hin muru makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ijaan qalaan, gogaa hin muru</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ijaan qalaan, gogaa hin muru")">COPY</button>
     <button onclick="shareText(this, "Ijaan qalaan, gogaa hin muru")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ijji osoo wal agartee, lafa namaa hin agartu">
+<div class="proverb-card" data-text="ijji osoo wal agartee, lafa namaa hin agartu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ijji osoo wal agartee, lafa namaa hin agartu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ijji osoo wal agartee, lafa namaa hin agartu")">COPY</button>
     <button onclick="shareText(this, "Ijji osoo wal agartee, lafa namaa hin agartu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ilkeen nama hundaanuu fira">
+<div class="proverb-card" data-text="ilkeen nama hundaanuu fira makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ilkeen nama hundaanuu fira</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ilkeen nama hundaanuu fira")">COPY</button>
     <button onclick="shareText(this, "Ilkeen nama hundaanuu fira")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ilmi dulloomeeti, abbaan lafa qota">
+<div class="proverb-card" data-text="ilmi dulloomeeti, abbaan lafa qota makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ilmi dulloomeeti, abbaan lafa qota</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ilmi dulloomeeti, abbaan lafa qota")">COPY</button>
     <button onclick="shareText(this, "Ilmi dulloomeeti, abbaan lafa qota")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="intala haadhaa fi, akkoo jiddutti ergaramte">
+<div class="proverb-card" data-text="intala haadhaa fi, akkoo jiddutti ergaramte makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Intala haadhaa fi, akkoo jiddutti ergaramte</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Intala haadhaa fi, akkoo jiddutti ergaramte")">COPY</button>
     <button onclick="shareText(this, "Intala haadhaa fi, akkoo jiddutti ergaramte")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="intalli akka hin qabne, akka ofii himatti">
+<div class="proverb-card" data-text="intalli akka hin qabne, akka ofii himatti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Intalli akka hin qabne, akka ofii himatti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Intalli akka hin qabne, akka ofii himatti")">COPY</button>
     <button onclick="shareText(this, "Intalli akka hin qabne, akka ofii himatti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="isiin hammaattu, hamtu dha jedha">
+<div class="proverb-card" data-text="isiin hammaattu, hamtu dha jedha makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Isiin hammaattu, hamtu dha jedha</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Isiin hammaattu, hamtu dha jedha")">COPY</button>
     <button onclick="shareText(this, "Isiin hammaattu, hamtu dha jedha")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="itti hagooggiin dhungoo hin taatu">
+<div class="proverb-card" data-text="itti hagooggiin dhungoo hin taatu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Itti hagooggiin dhungoo hin taatu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Itti hagooggiin dhungoo hin taatu")">COPY</button>
     <button onclick="shareText(this, "Itti hagooggiin dhungoo hin taatu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="jaaruu malee, diiguun nama hin dhibu">
-  <div class="qm">&#10077;</div>
-  <div class="section">MAKAA</div>
-  <div class="text">Jaaruu malee, diiguun nama hin dhibu</div>
-  <div class="actions">
-    <button onclick="copyText(this, "Jaaruu malee, diiguun nama hin dhibu")">COPY</button>
-    <button onclick="shareText(this, "Jaaruu malee, diiguun nama hin dhibu")">SHARE</button>
-  </div>
-</div>
-<div class="proverb-card" data-text="jaartiin akkuma beekanitti of fannisani jette">
+<div class="proverb-card" data-text="jaartiin akkuma beekanitti of fannisani jette makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Jaartiin akkuma beekanitti of fannisani jette</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Jaartiin akkuma beekanitti of fannisani jette")">COPY</button>
     <button onclick="shareText(this, "Jaartiin akkuma beekanitti of fannisani jette")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="jabaan jannata falma">
+<div class="proverb-card" data-text="jabaan jannata falma makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Jabaan jannata falma</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Jabaan jannata falma")">COPY</button>
     <button onclick="shareText(this, "Jabaan jannata falma")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="jabaan gabbara haadhaa falma, laafaan kan obboleettii wallaala">
+<div class="proverb-card" data-text="jabaan gabbara haadhaa falma, laafaan kan obboleettii wallaala makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Jabaan gabbara haadhaa falma, laafaan kan obboleettii wallaala</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Jabaan gabbara haadhaa falma, laafaan kan obboleettii wallaala")">COPY</button>
     <button onclick="shareText(this, "Jabaan gabbara haadhaa falma, laafaan kan obboleettii wallaala")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="jazbaa fi sareen ganama rafti">
+<div class="proverb-card" data-text="jazbaa fi sareen ganama rafti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Jazbaa fi sareen ganama rafti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Jazbaa fi sareen ganama rafti")">COPY</button>
     <button onclick="shareText(this, "Jazbaa fi sareen ganama rafti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="jiini waan halkanii hin dhabu">
+<div class="proverb-card" data-text="jiini waan halkanii hin dhabu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Jiini waan halkanii hin dhabu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Jiini waan halkanii hin dhabu")">COPY</button>
     <button onclick="shareText(this, "Jiini waan halkanii hin dhabu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="jimaa fi maraataa hidha jabeessani">
+<div class="proverb-card" data-text="jimaa fi maraataa hidha jabeessani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Jimaa fi maraataa hidha jabeessani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Jimaa fi maraataa hidha jabeessani")">COPY</button>
     <button onclick="shareText(this, "Jimaa fi maraataa hidha jabeessani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="joolleen maqaa barte, tuutaa keessa yaamti">
+<div class="proverb-card" data-text="joolleen maqaa barte, tuutaa keessa yaamti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Joolleen maqaa barte, tuutaa keessa yaamti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Joolleen maqaa barte, tuutaa keessa yaamti")">COPY</button>
     <button onclick="shareText(this, "Joolleen maqaa barte, tuutaa keessa yaamti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="joollee fi fuulli dhoksaa hin qabani">
+<div class="proverb-card" data-text="joollee fi fuulli dhoksaa hin qabani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Joollee fi fuulli dhoksaa hin qabani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Joollee fi fuulli dhoksaa hin qabani")">COPY</button>
     <button onclick="shareText(this, "Joollee fi fuulli dhoksaa hin qabani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kabiirri heddummaatu, dhukkubsataan ni du&#x27;a">
+<div class="proverb-card" data-text="kabiirri heddummaatu, dhukkubsataan ni du&#x27;a makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kabiirri heddummaatu, dhukkubsataan ni du&#x27;a</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kabiirri heddummaatu, dhukkubsataan ni du'a")">COPY</button>
     <button onclick="shareText(this, "Kabiirri heddummaatu, dhukkubsataan ni du'a")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kadiir lama hin deebi&#x27;u">
+<div class="proverb-card" data-text="kadiir lama hin deebi&#x27;u makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">kadiir lama hin deebi&#x27;u</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "kadiir lama hin deebi'u")">COPY</button>
     <button onclick="shareText(this, "kadiir lama hin deebi'u")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kakachuu fi abaaruun, tokkummaa sheeyxaanaati">
+<div class="proverb-card" data-text="kakachuu fi abaaruun, tokkummaa sheeyxaanaati makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kakachuu fi abaaruun, tokkummaa sheeyxaanaati</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kakachuu fi abaaruun, tokkummaa sheeyxaanaati")">COPY</button>
     <button onclick="shareText(this, "Kakachuu fi abaaruun, tokkummaa sheeyxaanaati")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan dhiqaniitu nama dhiqa jette qoriin">
+<div class="proverb-card" data-text="kan dhiqaniitu nama dhiqa jette qoriin makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan dhiqaniitu nama dhiqa jette qoriin</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan dhiqaniitu nama dhiqa jette qoriin")">COPY</button>
     <button onclick="shareText(this, "Kan dhiqaniitu nama dhiqa jette qoriin")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan alaa guntaa, kan manaa mancaa">
+<div class="proverb-card" data-text="kan alaa guntaa, kan manaa mancaa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan alaa guntaa, kan manaa mancaa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan alaa guntaa, kan manaa mancaa")">COPY</button>
     <button onclick="shareText(this, "Kan alaa guntaa, kan manaa mancaa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan dura ol seene, balbala namatti cufa">
+<div class="proverb-card" data-text="kan dura ol seene, balbala namatti cufa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">kan dura ol seene, balbala namatti cufa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "kan dura ol seene, balbala namatti cufa")">COPY</button>
     <button onclick="shareText(this, "kan dura ol seene, balbala namatti cufa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan eessa geessu, bakkalchi bariisaa baati">
+<div class="proverb-card" data-text="kan eessa geessu, bakkalchi bariisaa baati makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan eessa geessu, bakkalchi bariisaa baati</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan eessa geessu, bakkalchi bariisaa baati")">COPY</button>
     <button onclick="shareText(this, "Kan eessa geessu, bakkalchi bariisaa baati")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan ajjeechaaf dhufe, huccuu darbaniif hin deebi&#x27;u">
+<div class="proverb-card" data-text="kan ajjeechaaf dhufe, huccuu darbaniif hin deebi&#x27;u makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan ajjeechaaf dhufe, huccuu darbaniif hin deebi&#x27;u</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan ajjeechaaf dhufe, huccuu darbaniif hin deebi'u")">COPY</button>
     <button onclick="shareText(this, "Kan ajjeechaaf dhufe, huccuu darbaniif hin deebi'u")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="jan hin maraanne hoolaa dha, kan maraachuu hin oolle saree dha">
+<div class="proverb-card" data-text="jan hin maraanne hoolaa dha, kan maraachuu hin oolle saree dha makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Jan hin maraanne hoolaa dha, kan maraachuu hin oolle saree dha</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Jan hin maraanne hoolaa dha, kan maraachuu hin oolle saree dha")">COPY</button>
     <button onclick="shareText(this, "Jan hin maraanne hoolaa dha, kan maraachuu hin oolle saree dha")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan hiyyeessaa kenne, alata waaqaa argata">
+<div class="proverb-card" data-text="kan hiyyeessaa kenne, alata waaqaa argata makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan hiyyeessaa kenne, alata waaqaa argata</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan hiyyeessaa kenne, alata waaqaa argata")">COPY</button>
     <button onclick="shareText(this, "Kan hiyyeessaa kenne, alata waaqaa argata")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan garaa lixe, obboleessi hin dhaalu">
+<div class="proverb-card" data-text="kan garaa lixe, obboleessi hin dhaalu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">kan garaa lixe, obboleessi hin dhaalu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "kan garaa lixe, obboleessi hin dhaalu")">COPY</button>
     <button onclick="shareText(this, "kan garaa lixe, obboleessi hin dhaalu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan gaalli garboo elmamu callisee dheedu, re&#x27;eettiin copha dheengee hin geenyeef dhadhaabbata nama kutti">
+<div class="proverb-card" data-text="kan gaalli garboo elmamu callisee dheedu, re&#x27;eettiin copha dheengee hin geenyeef dhadhaabbata nama kutti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan gaalli garboo elmamu callisee dheedu, re&#x27;eettiin copha dheengee hin geenyeef dhadhaabbata nama kutti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan gaalli garboo elmamu callisee dheedu, re'eettiin copha dheengee hin geenyeef dhadhaabbata nama kutti")">COPY</button>
     <button onclick="shareText(this, "Kan gaalli garboo elmamu callisee dheedu, re'eettiin copha dheengee hin geenyeef dhadhaabbata nama kutti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan ergaa dhaqee afaan haxaawwaterra, kan ergaa didee hudduu haxaawwate wayya">
+<div class="proverb-card" data-text="kan ergaa dhaqee afaan haxaawwaterra, kan ergaa didee hudduu haxaawwate wayya makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan ergaa dhaqee afaan haxaawwaterra, kan ergaa didee hudduu haxaawwate wayya</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan ergaa dhaqee afaan haxaawwaterra, kan ergaa didee hudduu haxaawwate wayya")">COPY</button>
     <button onclick="shareText(this, "Kan ergaa dhaqee afaan haxaawwaterra, kan ergaa didee hudduu haxaawwate wayya")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan galli kee hin oolle, manni kee onaa?">
+<div class="proverb-card" data-text="kan galli kee hin oolle, manni kee onaa? makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan galli kee hin oolle, manni kee onaa?</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan galli kee hin oolle, manni kee onaa?")">COPY</button>
     <button onclick="shareText(this, "Kan galli kee hin oolle, manni kee onaa?")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan ofii bakka bulu hin qabneetu, keessummaa yaammata">
+<div class="proverb-card" data-text="kan ofii bakka bulu hin qabneetu, keessummaa yaammata makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan ofii bakka bulu hin qabneetu, Keessummaa yaammata</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan ofii bakka bulu hin qabneetu, Keessummaa yaammata")">COPY</button>
     <button onclick="shareText(this, "Kan ofii bakka bulu hin qabneetu, Keessummaa yaammata")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan tokko hin guunne, lama qoraafatti">
+<div class="proverb-card" data-text="kan tokko hin guunne, lama qoraafatti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan tokko hin guunne, lama qoraafatti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan tokko hin guunne, lama qoraafatti")">COPY</button>
     <button onclick="shareText(this, "Kan tokko hin guunne, lama qoraafatti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan muka nyaatee fi kan mutaa nyaate waluma qixa">
+<div class="proverb-card" data-text="kan muka nyaatee fi kan mutaa nyaate waluma qixa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan muka nyaatee fi kan mutaa nyaate waluma qixa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan muka nyaatee fi kan mutaa nyaate waluma qixa")">COPY</button>
     <button onclick="shareText(this, "Kan muka nyaatee fi kan mutaa nyaate waluma qixa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan itti goomtu, udaan irra taa&#x27;ee wallisa">
+<div class="proverb-card" data-text="kan itti goomtu, udaan irra taa&#x27;ee wallisa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan itti goomtu, udaan irra taa&#x27;ee wallisa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan itti goomtu, udaan irra taa'ee wallisa")">COPY</button>
     <button onclick="shareText(this, "Kan itti goomtu, udaan irra taa'ee wallisa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan taa&#x27;anii fannisan, dhaabbatanii fuudhuun nama dhiba">
+<div class="proverb-card" data-text="kan taa&#x27;anii fannisan, dhaabbatanii fuudhuun nama dhiba makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan taa&#x27;anii fannisan, dhaabbatanii fuudhuun nama dhiba</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan taa'anii fannisan, dhaabbatanii fuudhuun nama dhiba")">COPY</button>
     <button onclick="shareText(this, "Kan taa'anii fannisan, dhaabbatanii fuudhuun nama dhiba")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan taa&#x27;ee dadhabe, dhangalaasee guura">
+<div class="proverb-card" data-text="kan taa&#x27;ee dadhabe, dhangalaasee guura makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan taa&#x27;ee dadhabe, dhangalaasee guura</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan taa'ee dadhabe, dhangalaasee guura")">COPY</button>
     <button onclick="shareText(this, "Kan taa'ee dadhabe, dhangalaasee guura")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan quuqaa nama fudhachiise, dhaga nama ba&#x27;achiisa">
+<div class="proverb-card" data-text="kan quuqaa nama fudhachiise, dhaga nama ba&#x27;achiisa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan quuqaa nama fudhachiise, dhaga nama ba&#x27;achiisa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan quuqaa nama fudhachiise, dhaga nama ba'achiisa")">COPY</button>
     <button onclick="shareText(this, "Kan quuqaa nama fudhachiise, dhaga nama ba'achiisa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kan waaqatti amanu, agabuu hin bulu">
+<div class="proverb-card" data-text="kan waaqatti amanu, agabuu hin bulu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kan waaqatti amanu, agabuu hin bulu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kan waaqatti amanu, agabuu hin bulu")">COPY</button>
     <button onclick="shareText(this, "Kan waaqatti amanu, agabuu hin bulu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kanniisni ciniinsaan nama aarsee, dammaan nama araarsa">
+<div class="proverb-card" data-text="kanniisni ciniinsaan nama aarsee, dammaan nama araarsa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kanniisni ciniinsaan nama aarsee, dammaan nama araarsa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kanniisni ciniinsaan nama aarsee, dammaan nama araarsa")">COPY</button>
     <button onclick="shareText(this, "Kanniisni ciniinsaan nama aarsee, dammaan nama araarsa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kanniisarraa dammaatu argama, nagayarraa jaalalaatu argama">
+<div class="proverb-card" data-text="kanniisarraa dammaatu argama, nagayarraa jaalalaatu argama makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">kanniisarraa dammaatu argama, nagayarraa jaalalaatu argama</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "kanniisarraa dammaatu argama, nagayarraa jaalalaatu argama")">COPY</button>
     <button onclick="shareText(this, "kanniisarraa dammaatu argama, nagayarraa jaalalaatu argama")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kanniisa damma mi&#x27;azwaa tolchu tahuuaatu, tiiticha damma san balleessu hin tahin">
+<div class="proverb-card" data-text="kanniisa damma mi&#x27;azwaa tolchu tahuuaatu, tiiticha damma san balleessu hin tahin makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kanniisa damma mi&#x27;azwaa tolchu tahuuaatu, tiiticha damma san balleessu hin tahin</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kanniisa damma mi'azwaa tolchu tahuuaatu, tiiticha damma san balleessu hin tahin")">COPY</button>
     <button onclick="shareText(this, "Kanniisa damma mi'azwaa tolchu tahuuaatu, tiiticha damma san balleessu hin tahin")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="karaa dhufan waa hin galani jedhe jaarsi">
+<div class="proverb-card" data-text="karaa dhufan waa hin galani jedhe jaarsi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Karaa dhufan waa hin galani jedhe jaarsi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Karaa dhufan waa hin galani jedhe jaarsi")">COPY</button>
     <button onclick="shareText(this, "Karaa dhufan waa hin galani jedhe jaarsi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="karaa mana&#x27;rraa fuudhu, dubbii afaanirraa fuudhu">
+<div class="proverb-card" data-text="karaa mana&#x27;rraa fuudhu, dubbii afaanirraa fuudhu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Karaa mana&#x27;rraa fuudhu, dubbii afaanirraa fuudhu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Karaa mana'rraa fuudhu, dubbii afaanirraa fuudhu")">COPY</button>
     <button onclick="shareText(this, "Karaa mana'rraa fuudhu, dubbii afaanirraa fuudhu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="karran dheeraan, jilba nama cabsa">
+<div class="proverb-card" data-text="karran dheeraan, jilba nama cabsa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Karran dheeraan, jilba nama cabsa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Karran dheeraan, jilba nama cabsa")">COPY</button>
     <button onclick="shareText(this, "Karran dheeraan, jilba nama cabsa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="keessummaan durri fuulaa nyaanni kuula">
-  <div class="qm">&#10077;</div>
-  <div class="section">MAKAA</div>
-  <div class="text">Keessummaan durri fuulaa nyaanni kuula</div>
-  <div class="actions">
-    <button onclick="copyText(this, "Keessummaan durri fuulaa nyaanni kuula")">COPY</button>
-    <button onclick="shareText(this, "Keessummaan durri fuulaa nyaanni kuula")">SHARE</button>
-  </div>
-</div>
-<div class="proverb-card" data-text="keeyrii karaan labbaa dha">
+<div class="proverb-card" data-text="keeyrii karaan labbaa dha makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Keeyrii karaan labbaa dha</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Keeyrii karaan labbaa dha")">COPY</button>
     <button onclick="shareText(this, "Keeyrii karaan labbaa dha")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kokkoflii taphadhu, garaan madaa hin dhabuu">
-  <div class="qm">&#10077;</div>
-  <div class="section">MAKAA</div>
-  <div class="text">Kokkoflii taphadhu, garaan madaa hin dhabuu</div>
-  <div class="actions">
-    <button onclick="copyText(this, "Kokkoflii taphadhu, garaan madaa hin dhabuu")">COPY</button>
-    <button onclick="shareText(this, "Kokkoflii taphadhu, garaan madaa hin dhabuu")">SHARE</button>
-  </div>
-</div>
-<div class="proverb-card" data-text="kashlabiin guuza hin taatu">
+<div class="proverb-card" data-text="kashlabiin guuza hin taatu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kashlabiin guuza hin taatu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kashlabiin guuza hin taatu")">COPY</button>
     <button onclick="shareText(this, "Kashlabiin guuza hin taatu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="karaan goojjoo fi manni dhaalaa duuduu hin oolu">
+<div class="proverb-card" data-text="karaan goojjoo fi manni dhaalaa duuduu hin oolu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">karaan goojjoo fi manni dhaalaa duuduu hin oolu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "karaan goojjoo fi manni dhaalaa duuduu hin oolu")">COPY</button>
     <button onclick="shareText(this, "karaan goojjoo fi manni dhaalaa duuduu hin oolu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="karri qotaa bana bula">
+<div class="proverb-card" data-text="karri qotaa bana bula makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Karri qotaa bana bula</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Karri qotaa bana bula")">COPY</button>
     <button onclick="shareText(this, "Karri qotaa bana bula")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="korma hamaa, hokkola keessa moohani">
+<div class="proverb-card" data-text="korma hamaa, hokkola keessa moohani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Korma hamaa, hokkola keessa moohani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Korma hamaa, hokkola keessa moohani")">COPY</button>
     <button onclick="shareText(this, "Korma hamaa, hokkola keessa moohani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="kuruphoon takka dhaltii ree&#x27;een teenya hin dhaga&#x27;in">
+<div class="proverb-card" data-text="kuruphoon takka dhaltii ree&#x27;een teenya hin dhaga&#x27;in makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Kuruphoon takka dhaltii ree&#x27;een teenya hin dhaga&#x27;in</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Kuruphoon takka dhaltii ree'een teenya hin dhaga'in")">COPY</button>
     <button onclick="shareText(this, "Kuruphoon takka dhaltii ree'een teenya hin dhaga'in")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="lama na hin fuunfattani jette jaartiin qullubbii hatte">
+<div class="proverb-card" data-text="lama na hin fuunfattani jette jaartiin qullubbii hatte makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Lama na hin fuunfattani jette jaartiin qullubbii hatte</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Lama na hin fuunfattani jette jaartiin qullubbii hatte")">COPY</button>
     <button onclick="shareText(this, "Lama na hin fuunfattani jette jaartiin qullubbii hatte")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="leenca ajjeesuuf gara lolaa">
+<div class="proverb-card" data-text="leenca ajjeesuuf gara lolaa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Leenca ajjeesuuf gara lolaa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Leenca ajjeesuuf gara lolaa")">COPY</button>
     <button onclick="shareText(this, "Leenca ajjeesuuf gara lolaa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="lip liphii aduutu, amna nama fuusisa">
+<div class="proverb-card" data-text="lip liphii aduutu, amna nama fuusisa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Lip liphii aduutu, amna nama fuusisa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Lip liphii aduutu, amna nama fuusisa")">COPY</button>
     <button onclick="shareText(this, "Lip liphii aduutu, amna nama fuusisa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="lolli dura ijaan dhufa">
+<div class="proverb-card" data-text="lolli dura ijaan dhufa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Lolli dura ijaan dhufa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Lolli dura ijaan dhufa")">COPY</button>
     <button onclick="shareText(this, "Lolli dura ijaan dhufa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="lolli qotataa fi haqqisaan gaaf gaafi">
+<div class="proverb-card" data-text="lolli qotataa fi haqqisaan gaaf gaafi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Lolli qotataa fi haqqisaan gaaf gaafi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Lolli qotataa fi haqqisaan gaaf gaafi")">COPY</button>
     <button onclick="shareText(this, "Lolli qotataa fi haqqisaan gaaf gaafi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="lolli qeerransaa, abbaa re&#x27;ee irratti laallatani">
+<div class="proverb-card" data-text="lolli qeerransaa, abbaa re&#x27;ee irratti laallatani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Lolli qeerransaa, abbaa re&#x27;ee irratti laallatani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Lolli qeerransaa, abbaa re'ee irratti laallatani")">COPY</button>
     <button onclick="shareText(this, "Lolli qeerransaa, abbaa re'ee irratti laallatani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="lola qeerransaa, abbaan re&#x27;ee irratti laallatani">
+<div class="proverb-card" data-text="lola qeerransaa, abbaan re&#x27;ee irratti laallatani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Lola qeerransaa, abbaan re&#x27;ee irratti laallatani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Lola qeerransaa, abbaan re'ee irratti laallatani")">COPY</button>
     <button onclick="shareText(this, "Lola qeerransaa, abbaan re'ee irratti laallatani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="lubbuu fi lukkuun wal hin fakkaatani">
+<div class="proverb-card" data-text="lubbuu fi lukkuun wal hin fakkaatani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Lubbuu fi lukkuun wal hin fakkaatani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Lubbuu fi lukkuun wal hin fakkaatani")">COPY</button>
     <button onclick="shareText(this, "Lubbuu fi lukkuun wal hin fakkaatani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="lubbuun tun illimaa, si kajeeltu cooma, qicaadhu qirima">
+<div class="proverb-card" data-text="lubbuun tun illimaa, si kajeeltu cooma, qicaadhu qirima makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Lubbuun tun illimaa, si kajeeltu cooma, qicaadhu qirima</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Lubbuun tun illimaa, si kajeeltu cooma, qicaadhu qirima")">COPY</button>
     <button onclick="shareText(this, "Lubbuun tun illimaa, si kajeeltu cooma, qicaadhu qirima")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="lubbuun fayyaa dhabde jennaan, tiruu re&#x27;ee liqimsiisaa jedhe">
+<div class="proverb-card" data-text="lubbuun fayyaa dhabde jennaan, tiruu re&#x27;ee liqimsiisaa jedhe makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Lubbuun fayyaa dhabde jennaan, tiruu re&#x27;ee liqimsiisaa jedhe</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Lubbuun fayyaa dhabde jennaan, tiruu re'ee liqimsiisaa jedhe")">COPY</button>
     <button onclick="shareText(this, "Lubbuun fayyaa dhabde jennaan, tiruu re'ee liqimsiisaa jedhe")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="lukkuun fayyaa dhabde jennaan, tiruu re&#x27;ee liqimsiisaa jedhe">
+<div class="proverb-card" data-text="lukkuun fayyaa dhabde jennaan, tiruu re&#x27;ee liqimsiisaa jedhe makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Lukkuun fayyaa dhabde jennaan, tiruu re&#x27;ee liqimsiisaa jedhe</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Lukkuun fayyaa dhabde jennaan, tiruu re'ee liqimsiisaa jedhe")">COPY</button>
     <button onclick="shareText(this, "Lukkuun fayyaa dhabde jennaan, tiruu re'ee liqimsiisaa jedhe")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="malaan nyaataa, afaan daymarra mi&#x27;aawa">
+<div class="proverb-card" data-text="malaan nyaataa, afaan daymarra mi&#x27;aawa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Malaan nyaataa, afaan daymarra mi&#x27;aawa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Malaan nyaataa, afaan daymarra mi'aawa")">COPY</button>
     <button onclick="shareText(this, "Malaan nyaataa, afaan daymarra mi'aawa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="manni citaa rooba hin dahu">
+<div class="proverb-card" data-text="manni citaa rooba hin dahu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Manni citaa rooba hin dahu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Manni citaa rooba hin dahu")">COPY</button>
     <button onclick="shareText(this, "Manni citaa rooba hin dahu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="marqaa fi aduun dhukkuba hin qabani">
+<div class="proverb-card" data-text="marqaa fi aduun dhukkuba hin qabani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Marqaa fi aduun dhukkuba hin qabani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Marqaa fi aduun dhukkuba hin qabani")">COPY</button>
     <button onclick="shareText(this, "Marqaa fi aduun dhukkuba hin qabani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="marsaa sirboo, ayliin laallachaa sirboo je&#x27;e hantutni">
+<div class="proverb-card" data-text="marsaa sirboo, ayliin laallachaa sirboo je&#x27;e hantutni makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Marsaa sirboo, ayliin laallachaa sirboo je&#x27;e hantutni</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Marsaa sirboo, ayliin laallachaa sirboo je'e hantutni")">COPY</button>
     <button onclick="shareText(this, "Marsaa sirboo, ayliin laallachaa sirboo je'e hantutni")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="mataa buletti imaamata marani">
+<div class="proverb-card" data-text="mataa buletti imaamata marani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Mataa buletti imaamata marani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Mataa buletti imaamata marani")">COPY</button>
     <button onclick="shareText(this, "Mataa buletti imaamata marani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="midhaan ambaa daggalaa, mucaan ambaa qancara">
+<div class="proverb-card" data-text="midhaan ambaa daggalaa, mucaan ambaa qancara makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Midhaan ambaa daggalaa, mucaan ambaa qancara</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Midhaan ambaa daggalaa, mucaan ambaa qancara")">COPY</button>
     <button onclick="shareText(this, "Midhaan ambaa daggalaa, mucaan ambaa qancara")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="midhaan bulchani malee, dalagaa hin bulchani">
+<div class="proverb-card" data-text="midhaan bulchani malee, dalagaa hin bulchani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Midhaan bulchani malee, dalagaa hin bulchani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Midhaan bulchani malee, dalagaa hin bulchani")">COPY</button>
     <button onclick="shareText(this, "Midhaan bulchani malee, dalagaa hin bulchani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="midhaan mana duubaa malee, midhaan gaara duubaa nu hin godhin">
+<div class="proverb-card" data-text="midhaan mana duubaa malee, midhaan gaara duubaa nu hin godhin makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Midhaan mana duubaa malee, midhaan gaara duubaa nu hin godhin</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Midhaan mana duubaa malee, midhaan gaara duubaa nu hin godhin")">COPY</button>
     <button onclick="shareText(this, "Midhaan mana duubaa malee, midhaan gaara duubaa nu hin godhin")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="miidhaga yaalanii, miidhama hin yaadani">
+<div class="proverb-card" data-text="miidhaga yaalanii, miidhama hin yaadani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Miidhaga yaalanii, miidhama hin yaadani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Miidhaga yaalanii, miidhama hin yaadani")">COPY</button>
     <button onclick="shareText(this, "Miidhaga yaalanii, miidhama hin yaadani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="miilli deemu, dhalti rimaya qabsiisa">
+<div class="proverb-card" data-text="miilli deemu, dhalti rimaya qabsiisa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Miilli deemu, dhalti rimaya qabsiisa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Miilli deemu, dhalti rimaya qabsiisa")">COPY</button>
     <button onclick="shareText(this, "Miilli deemu, dhalti rimaya qabsiisa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="miila lafaan didan, bakki irraan ajjatan waa hin jiru">
+<div class="proverb-card" data-text="miila lafaan didan, bakki irraan ajjatan waa hin jiru makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Miila lafaan didan, bakki irraan ajjatan waa hin jiru</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Miila lafaan didan, bakki irraan ajjatan waa hin jiru")">COPY</button>
     <button onclick="shareText(this, "Miila lafaan didan, bakki irraan ajjatan waa hin jiru")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="moluu cabbii dandeesse, bakakkaaf abdatu">
+<div class="proverb-card" data-text="moluu cabbii dandeesse, bakakkaaf abdatu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Moluu cabbii dandeesse, bakakkaaf abdatu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Moluu cabbii dandeesse, bakakkaaf abdatu")">COPY</button>
     <button onclick="shareText(this, "Moluu cabbii dandeesse, bakakkaaf abdatu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="muka, kan caaya qabu jala taa&#x27;ani">
+<div class="proverb-card" data-text="muka, kan caaya qabu jala taa&#x27;ani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Muka, kan caaya qabu jala taa&#x27;ani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Muka, kan caaya qabu jala taa'ani")">COPY</button>
     <button onclick="shareText(this, "Muka, kan caaya qabu jala taa'ani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="mukni baalaan boona">
+<div class="proverb-card" data-text="mukni baalaan boona makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Mukni baalaan boona</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Mukni baalaan boona")">COPY</button>
     <button onclick="shareText(this, "Mukni baalaan boona")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nama fardaan barbaadaniitu, miilaan nama barbaada">
+<div class="proverb-card" data-text="nama fardaan barbaadaniitu, miilaan nama barbaada makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Nama fardaan barbaadaniitu, miilaan nama barbaada</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Nama fardaan barbaadaniitu, miilaan nama barbaada")">COPY</button>
     <button onclick="shareText(this, "Nama fardaan barbaadaniitu, miilaan nama barbaada")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nama farda koo yaabbateetu, guddina koo beeka">
+<div class="proverb-card" data-text="nama farda koo yaabbateetu, guddina koo beeka makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">nama farda koo yaabbateetu, guddina koo beeka</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "nama farda koo yaabbateetu, guddina koo beeka")">COPY</button>
     <button onclick="shareText(this, "nama farda koo yaabbateetu, guddina koo beeka")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namaa gaangeerra jiruun, harka dhiqadhu hin ja&#x27;ani">
+<div class="proverb-card" data-text="namaa gaangeerra jiruun, harka dhiqadhu hin ja&#x27;ani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namaa gaangeerra jiruun, harka dhiqadhu hin ja&#x27;ani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namaa gaangeerra jiruun, harka dhiqadhu hin ja'ani")">COPY</button>
     <button onclick="shareText(this, "Namaa gaangeerra jiruun, harka dhiqadhu hin ja'ani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nama halkan kana buleetu, kan boruu yaada">
+<div class="proverb-card" data-text="nama halkan kana buleetu, kan boruu yaada makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Nama halkan kana buleetu, kan boruu yaada</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Nama halkan kana buleetu, kan boruu yaada")">COPY</button>
     <button onclick="shareText(this, "Nama halkan kana buleetu, kan boruu yaada")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nama hin qabnu akka hin jenne si qabna, mana nuu eegi akka hin jenne siihuu ni eegna jette haati intalaan">
+<div class="proverb-card" data-text="nama hin qabnu akka hin jenne si qabna, mana nuu eegi akka hin jenne siihuu ni eegna jette haati intalaan makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Nama hin qabnu akka hin jenne si qabna, mana nuu eegi akka hin jenne siihuu ni eegna jette haati intalaan</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Nama hin qabnu akka hin jenne si qabna, mana nuu eegi akka hin jenne siihuu ni eegna jette haati intalaan")">COPY</button>
     <button onclick="shareText(this, "Nama hin qabnu akka hin jenne si qabna, mana nuu eegi akka hin jenne siihuu ni eegna jette haati intalaan")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nama hin tuqaminitti dubbiin baala">
+<div class="proverb-card" data-text="nama hin tuqaminitti dubbiin baala makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Nama hin tuqaminitti dubbiin baala</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Nama hin tuqaminitti dubbiin baala")">COPY</button>
     <button onclick="shareText(this, "Nama hin tuqaminitti dubbiin baala")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nama maraate haadaan hidhani, haada maraate maaliin hidhani">
+<div class="proverb-card" data-text="nama maraate haadaan hidhani, haada maraate maaliin hidhani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Nama maraate haadaan hidhani, haada maraate maaliin hidhani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Nama maraate haadaan hidhani, haada maraate maaliin hidhani")">COPY</button>
     <button onclick="shareText(this, "Nama maraate haadaan hidhani, haada maraate maaliin hidhani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nama mooyyee irra taa&#x27;u, kaasuun hin oolamu">
+<div class="proverb-card" data-text="nama mooyyee irra taa&#x27;u, kaasuun hin oolamu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Nama mooyyee irra taa&#x27;u, kaasuun hin oolamu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Nama mooyyee irra taa'u, kaasuun hin oolamu")">COPY</button>
     <button onclick="shareText(this, "Nama mooyyee irra taa'u, kaasuun hin oolamu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nama si hin gargaarre jala gad hin godhatin">
+<div class="proverb-card" data-text="nama si hin gargaarre jala gad hin godhatin makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Nama si hin gargaarre jala gad hin godhatin</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Nama si hin gargaarre jala gad hin godhatin")">COPY</button>
     <button onclick="shareText(this, "Nama si hin gargaarre jala gad hin godhatin")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nama sii hin kenninetti dhaba hin himatin">
+<div class="proverb-card" data-text="nama sii hin kenninetti dhaba hin himatin makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Nama sii hin kenninetti dhaba hin himatin</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Nama sii hin kenninetti dhaba hin himatin")">COPY</button>
     <button onclick="shareText(this, "Nama sii hin kenninetti dhaba hin himatin")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nama rafee, saani duubaa dibicha dhale">
+<div class="proverb-card" data-text="nama rafee, saani duubaa dibicha dhale makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Nama rafee, saani duubaa dibicha dhale</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Nama rafee, saani duubaa dibicha dhale")">COPY</button>
     <button onclick="shareText(this, "Nama rafee, saani duubaa dibicha dhale")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni bishaan sagal dhuge baalagee dha">
+<div class="proverb-card" data-text="namni bishaan sagal dhuge baalagee dha makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni bishaan sagal dhuge baalagee dha</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni bishaan sagal dhuge baalagee dha")">COPY</button>
     <button onclick="shareText(this, "Namni bishaan sagal dhuge baalagee dha")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni dinniina argate hin a&#x27;amu">
-  <div class="qm">&#10077;</div>
-  <div class="section">MAKAA</div>
-  <div class="text">Namni dinniina argate hin a&#x27;amu</div>
-  <div class="actions">
-    <button onclick="copyText(this, "Namni dinniina argate hin a'amu")">COPY</button>
-    <button onclick="shareText(this, "Namni dinniina argate hin a'amu")">SHARE</button>
-  </div>
-</div>
-<div class="proverb-card" data-text="namni dubbi guddatu, ciniimmuu haadhaa hima">
+<div class="proverb-card" data-text="namni dubbi guddatu, ciniimmuu haadhaa hima makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni dubbi guddatu, ciniimmuu haadhaa hima</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni dubbi guddatu, ciniimmuu haadhaa hima")">COPY</button>
     <button onclick="shareText(this, "Namni dubbi guddatu, ciniimmuu haadhaa hima")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni duulli itti hirphe dulloome">
+<div class="proverb-card" data-text="namni duulli itti hirphe dulloome makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni duulli itti hirphe dulloome</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni duulli itti hirphe dulloome")">COPY</button>
     <button onclick="shareText(this, "Namni duulli itti hirphe dulloome")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni dubra rimaya qabsiise, baatii dhalattu jibba">
+<div class="proverb-card" data-text="namni dubra rimaya qabsiise, baatii dhalattu jibba makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni dubra rimaya qabsiise, baatii dhalattu jibba</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni dubra rimaya qabsiise, baatii dhalattu jibba")">COPY</button>
     <button onclick="shareText(this, "Namni dubra rimaya qabsiise, baatii dhalattu jibba")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni gaafa minilnk duude, &quot;hadaraa minilik&quot; jedha">
+<div class="proverb-card" data-text="namni gaafa minilnk duude, &quot;hadaraa minilik&quot; jedha makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni gaafa minilnk duude, &quot;hadaraa minilik&quot; jedha</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni gaafa minilnk duude, \"hadaraa minilik\" jedha")">COPY</button>
     <button onclick="shareText(this, "Namni gaafa minilnk duude, \"hadaraa minilik\" jedha")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni du&#x27;a hin beekne, waan rabbi jibbu tuttuqa">
+<div class="proverb-card" data-text="namni du&#x27;a hin beekne, waan rabbi jibbu tuttuqa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni du&#x27;a hin beekne, waan Rabbi jibbu tuttuqa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni du'a hin beekne, waan Rabbi jibbu tuttuqa")">COPY</button>
     <button onclick="shareText(this, "Namni du'a hin beekne, waan Rabbi jibbu tuttuqa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni gubatee hin beekne, ibiddaan taphata">
+<div class="proverb-card" data-text="namni gubatee hin beekne, ibiddaan taphata makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni gubatee hin beekne, ibiddaan taphata</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni gubatee hin beekne, ibiddaan taphata")">COPY</button>
     <button onclick="shareText(this, "Namni gubatee hin beekne, ibiddaan taphata")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni gatiidhaan bitame, gatii namaa hin beekuu gatitti namarraa hin dhaabbatu">
+<div class="proverb-card" data-text="namni gatiidhaan bitame, gatii namaa hin beekuu gatitti namarraa hin dhaabbatu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni gatiidhaan bitame, gatii namaa hin beekuu gatitti namarraa hin dhaabbatu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni gatiidhaan bitame, gatii namaa hin beekuu gatitti namarraa hin dhaabbatu")">COPY</button>
     <button onclick="shareText(this, "Namni gatiidhaan bitame, gatii namaa hin beekuu gatitti namarraa hin dhaabbatu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni fafeen, harree dha, ribbii fuudha">
+<div class="proverb-card" data-text="namni fafeen, harree dha, ribbii fuudha makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni fafeen, harree dha, ribbii fuudha</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni fafeen, harree dha, ribbii fuudha")">COPY</button>
     <button onclick="shareText(this, "Namni fafeen, harree dha, ribbii fuudha")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni jiile hin qusatu">
+<div class="proverb-card" data-text="namni jiile hin qusatu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni jiile hin qusatu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni jiile hin qusatu")">COPY</button>
     <button onclick="shareText(this, "Namni jiile hin qusatu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni biyya isaatiif lolu daymarra mi&#x27;awa namni biyyaan lolu heexoo caala hadhaawa">
+<div class="proverb-card" data-text="namni biyya isaatiif lolu daymarra mi&#x27;awa namni biyyaan lolu heexoo caala hadhaawa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni biyya isaatiif lolu daymarra mi&#x27;awa namni biyyaan lolu heexoo caala hadhaawa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni biyya isaatiif lolu daymarra mi'awa namni biyyaan lolu heexoo caala hadhaawa")">COPY</button>
     <button onclick="shareText(this, "Namni biyya isaatiif lolu daymarra mi'awa namni biyyaan lolu heexoo caala hadhaawa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni lafatti wal shakke, muka wajji hin koru">
+<div class="proverb-card" data-text="namni lafatti wal shakke, muka wajji hin koru makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni lafatti wal shakke, muka wajji hin koru</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni lafatti wal shakke, muka wajji hin koru")">COPY</button>
     <button onclick="shareText(this, "Namni lafatti wal shakke, muka wajji hin koru")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni ofii rafaa bule, kan taa&#x27;aa buleef hin beeku">
+<div class="proverb-card" data-text="namni ofii rafaa bule, kan taa&#x27;aa buleef hin beeku makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni ofii rafaa bule, kan taa&#x27;aa buleef hin beeku</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni ofii rafaa bule, kan taa'aa buleef hin beeku")">COPY</button>
     <button onclick="shareText(this, "Namni ofii rafaa bule, kan taa'aa buleef hin beeku")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni ofii nyaatu, hiyyeessaa hin yaadu">
+<div class="proverb-card" data-text="namni ofii nyaatu, hiyyeessaa hin yaadu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni ofii nyaatu, hiyyeessaa hin yaadu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni ofii nyaatu, hiyyeessaa hin yaadu")">COPY</button>
     <button onclick="shareText(this, "Namni ofii nyaatu, hiyyeessaa hin yaadu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni muka irraa kufe, hanga lafa gahutti waa heddu yaada">
+<div class="proverb-card" data-text="namni muka irraa kufe, hanga lafa gahutti waa heddu yaada makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni muka irraa kufe, hanga lafa gahutti waa heddu yaada</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni muka irraa kufe, hanga lafa gahutti waa heddu yaada")">COPY</button>
     <button onclick="shareText(this, "Namni muka irraa kufe, hanga lafa gahutti waa heddu yaada")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni waraabessa yaabbate, koottu siin huddeelladha jedha">
+<div class="proverb-card" data-text="namni waraabessa yaabbate, koottu siin huddeelladha jedha makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni waraabessa yaabbate, koottu siin huddeelladha jedha</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni waraabessa yaabbate, koottu siin huddeelladha jedha")">COPY</button>
     <button onclick="shareText(this, "Namni waraabessa yaabbate, koottu siin huddeelladha jedha")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="namni ollaa fi duugdaan ol ejja">
+<div class="proverb-card" data-text="namni ollaa fi duugdaan ol ejja makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Namni ollaa fi duugdaan ol ejja</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Namni ollaa fi duugdaan ol ejja")">COPY</button>
     <button onclick="shareText(this, "Namni ollaa fi duugdaan ol ejja")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="naggada wallaalteeti, magaalaa komatti">
+<div class="proverb-card" data-text="naggada wallaalteeti, magaalaa komatti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Naggada wallaalteeti, magaalaa komatti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Naggada wallaalteeti, magaalaa komatti")">COPY</button>
     <button onclick="shareText(this, "Naggada wallaalteeti, magaalaa komatti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="natti hin hafin sitti haa hafuu jette dhabduun sungoo facaaftee">
+<div class="proverb-card" data-text="natti hin hafin sitti haa hafuu jette dhabduun sungoo facaaftee makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Natti hin hafin sitti haa hafuu jette dhabduun sungoo facaaftee</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Natti hin hafin sitti haa hafuu jette dhabduun sungoo facaaftee")">COPY</button>
     <button onclick="shareText(this, "Natti hin hafin sitti haa hafuu jette dhabduun sungoo facaaftee")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="niin gaggabaa mucaa narraa qabaa jettte jaartiin">
+<div class="proverb-card" data-text="niin gaggabaa mucaa narraa qabaa jettte jaartiin makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Niin gaggabaa mucaa narraa qabaa jettte jaartiin</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Niin gaggabaa mucaa narraa qabaa jettte jaartiin")">COPY</button>
     <button onclick="shareText(this, "Niin gaggabaa mucaa narraa qabaa jettte jaartiin")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="niitiin deeminsa guddattu, mana namaatti gubaati">
+<div class="proverb-card" data-text="niitiin deeminsa guddattu, mana namaatti gubaati makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Niitiin deeminsa guddattu, mana namaatti gubaati</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Niitiin deeminsa guddattu, mana namaatti gubaati")">COPY</button>
     <button onclick="shareText(this, "Niitiin deeminsa guddattu, mana namaatti gubaati")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nusaani dhibba liqeeffatani">
+<div class="proverb-card" data-text="nusaani dhibba liqeeffatani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Nusaani dhibba liqeeffatani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Nusaani dhibba liqeeffatani")">COPY</button>
     <button onclick="shareText(this, "Nusaani dhibba liqeeffatani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="nyaataan nyaatee nama nyaachisa">
+<div class="proverb-card" data-text="nyaataan nyaatee nama nyaachisa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Nyaataan nyaatee nama nyaachisa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Nyaataan nyaatee nama nyaachisa")">COPY</button>
     <button onclick="shareText(this, "Nyaataan nyaatee nama nyaachisa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="obboleettiin koo san dhaltee niin kakadha malee, saniif dhaltee hin kakadhu">
+<div class="proverb-card" data-text="obboleettiin koo san dhaltee niin kakadha malee, saniif dhaltee hin kakadhu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Obboleettiin koo san dhaltee niin kakadha malee, saniif dhaltee hin kakadhu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Obboleettiin koo san dhaltee niin kakadha malee, saniif dhaltee hin kakadhu")">COPY</button>
     <button onclick="shareText(this, "Obboleettiin koo san dhaltee niin kakadha malee, saniif dhaltee hin kakadhu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="obbollessa akkanaa, nama dhiisii waraabessilleen ni qaba">
+<div class="proverb-card" data-text="obbollessa akkanaa, nama dhiisii waraabessilleen ni qaba makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Obbollessa akkanaa, nama dhiisii waraabessilleen ni qaba</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Obbollessa akkanaa, nama dhiisii waraabessilleen ni qaba")">COPY</button>
     <button onclick="shareText(this, "Obbollessa akkanaa, nama dhiisii waraabessilleen ni qaba")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ofiifuu ni duutii maa of huuti">
+<div class="proverb-card" data-text="ofiifuu ni duutii maa of huuti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ofiifuu ni duutii maa of huuti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ofiifuu ni duutii maa of huuti")">COPY</button>
     <button onclick="shareText(this, "Ofiifuu ni duutii maa of huuti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ofiifuu ni ciisaa, gaala maa danqita">
+<div class="proverb-card" data-text="ofiifuu ni ciisaa, gaala maa danqita makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ofiifuu ni ciisaa, gaala maa danqita</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ofiifuu ni ciisaa, gaala maa danqita")">COPY</button>
     <button onclick="shareText(this, "Ofiifuu ni ciisaa, gaala maa danqita")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="okkoteen, waan hin nyaanneef gubatti">
+<div class="proverb-card" data-text="okkoteen, waan hin nyaanneef gubatti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Okkoteen, waan hin nyaanneef gubatti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Okkoteen, waan hin nyaanneef gubatti")">COPY</button>
     <button onclick="shareText(this, "Okkoteen, waan hin nyaanneef gubatti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="oromoon waan fedhe haa jedhu, garaan natti as haa jedhu, jedhe goobanaan">
+<div class="proverb-card" data-text="oromoon waan fedhe haa jedhu, garaan natti as haa jedhu, jedhe goobanaan makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Oromoon waan fedhe haa jedhu, garaan natti as haa jedhu, jedhe goobanaan</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Oromoon waan fedhe haa jedhu, garaan natti as haa jedhu, jedhe goobanaan")">COPY</button>
     <button onclick="shareText(this, "Oromoon waan fedhe haa jedhu, garaan natti as haa jedhu, jedhe goobanaan")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="osoleen dhagaa gubbaa ooltee, dhagaa jalatti duuti">
+<div class="proverb-card" data-text="osoleen dhagaa gubbaa ooltee, dhagaa jalatti duuti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Osoleen dhagaa gubbaa ooltee, dhagaa jalatti duuti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Osoleen dhagaa gubbaa ooltee, dhagaa jalatti duuti")">COPY</button>
     <button onclick="shareText(this, "Osoleen dhagaa gubbaa ooltee, dhagaa jalatti duuti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="osoo gowwaan taa&#x27;uu, beekaan dubbii fannisa">
+<div class="proverb-card" data-text="osoo gowwaan taa&#x27;uu, beekaan dubbii fannisa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Osoo gowwaan taa&#x27;uu, beekaan dubbii fannisa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Osoo gowwaan taa'uu, beekaan dubbii fannisa")">COPY</button>
     <button onclick="shareText(this, "Osoo gowwaan taa'uu, beekaan dubbii fannisa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;osoon beekuu hubbaa wajji,&quot; sareen jennaan, adurreen &quot;us warra keessan kamiitu gundoo hodhaa mitii&quot; jette">
+<div class="proverb-card" data-text="&quot;osoon beekuu hubbaa wajji,&quot; sareen jennaan, adurreen &quot;us warra keessan kamiitu gundoo hodhaa mitii&quot; jette makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">&quot;Osoon beekuu hubbaa wajji,&quot; sareen jennaan, adurreen &quot;Us warra keessan kamiitu gundoo hodhaa mitii&quot; jette</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Osoon beekuu hubbaa wajji,\" sareen jennaan, adurreen \"Us warra keessan kamiitu gundoo hodhaa mitii\" jette")">COPY</button>
     <button onclick="shareText(this, "\"Osoon beekuu hubbaa wajji,\" sareen jennaan, adurreen \"Us warra keessan kamiitu gundoo hodhaa mitii\" jette")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="osoo kan ilkee soddomii jiruuti, kan ilkee takkaa rigaa naa kennaa jedhe">
+<div class="proverb-card" data-text="osoo kan ilkee soddomii jiruuti, kan ilkee takkaa rigaa naa kennaa jedhe makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Osoo kan ilkee soddomii jiruuti, kan ilkee takkaa rigaa naa kennaa jedhe</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Osoo kan ilkee soddomii jiruuti, kan ilkee takkaa rigaa naa kennaa jedhe")">COPY</button>
     <button onclick="shareText(this, "Osoo kan ilkee soddomii jiruuti, kan ilkee takkaa rigaa naa kennaa jedhe")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="osoo nyaachuu isii hin beekini, harka dhiqatte">
+<div class="proverb-card" data-text="osoo nyaachuu isii hin beekini, harka dhiqatte makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Osoo nyaachuu isii hin beekini, harka dhiqatte</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Osoo nyaachuu isii hin beekini, harka dhiqatte")">COPY</button>
     <button onclick="shareText(this, "Osoo nyaachuu isii hin beekini, harka dhiqatte")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="osoo waan argan taatee, dhuufuun daalattii dha">
+<div class="proverb-card" data-text="osoo waan argan taatee, dhuufuun daalattii dha makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Osoo waan argan taatee, dhuufuun daalattii dha</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Osoo waan argan taatee, dhuufuun daalattii dha")">COPY</button>
     <button onclick="shareText(this, "Osoo waan argan taatee, dhuufuun daalattii dha")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="qa&#x27;ee suguyyaa sareen hin hanqattu, dhiigaa cumaa malee foon nyaata hin argattu, maaltu dhiba ree abbaa foon ofii jabeeffatu">
+<div class="proverb-card" data-text="qa&#x27;ee suguyyaa sareen hin hanqattu, dhiigaa cumaa malee foon nyaata hin argattu, maaltu dhiba ree abbaa foon ofii jabeeffatu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Qa&#x27;ee suguyyaa sareen hin hanqattu, dhiigaa cumaa malee foon nyaata hin argattu, maaltu dhiba ree abbaa foon ofii jabeeffatu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Qa'ee suguyyaa sareen hin hanqattu, dhiigaa cumaa malee foon nyaata hin argattu, maaltu dhiba ree abbaa foon ofii jabeeffatu")">COPY</button>
     <button onclick="shareText(this, "Qa'ee suguyyaa sareen hin hanqattu, dhiigaa cumaa malee foon nyaata hin argattu, maaltu dhiba ree abbaa foon ofii jabeeffatu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="qaqqabaan muchaa, luugutti nama dabarsa">
+<div class="proverb-card" data-text="qaqqabaan muchaa, luugutti nama dabarsa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Qaqqabaan muchaa, luugutti nama dabarsa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Qaqqabaan muchaa, luugutti nama dabarsa")">COPY</button>
     <button onclick="shareText(this, "Qaqqabaan muchaa, luugutti nama dabarsa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="qalameen hundi bishaan hin dhugduu, garii eeguma cuuphxi">
+<div class="proverb-card" data-text="qalameen hundi bishaan hin dhugduu, garii eeguma cuuphxi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Qalameen hundi bishaan hin dhugduu, garii eeguma cuuphxi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Qalameen hundi bishaan hin dhugduu, garii eeguma cuuphxi")">COPY</button>
     <button onclick="shareText(this, "Qalameen hundi bishaan hin dhugduu, garii eeguma cuuphxi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="qarri tilmaamaan beeka, wallaalaan dirree baasan beeka">
+<div class="proverb-card" data-text="qarri tilmaamaan beeka, wallaalaan dirree baasan beeka makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Qarri tilmaamaan beeka, wallaalaan dirree baasan beeka</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Qarri tilmaamaan beeka, wallaalaan dirree baasan beeka")">COPY</button>
     <button onclick="shareText(this, "Qarri tilmaamaan beeka, wallaalaan dirree baasan beeka")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="qirraarii kennanii, farsoo nama hin dhoowwatani">
+<div class="proverb-card" data-text="qirraarii kennanii, farsoo nama hin dhoowwatani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Qirraarii kennanii, farsoo nama hin dhoowwatani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Qirraarii kennanii, farsoo nama hin dhoowwatani")">COPY</button>
     <button onclick="shareText(this, "Qirraarii kennanii, farsoo nama hin dhoowwatani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="qoricha mukaa aarsanii, budawa hin faarsani">
+<div class="proverb-card" data-text="qoricha mukaa aarsanii, budawa hin faarsani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Qoricha mukaa aarsanii, budawa hin faarsani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Qoricha mukaa aarsanii, budawa hin faarsani")">COPY</button>
     <button onclick="shareText(this, "Qoricha mukaa aarsanii, budawa hin faarsani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="raafuu nyaatee rafuu dide, dubbaa nyaatee dubbii dide">
+<div class="proverb-card" data-text="raafuu nyaatee rafuu dide, dubbaa nyaatee dubbii dide makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Raafuu nyaatee rafuu dide, dubbaa nyaatee dubbii dide</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Raafuu nyaatee rafuu dide, dubbaa nyaatee dubbii dide")">COPY</button>
     <button onclick="shareText(this, "Raafuu nyaatee rafuu dide, dubbaa nyaatee dubbii dide")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="rabbi, harka waa kennu hiyyummatti hin aansu">
+<div class="proverb-card" data-text="rabbi, harka waa kennu hiyyummatti hin aansu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Rabbi, harka waa kennu hiyyummatti hin aansu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Rabbi, harka waa kennu hiyyummatti hin aansu")">COPY</button>
     <button onclick="shareText(this, "Rabbi, harka waa kennu hiyyummatti hin aansu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="rabbiin waa dhiira quufaa jennaan, osoo guyyaa salaasaa (lammaffoo) magaalaa watar dhayxee agartee jedhen">
+<div class="proverb-card" data-text="rabbiin waa dhiira quufaa jennaan, osoo guyyaa salaasaa (lammaffoo) magaalaa watar dhayxee agartee jedhen makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Rabbiin waa dhiira quufaa jennaan, osoo guyyaa salaasaa (lammaffoo) magaalaa watar dhayxee agartee jedhen</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Rabbiin waa dhiira quufaa jennaan, osoo guyyaa salaasaa (lammaffoo) magaalaa watar dhayxee agartee jedhen")">COPY</button>
     <button onclick="shareText(this, "Rabbiin waa dhiira quufaa jennaan, osoo guyyaa salaasaa (lammaffoo) magaalaa watar dhayxee agartee jedhen")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="reefki refka jedhe, kan jiraa awwaale">
+<div class="proverb-card" data-text="reefki refka jedhe, kan jiraa awwaale makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Reefki refka jedhe, kan jiraa awwaale</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Reefki refka jedhe, kan jiraa awwaale")">COPY</button>
     <button onclick="shareText(this, "Reefki refka jedhe, kan jiraa awwaale")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="re&#x27;een hortu adaadii dha">
+<div class="proverb-card" data-text="re&#x27;een hortu adaadii dha makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Re&#x27;een hortu adaadii dha</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Re'een hortu adaadii dha")">COPY</button>
     <button onclick="shareText(this, "Re'een hortu adaadii dha")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="re&#x27;een tulluu gubbaa dhaabbattu, sa&#x27;a raaree keessa jiru caalaa fago agarti">
+<div class="proverb-card" data-text="re&#x27;een tulluu gubbaa dhaabbattu, sa&#x27;a raaree keessa jiru caalaa fago agarti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Re&#x27;een tulluu gubbaa dhaabbattu, sa&#x27;a raaree keessa jiru caalaa fago agarti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Re'een tulluu gubbaa dhaabbattu, sa'a raaree keessa jiru caalaa fago agarti")">COPY</button>
     <button onclick="shareText(this, "Re'een tulluu gubbaa dhaabbattu, sa'a raaree keessa jiru caalaa fago agarti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="rooba quufaan, nama leenyoo hin qabne">
+<div class="proverb-card" data-text="rooba quufaan, nama leenyoo hin qabne makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Rooba quufaan, nama leenyoo hin qabne</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Rooba quufaan, nama leenyoo hin qabne")">COPY</button>
     <button onclick="shareText(this, "Rooba quufaan, nama leenyoo hin qabne")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="salaalee kola argattee, ala shiiraa argatte maal gaafatta">
+<div class="proverb-card" data-text="salaalee kola argattee, ala shiiraa argatte maal gaafatta makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Salaalee kola argattee, Ala shiiraa argatte maal gaafatta</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Salaalee kola argattee, Ala shiiraa argatte maal gaafatta")">COPY</button>
     <button onclick="shareText(this, "Salaalee kola argattee, Ala shiiraa argatte maal gaafatta")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="samiiti nyaara butaati, dachii qeensa keessi">
+<div class="proverb-card" data-text="samiiti nyaara butaati, dachii qeensa keessi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Samiiti nyaara butaati, dachii qeensa keessi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Samiiti nyaara butaati, dachii qeensa keessi")">COPY</button>
     <button onclick="shareText(this, "Samiiti nyaara butaati, dachii qeensa keessi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="sangaa gaafa beelaa, maganiitu nyaate">
+<div class="proverb-card" data-text="sangaa gaafa beelaa, maganiitu nyaate makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Sangaa gaafa beelaa, maganiitu nyaate</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Sangaa gaafa beelaa, maganiitu nyaate")">COPY</button>
     <button onclick="shareText(this, "Sangaa gaafa beelaa, maganiitu nyaate")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="sangaa gaafa boojjii mana hin dhoorkani, inninuu dadhabee dhiisa">
+<div class="proverb-card" data-text="sangaa gaafa boojjii mana hin dhoorkani, inninuu dadhabee dhiisa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Sangaa gaafa boojjii mana hin dhoorkani, inninuu dadhabee dhiisa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Sangaa gaafa boojjii mana hin dhoorkani, inninuu dadhabee dhiisa")">COPY</button>
     <button onclick="shareText(this, "Sangaa gaafa boojjii mana hin dhoorkani, inninuu dadhabee dhiisa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="sareen wal nyaattu, bineensa walirraa hin dhoorkitu">
+<div class="proverb-card" data-text="sareen wal nyaattu, bineensa walirraa hin dhoorkitu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Sareen wal nyaattu, bineensa walirraa hin dhoorkitu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Sareen wal nyaattu, bineensa walirraa hin dhoorkitu")">COPY</button>
     <button onclick="shareText(this, "Sareen wal nyaattu, bineensa walirraa hin dhoorkitu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="silaa niin du&#x27;aa, maalfin sirra bu&#x27;aa jedhe buqqataan">
+<div class="proverb-card" data-text="silaa niin du&#x27;aa, maalfin sirra bu&#x27;aa jedhe buqqataan makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Silaa niin du&#x27;aa, maalfin sirra bu&#x27;aa jedhe buqqataan</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Silaa niin du'aa, maalfin sirra bu'aa jedhe buqqataan")">COPY</button>
     <button onclick="shareText(this, "Silaa niin du'aa, maalfin sirra bu'aa jedhe buqqataan")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="&quot;sirbitu maa hin sirbine&quot; jennaan, &quot;hangaan qabu luluu yoomiin hifadhe, hangi kunuu qooda obboleessa kiyyaati&quot; jette intalti">
+<div class="proverb-card" data-text="&quot;sirbitu maa hin sirbine&quot; jennaan, &quot;hangaan qabu luluu yoomiin hifadhe, hangi kunuu qooda obboleessa kiyyaati&quot; jette intalti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">&quot;Sirbitu maa hin sirbine&quot; jennaan, &quot;hangaan qabu luluu yoomiin hifadhe, hangi kunuu qooda obboleessa kiyyaati&quot; jette intalti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "\"Sirbitu maa hin sirbine\" jennaan, \"hangaan qabu luluu yoomiin hifadhe, hangi kunuu qooda obboleessa kiyyaati\" jette intalti")">COPY</button>
     <button onclick="shareText(this, "\"Sirbitu maa hin sirbine\" jennaan, \"hangaan qabu luluu yoomiin hifadhe, hangi kunuu qooda obboleessa kiyyaati\" jette intalti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="soddaa deddeebi&#x27;uu heddummeessu, booddee mooyyeerra taa&#x27;i jedhaniin">
+<div class="proverb-card" data-text="soddaa deddeebi&#x27;uu heddummeessu, booddee mooyyeerra taa&#x27;i jedhaniin makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Soddaa deddeebi&#x27;uu heddummeessu, booddee mooyyeerra taa&#x27;i jedhaniin</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Soddaa deddeebi'uu heddummeessu, booddee mooyyeerra taa'i jedhaniin")">COPY</button>
     <button onclick="shareText(this, "Soddaa deddeebi'uu heddummeessu, booddee mooyyeerra taa'i jedhaniin")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="soddaan huuba ijaati">
+<div class="proverb-card" data-text="soddaan huuba ijaati makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Soddaan huuba ijaati</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Soddaan huuba ijaati")">COPY</button>
     <button onclick="shareText(this, "Soddaan huuba ijaati")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="soddaa biratti daboo hin kadhatani">
+<div class="proverb-card" data-text="soddaa biratti daboo hin kadhatani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Soddaa biratti daboo hin kadhatani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Soddaa biratti daboo hin kadhatani")">COPY</button>
     <button onclick="shareText(this, "Soddaa biratti daboo hin kadhatani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="soddaa fi hordaa wajji kufu">
+<div class="proverb-card" data-text="soddaa fi hordaa wajji kufu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Soddaa fi hordaa wajji kufu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Soddaa fi hordaa wajji kufu")">COPY</button>
     <button onclick="shareText(this, "Soddaa fi hordaa wajji kufu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="shahaadaa fi kafana nu hin dhoorkin">
+<div class="proverb-card" data-text="shahaadaa fi kafana nu hin dhoorkin makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Shahaadaa fi kafana nu hin dhoorkin</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Shahaadaa fi kafana nu hin dhoorkin")">COPY</button>
     <button onclick="shareText(this, "Shahaadaa fi kafana nu hin dhoorkin")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="sheenaan kutte, rahaamata hin qabdu">
+<div class="proverb-card" data-text="sheenaan kutte, rahaamata hin qabdu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Sheenaan kutte, rahaamata hin qabdu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Sheenaan kutte, rahaamata hin qabdu")">COPY</button>
     <button onclick="shareText(this, "Sheenaan kutte, rahaamata hin qabdu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="sheenaa fi eegeen gama boodaati">
+<div class="proverb-card" data-text="sheenaa fi eegeen gama boodaati makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Sheenaa fi eegeen gama boodaati</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Sheenaa fi eegeen gama boodaati")">COPY</button>
     <button onclick="shareText(this, "Sheenaa fi eegeen gama boodaati")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="tafkiin lafatti wal nyaattee, namarratti waliin baati">
+<div class="proverb-card" data-text="tafkiin lafatti wal nyaattee, namarratti waliin baati makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Tafkiin lafatti wal nyaattee, namarratti waliin baati</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Tafkiin lafatti wal nyaattee, namarratti waliin baati")">COPY</button>
     <button onclick="shareText(this, "Tafkiin lafatti wal nyaattee, namarratti waliin baati")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="tafkiin lafatti of hin dandeenye namarratti taphatti">
+<div class="proverb-card" data-text="tafkiin lafatti of hin dandeenye namarratti taphatti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Tafkiin lafatti of hin dandeenye namarratti taphatti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Tafkiin lafatti of hin dandeenye namarratti taphatti")">COPY</button>
     <button onclick="shareText(this, "Tafkiin lafatti of hin dandeenye namarratti taphatti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="tan namaa hiiytee tee hiite">
+<div class="proverb-card" data-text="tan namaa hiiytee tee hiite makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Tan namaa hiiytee tee hiite</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Tan namaa hiiytee tee hiite")">COPY</button>
     <button onclick="shareText(this, "Tan namaa hiiytee tee hiite")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="tan wagn duumtee daaktu qabduutu hundukkoo dhawata">
+<div class="proverb-card" data-text="tan wagn duumtee daaktu qabduutu hundukkoo dhawata makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Tan wagn duumtee daaktu qabduutu hundukkoo dhawata</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Tan wagn duumtee daaktu qabduutu hundukkoo dhawata")">COPY</button>
     <button onclick="shareText(this, "Tan wagn duumtee daaktu qabduutu hundukkoo dhawata")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="tarreen dhaddee, tanuma duraatu bishaan dhuga">
+<div class="proverb-card" data-text="tarreen dhaddee, tanuma duraatu bishaan dhuga makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Tarreen dhaddee, tanuma duraatu bishaan dhuga</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Tarreen dhaddee, tanuma duraatu bishaan dhuga")">COPY</button>
     <button onclick="shareText(this, "Tarreen dhaddee, tanuma duraatu bishaan dhuga")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="tapha keessa ijji bada">
+<div class="proverb-card" data-text="tapha keessa ijji bada makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Tapha keessa ijji bada</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Tapha keessa ijji bada")">COPY</button>
     <button onclick="shareText(this, "Tapha keessa ijji bada")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="teeyriin bifa bineensaatiif duuti">
+<div class="proverb-card" data-text="teeyriin bifa bineensaatiif duuti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Teeyriin bifa bineensaatiif duuti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Teeyriin bifa bineensaatiif duuti")">COPY</button>
     <button onclick="shareText(this, "Teeyriin bifa bineensaatiif duuti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="teeyrii argan fufaa hin argani, fufaa argan teeyrii hin argani">
+<div class="proverb-card" data-text="teeyrii argan fufaa hin argani, fufaa argan teeyrii hin argani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Teeyrii argan fufaa hin argani, fufaa argan teeyrii hin argani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Teeyrii argan fufaa hin argani, fufaa argan teeyrii hin argani")">COPY</button>
     <button onclick="shareText(this, "Teeyrii argan fufaa hin argani, fufaa argan teeyrii hin argani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="teenya teenyumaa, shilingiin qamisa binne">
+<div class="proverb-card" data-text="teenya teenyumaa, shilingiin qamisa binne makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Teenya teenyumaa, shilingiin qamisa binne</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Teenya teenyumaa, shilingiin qamisa binne")">COPY</button>
     <button onclick="shareText(this, "Teenya teenyumaa, shilingiin qamisa binne")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="tee ayliin haga bulteeti, teenya booroo bulte">
+<div class="proverb-card" data-text="tee ayliin haga bulteeti, teenya booroo bulte makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Tee ayliin haga bulteeti, teenya booroo bulte</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Tee ayliin haga bulteeti, teenya booroo bulte")">COPY</button>
     <button onclick="shareText(this, "Tee ayliin haga bulteeti, teenya booroo bulte")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="tiiticha magaalaa ooleetu, nama baadiyyaa oolerra caala">
+<div class="proverb-card" data-text="tiiticha magaalaa ooleetu, nama baadiyyaa oolerra caala makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Tiiticha magaalaa ooleetu, nama baadiyyaa oolerra caala</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Tiiticha magaalaa ooleetu, nama baadiyyaa oolerra caala")">COPY</button>
     <button onclick="shareText(this, "Tiiticha magaalaa ooleetu, nama baadiyyaa oolerra caala")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="tokko namaaf makmaaka, tokko namatti makmaaka">
+<div class="proverb-card" data-text="tokko namaaf makmaaka, tokko namatti makmaaka makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Tokko namaaf makmaaka, tokko namatti makmaaka</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Tokko namaaf makmaaka, tokko namatti makmaaka")">COPY</button>
     <button onclick="shareText(this, "Tokko namaaf makmaaka, tokko namatti makmaaka")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ulee bofaan ajjeesan, wajjumaan darbani">
+<div class="proverb-card" data-text="ulee bofaan ajjeesan, wajjumaan darbani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ulee bofaan ajjeesan, wajjumaan darbani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ulee bofaan ajjeesan, wajjumaan darbani")">COPY</button>
     <button onclick="shareText(this, "Ulee bofaan ajjeesan, wajjumaan darbani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="ulfina mataa, mormi hin dhageenye">
+<div class="proverb-card" data-text="ulfina mataa, mormi hin dhageenye makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Ulfina mataa, mormi hin dhageenye</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Ulfina mataa, mormi hin dhageenye")">COPY</button>
     <button onclick="shareText(this, "Ulfina mataa, mormi hin dhageenye")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="utaalchatti kuruphoon teeyrii ni mooti">
+<div class="proverb-card" data-text="utaalchatti kuruphoon teeyrii ni mooti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">utaalchatti kuruphoon teeyrii ni mooti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "utaalchatti kuruphoon teeyrii ni mooti")">COPY</button>
     <button onclick="shareText(this, "utaalchatti kuruphoon teeyrii ni mooti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="waa godhee, waa bira godhe">
+<div class="proverb-card" data-text="waa godhee, waa bira godhe makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Waa godhee, waa bira godhe</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Waa godhee, waa bira godhe")">COPY</button>
     <button onclick="shareText(this, "Waa godhee, waa bira godhe")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="waa hin bittuu, waa hin gurgurtuu, sareen hujii malee magaalaa baatee ulee dabalatti">
+<div class="proverb-card" data-text="waa hin bittuu, waa hin gurgurtuu, sareen hujii malee magaalaa baatee ulee dabalatti makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Waa hin bittuu, waa hin gurgurtuu, sareen hujii malee magaalaa baatee ulee dabalatti</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Waa hin bittuu, waa hin gurgurtuu, sareen hujii malee magaalaa baatee ulee dabalatti")">COPY</button>
     <button onclick="shareText(this, "Waa hin bittuu, waa hin gurgurtuu, sareen hujii malee magaalaa baatee ulee dabalatti")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="waabeen asii hin badnee, madda irraa bade">
+<div class="proverb-card" data-text="waabeen asii hin badnee, madda irraa bade makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Waabeen asii hin badnee, madda irraa bade</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Waabeen asii hin badnee, madda irraa bade")">COPY</button>
     <button onclick="shareText(this, "Waabeen asii hin badnee, madda irraa bade")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="waan beektuun hojjatte, boosattiin quba hin qabdu">
+<div class="proverb-card" data-text="waan beektuun hojjatte, boosattiin quba hin qabdu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Waan beektuun hojjatte, boosattiin quba hin qabdu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Waan beektuun hojjatte, boosattiin quba hin qabdu")">COPY</button>
     <button onclick="shareText(this, "Waan beektuun hojjatte, boosattiin quba hin qabdu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="waan gowwaan nyaate, afaan isaa irratti beekani">
+<div class="proverb-card" data-text="waan gowwaan nyaate, afaan isaa irratti beekani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Waan gowwaan nyaate, afaan isaa irratti beekani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Waan gowwaan nyaate, afaan isaa irratti beekani")">COPY</button>
     <button onclick="shareText(this, "Waan gowwaan nyaate, afaan isaa irratti beekani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="waatoo jala waatu jira">
+<div class="proverb-card" data-text="waatoo jala waatu jira makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Waatoo jala waatu jira</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Waatoo jala waatu jira")">COPY</button>
     <button onclick="shareText(this, "Waatoo jala waatu jira")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="waatti gamaa iyyaa, malaanuu lukkuu tiyya">
+<div class="proverb-card" data-text="waatti gamaa iyyaa, malaanuu lukkuu tiyya makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Waatti gamaa iyyaa, malaanuu lukkuu tiyya</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Waatti gamaa iyyaa, malaanuu lukkuu tiyya")">COPY</button>
     <button onclick="shareText(this, "Waatti gamaa iyyaa, malaanuu lukkuu tiyya")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="waaree nagayaan galte, aannan mi&#x27;aawa">
+<div class="proverb-card" data-text="waaree nagayaan galte, aannan mi&#x27;aawa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Waaree nagayaan galte, aannan mi&#x27;aawa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Waaree nagayaan galte, aannan mi'aawa")">COPY</button>
     <button onclick="shareText(this, "Waaree nagayaan galte, aannan mi'aawa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="wadalli harree, araddaa lamatti hin iyyu">
+<div class="proverb-card" data-text="wadalli harree, araddaa lamatti hin iyyu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Wadalli harree, araddaa lamatti hin iyyu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Wadalli harree, araddaa lamatti hin iyyu")">COPY</button>
     <button onclick="shareText(this, "Wadalli harree, araddaa lamatti hin iyyu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="wal bira jireenyaa, ijji mataa hin agarre">
+<div class="proverb-card" data-text="wal bira jireenyaa, ijji mataa hin agarre makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Wal bira jireenyaa, ijji mataa hin agarre</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Wal bira jireenyaa, ijji mataa hin agarre")">COPY</button>
     <button onclick="shareText(this, "Wal bira jireenyaa, ijji mataa hin agarre")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="walii naasuun warra keenyaa, ilkee koflaati jedhe waraabessi">
+<div class="proverb-card" data-text="walii naasuun warra keenyaa, ilkee koflaati jedhe waraabessi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Walii naasuun warra keenyaa, ilkee koflaati jedhe waraabessi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Walii naasuun warra keenyaa, ilkee koflaati jedhe waraabessi")">COPY</button>
     <button onclick="shareText(this, "Walii naasuun warra keenyaa, ilkee koflaati jedhe waraabessi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="waliin ga&#x27;een dirrisaan, sinbira garbuu ficcisiisa">
+<div class="proverb-card" data-text="waliin ga&#x27;een dirrisaan, sinbira garbuu ficcisiisa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Waliin ga&#x27;een dirrisaan, sinbira garbuu ficcisiisa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Waliin ga'een dirrisaan, sinbira garbuu ficcisiisa")">COPY</button>
     <button onclick="shareText(this, "Waliin ga'een dirrisaan, sinbira garbuu ficcisiisa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="waraana dheeraa fi obboleessa dureessa, anbaan sodaachisani">
+<div class="proverb-card" data-text="waraana dheeraa fi obboleessa dureessa, anbaan sodaachisani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Waraana dheeraa fi obboleessa dureessa, anbaan sodaachisani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Waraana dheeraa fi obboleessa dureessa, anbaan sodaachisani")">COPY</button>
     <button onclick="shareText(this, "Waraana dheeraa fi obboleessa dureessa, anbaan sodaachisani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="waraabessi biyya isa hin beekne dhaqee, &quot;ani wadaajaa kal&#x27;oo naa afaa&quot; jedhe">
+<div class="proverb-card" data-text="waraabessi biyya isa hin beekne dhaqee, &quot;ani wadaajaa kal&#x27;oo naa afaa&quot; jedhe makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Waraabessi biyya isa hin beekne dhaqee, &quot;ani wadaajaa kal&#x27;oo naa afaa&quot; jedhe</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Waraabessi biyya isa hin beekne dhaqee, \"ani wadaajaa kal'oo naa afaa\" jedhe")">COPY</button>
     <button onclick="shareText(this, "Waraabessi biyya isa hin beekne dhaqee, \"ani wadaajaa kal'oo naa afaa\" jedhe")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="waraabessi buquqa nyaataaf, majaan isaa adii dha">
+<div class="proverb-card" data-text="waraabessi buquqa nyaataaf, majaan isaa adii dha makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Waraabessi buquqa nyaataaf, majaan isaa adii dha</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Waraabessi buquqa nyaataaf, majaan isaa adii dha")">COPY</button>
     <button onclick="shareText(this, "Waraabessi buquqa nyaataaf, majaan isaa adii dha")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="warra keenyaaf filaan hin tahu jedhe jaldeessi">
+<div class="proverb-card" data-text="warra keenyaaf filaan hin tahu jedhe jaldeessi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Warra keenyaaf filaan hin tahu jedhe jaldeessi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Warra keenyaaf filaan hin tahu jedhe jaldeessi")">COPY</button>
     <button onclick="shareText(this, "Warra keenyaaf filaan hin tahu jedhe jaldeessi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="yaa arraba, siifan kabalame jedhe gurri">
+<div class="proverb-card" data-text="yaa arraba, siifan kabalame jedhe gurri makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Yaa arraba, siifan kabalame jedhe gurri</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Yaa arraba, siifan kabalame jedhe gurri")">COPY</button>
     <button onclick="shareText(this, "Yaa arraba, siifan kabalame jedhe gurri")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="yaa bir bir, osoon burqaa kee beekuu na nyaattaa jedhe namichi">
+<div class="proverb-card" data-text="yaa bir bir, osoon burqaa kee beekuu na nyaattaa jedhe namichi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Yaa bir bir, osoon burqaa kee beekuu na nyaattaa jedhe namichi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Yaa bir bir, osoon burqaa kee beekuu na nyaattaa jedhe namichi")">COPY</button>
     <button onclick="shareText(this, "Yaa bir bir, osoon burqaa kee beekuu na nyaattaa jedhe namichi")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="yaa dhabanee tiyya dhabarra naaf jirtaa, mataa fufaa gootee nama&#x27;rra naaf jirtaa">
+<div class="proverb-card" data-text="yaa dhabanee tiyya dhabarra naaf jirtaa, mataa fufaa gootee nama&#x27;rra naaf jirtaa makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Yaa dhabanee tiyya dhabarra naaf jirtaa, mataa fufaa gootee nama&#x27;rra naaf jirtaa</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Yaa dhabanee tiyya dhabarra naaf jirtaa, mataa fufaa gootee nama'rra naaf jirtaa")">COPY</button>
     <button onclick="shareText(this, "Yaa dhabanee tiyya dhabarra naaf jirtaa, mataa fufaa gootee nama'rra naaf jirtaa")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="yaa marqa, kan si jibbu barri haa jibbu">
+<div class="proverb-card" data-text="yaa marqa, kan si jibbu barri haa jibbu makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Yaa marqa, kan si jibbu barri haa jibbu</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Yaa marqa, kan si jibbu barri haa jibbu")">COPY</button>
     <button onclick="shareText(this, "Yaa marqa, kan si jibbu barri haa jibbu")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="yeroo takka niitii dhiiraatiin taa&#x27;ani, yeroo takka haadha dhiiraatiin taa&#x27;ani">
+<div class="proverb-card" data-text="yeroo takka niitii dhiiraatiin taa&#x27;ani, yeroo takka haadha dhiiraatiin taa&#x27;ani makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Yeroo takka niitii dhiiraatiin taa&#x27;ani, yeroo takka haadha dhiiraatiin taa&#x27;ani</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Yeroo takka niitii dhiiraatiin taa'ani, yeroo takka haadha dhiiraatiin taa'ani")">COPY</button>
     <button onclick="shareText(this, "Yeroo takka niitii dhiiraatiin taa'ani, yeroo takka haadha dhiiraatiin taa'ani")">SHARE</button>
   </div>
 </div>
-<div class="proverb-card" data-text="yeroon ani akka qabu aduun akka hin qabdu, yeroo aduun akka qabdu ani akka hin qabuu itaan teenna irratti deebisi je&#x27;e jaarsi">
+<div class="proverb-card" data-text="yeroon ani akka qabu aduun akka hin qabdu, yeroo aduun akka qabdu ani akka hin qabuu itaan teenna irratti deebisi je&#x27;e jaarsi makaa">
   <div class="qm">&#10077;</div>
   <div class="section">MAKAA</div>
   <div class="text">Yeroon ani akka qabu aduun akka hin qabdu, yeroo aduun akka qabdu ani akka hin qabuu itaan teenna irratti deebisi je&#x27;e jaarsi</div>
+  
+  <div class="metadata"></div>
   <div class="actions">
     <button onclick="copyText(this, "Yeroon ani akka qabu aduun akka hin qabdu, yeroo aduun akka qabdu ani akka hin qabuu itaan teenna irratti deebisi je'e jaarsi")">COPY</button>
     <button onclick="shareText(this, "Yeroon ani akka qabu aduun akka hin qabdu, yeroo aduun akka qabdu ani akka hin qabuu itaan teenna irratti deebisi je'e jaarsi")">SHARE</button>
